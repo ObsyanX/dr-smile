@@ -201,7 +201,7 @@ const Contact = () => {
                 {/* Status */}
                 <div className="p-6 rounded-2xl bg-card border border-border/50">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className={`w-3 h-3 rounded-full ${clinicStatus.open ? "bg-green-500 animate-pulse-soft" : "bg-red-500"}`} />
+                    <span className={`w-3 h-3 rounded-full ${clinicStatus.open ? "bg-primary animate-pulse-soft" : "bg-destructive"}`} />
                     <span className={`font-heading font-semibold ${clinicStatus.open ? "text-green-600" : "text-red-500"}`}>
                       {clinicStatus.open ? "OPEN NOW" : "CLOSED"}
                     </span>

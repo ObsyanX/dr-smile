@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import ScrollReveal from "@/components/shared/ScrollReveal";
-import { Award, BookOpen, Cpu, ShieldCheck } from "lucide-react";
+import { BookOpen, Cpu, ShieldCheck } from "lucide-react";
 
 const techItems = [
   { icon: Cpu, title: "Digital X-Ray", description: "Low-radiation digital imaging" },
