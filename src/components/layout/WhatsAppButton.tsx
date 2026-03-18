@@ -9,7 +9,7 @@ const WhatsAppButton = () => (
     initial={{ scale: 0 }}
     animate={{ scale: 1 }}
     transition={{ delay: 1, type: "spring", stiffness: 200 }}
-    className="fixed bottom-20 md:bottom-6 right-4 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+    className="fixed bottom-20 md:bottom-6 right-4 z-40 w-14 h-14 rounded-full bg-[#25D366] text-white flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-300"
     aria-label="Chat on WhatsApp"
   >
     <MessageCircle className="w-6 h-6" />
