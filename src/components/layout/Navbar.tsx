@@ -77,7 +77,8 @@ const Navbar = () => {
             Book Appointment
           </Button>
         </Link>
-      </motion.header>
+        </motion.header>
+      </div>
 
       {/* Mobile top bar */}
       <header className="fixed top-0 left-0 right-0 z-50 md:hidden flex items-center justify-between px-4 py-3 bg-background/80 backdrop-blur-xl border-b border-border/30">
