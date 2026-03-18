@@ -28,15 +28,16 @@ const Navbar = () => {
   return (
     <>
       {/* Desktop floating pill nav */}
-      <motion.header
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-5 left-1/2 -translate-x-1/2 z-50 hidden md:flex items-center gap-1 px-2 py-1.5 rounded-full transition-all duration-[400ms] ${
-          scrolled
-            ? "bg-background/70 backdrop-blur-xl shadow-lg border border-border/50"
-            : "bg-background/50 backdrop-blur-md border border-border/30"
-        }`}
+      <div className="fixed top-5 left-0 right-0 z-50 hidden md:flex justify-center pointer-events-none">
+        <motion.header
+          initial={{ y: -20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className={`pointer-events-auto flex items-center gap-1 px-2 py-1.5 rounded-full transition-all duration-[400ms] ${
+            scrolled
+              ? "bg-background/70 backdrop-blur-xl shadow-lg border border-border/50"
+              : "bg-background/50 backdrop-blur-md border border-border/30"
+          }`}
       >
         <Link to="/" className="px-4 font-heading font-bold text-primary text-lg tracking-tight">
           SmileCare
