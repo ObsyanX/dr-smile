@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
+import PageTransition from "@/components/shared/PageTransition";
+import SEOHead from "@/components/shared/SEOHead";
 import ScrollReveal from "@/components/shared/ScrollReveal";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
@@ -86,43 +88,49 @@ const Services = () => {
 
   return (
     <Layout>
-      {/* Hero */}
-      <section className="relative section-padding gradient-hero">
-        <div className="container-dental text-center">
-          <ScrollReveal>
-            <p className="text-primary font-heading font-semibold text-sm uppercase tracking-wider mb-3">Our Services</p>
-            <h1 className="text-h1 lg:text-display font-heading font-bold text-foreground mb-4">Our Dental Treatments</h1>
-            <p className="text-body-lg text-muted-foreground max-w-lg mx-auto">
-              We provide comprehensive dental care using the latest technology for comfortable, effective treatments.
-            </p>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Treatment grid */}
-      <section className="section-padding bg-background">
-        <div className="container-dental">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {treatments.map((t, i) => (
-              <ScrollReveal key={t.title} delay={i * 0.08}>
-                <button
-                  onClick={() => setSelected(t)}
-                  className="w-full text-left group rounded-2xl overflow-hidden bg-card border border-border/50 hover:border-primary/30 transition-all duration-400 hover:-translate-y-1 hover:shadow-xl"
-                >
-                  <div className="aspect-video overflow-hidden">
-                    <img src={t.image} alt={t.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
-                  </div>
-                  <div className="p-6">
-                    <div className="text-2xl mb-3">{t.icon}</div>
-                    <h3 className="text-h3 font-heading font-semibold text-foreground mb-2">{t.title}</h3>
-                    <p className="text-sm text-muted-foreground leading-relaxed">{t.short}</p>
-                  </div>
-                </button>
-              </ScrollReveal>
-            ))}
+      <SEOHead
+        title="Our Dental Treatments — SmileCare Dental Clinic"
+        description="Explore our comprehensive dental treatments including implants, teeth whitening, root canal, braces, smile design, and pediatric dentistry."
+      />
+      <PageTransition>
+        {/* Hero */}
+        <section className="relative section-padding gradient-hero">
+          <div className="container-dental text-center">
+            <ScrollReveal>
+              <p className="text-primary font-heading font-semibold text-sm uppercase tracking-wider mb-3">Our Services</p>
+              <h1 className="text-h1 lg:text-display font-heading font-bold text-foreground mb-4">Our Dental Treatments</h1>
+              <p className="text-body-lg text-muted-foreground max-w-lg mx-auto">
+                We provide comprehensive dental care using the latest technology for comfortable, effective treatments.
+              </p>
+            </ScrollReveal>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Treatment grid */}
+        <section className="section-padding bg-background">
+          <div className="container-dental">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+              {treatments.map((t, i) => (
+                <ScrollReveal key={t.title} delay={i * 0.08}>
+                  <button
+                    onClick={() => setSelected(t)}
+                    className="w-full text-left group rounded-2xl overflow-hidden bg-card border border-border/50 hover:border-primary/30 transition-all duration-[400ms] hover:-translate-y-1 hover:shadow-xl"
+                  >
+                    <div className="aspect-video overflow-hidden">
+                      <img src={t.image} alt={t.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                    </div>
+                    <div className="p-6">
+                      <div className="text-2xl mb-3">{t.icon}</div>
+                      <h3 className="text-h3 font-heading font-semibold text-foreground mb-2">{t.title}</h3>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{t.short}</p>
+                    </div>
+                  </button>
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      </PageTransition>
 
       {/* Detail modal */}
       <Dialog open={!!selected} onOpenChange={() => setSelected(null)}>

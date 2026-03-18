@@ -1,4 +1,6 @@
 import Layout from "@/components/layout/Layout";
+import PageTransition from "@/components/shared/PageTransition";
+import SEOHead from "@/components/shared/SEOHead";
 import HeroSection from "@/components/home/HeroSection";
 import TrustStats from "@/components/home/TrustStats";
 import ServicesPreview from "@/components/home/ServicesPreview";
@@ -13,17 +15,23 @@ import FinalCTA from "@/components/home/FinalCTA";
 
 const Index = () => (
   <Layout>
-    <HeroSection />
-    <TrustStats />
-    <ServicesPreview />
-    <SmileTransformations />
-    <WhyChooseUs />
-    <TechnologyGrid />
-    <Testimonials />
-    <EmergencyBanner />
-    <ClinicLocations />
-    <FAQSection />
-    <FinalCTA />
+    <SEOHead
+      title="SmileCare Dental Clinic — Premium Dental Care"
+      description="Advanced dental care with modern technology and compassionate treatment. Book your appointment for dental implants, teeth whitening, braces, and more."
+    />
+    <PageTransition>
+      <HeroSection />
+      <TrustStats />
+      <ServicesPreview />
+      <SmileTransformations />
+      <WhyChooseUs />
+      <TechnologyGrid />
+      <Testimonials />
+      <EmergencyBanner />
+      <ClinicLocations />
+      <FAQSection />
+      <FinalCTA />
+    </PageTransition>
   </Layout>
 );
 
