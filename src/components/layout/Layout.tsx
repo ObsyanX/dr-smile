@@ -3,7 +3,6 @@ import Navbar from "./Navbar";
 import MobileNav from "./MobileNav";
 import Footer from "./Footer";
 import WhatsAppButton from "./WhatsAppButton";
-import MobileActionBar from "./MobileActionBar";
 
 const Layout = ({ children }: { children: ReactNode }) => (
   <div className="min-h-screen flex flex-col">
@@ -13,7 +12,6 @@ const Layout = ({ children }: { children: ReactNode }) => (
     </main>
     <Footer />
     <WhatsAppButton />
-    <MobileActionBar />
     <MobileNav />
   </div>
 );
