@@ -5,6 +5,8 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AnimatePresence } from "framer-motion";
+import { AuthProvider } from "@/hooks/useAuth";
+import AdminGuard from "@/components/admin/AdminGuard";
 
 const Index = lazy(() => import("./pages/Index"));
 const Services = lazy(() => import("./pages/Services"));
@@ -12,6 +14,13 @@ const Gallery = lazy(() => import("./pages/Gallery"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+
+// Admin pages
+const AdminLogin = lazy(() => import("./pages/admin/Login"));
+const AdminDashboard = lazy(() => import("./pages/admin/Dashboard"));
+const AdminAppointments = lazy(() => import("./pages/admin/Appointments"));
+const AdminPatients = lazy(() => import("./pages/admin/Patients"));
+const AdminAnalytics = lazy(() => import("./pages/admin/Analytics"));
 
 const queryClient = new QueryClient();
 
@@ -30,11 +39,20 @@ const AnimatedRoutes = () => {
     <AnimatePresence mode="wait">
       <Suspense fallback={<PageLoader />}>
         <Routes location={location} key={location.pathname}>
+          {/* Public routes */}
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<Services />} />
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+
+          {/* Admin routes */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<AdminGuard><AdminDashboard /></AdminGuard>} />
+          <Route path="/admin/appointments" element={<AdminGuard><AdminAppointments /></AdminGuard>} />
+          <Route path="/admin/patients" element={<AdminGuard><AdminPatients /></AdminGuard>} />
+          <Route path="/admin/analytics" element={<AdminGuard><AdminAnalytics /></AdminGuard>} />
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
@@ -44,13 +62,15 @@ const AnimatedRoutes = () => {
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <AnimatedRoutes />
-      </BrowserRouter>
-    </TooltipProvider>
+    <AuthProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AnimatedRoutes />
+        </BrowserRouter>
+      </TooltipProvider>
+    </AuthProvider>
   </QueryClientProvider>
 );
 

@@ -144,6 +144,7 @@ const Footer = () => (
         <div className="flex items-center gap-6 text-xs text-primary-foreground/30">
           <span className="hover:text-primary-foreground/50 cursor-pointer transition-colors">Privacy Policy</span>
           <span className="hover:text-primary-foreground/50 cursor-pointer transition-colors">Terms of Service</span>
+          <Link to="/admin/login" className="hover:text-primary-foreground/50 transition-colors">Admin</Link>
         </div>
       </div>
     </div>
