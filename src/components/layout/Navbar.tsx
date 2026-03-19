@@ -28,55 +28,56 @@ const Navbar = () => {
   return (
     <>
       {/* Desktop floating pill nav */}
-      <div className="fixed top-5 left-0 right-0 z-50 hidden md:flex justify-center pointer-events-none">
+      <div className="fixed top-5 left-0 right-0 z-50 hidden md:flex justify-center px-4 pointer-events-none">
         <motion.header
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-          className={`pointer-events-auto flex items-center gap-1 px-2 py-1.5 rounded-full transition-all duration-[400ms] ${
+          className={`pointer-events-auto flex items-center gap-0.5 lg:gap-1 px-1.5 lg:px-2 py-1.5 rounded-full transition-all duration-[400ms] ${
             scrolled
               ? "bg-background/70 backdrop-blur-xl shadow-lg border border-border/50"
               : "bg-background/50 backdrop-blur-md border border-border/30"
           }`}
-      >
-        <Link to="/" className="px-4 font-heading font-bold text-primary text-lg tracking-tight">
-          SmileCare
-        </Link>
+        >
+          <Link to="/" className="px-2.5 lg:px-4 font-heading font-bold text-primary text-base lg:text-lg tracking-tight shrink-0">
+            SmileCare
+          </Link>
 
-        {navItems.map((item) => {
-          const active = location.pathname === item.path;
-          return (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={`relative flex items-center gap-1.5 px-3 py-2 text-sm font-medium rounded-full transition-all duration-[400ms] ease-in-out hover:scale-[1.03] ${
-                active
-                  ? "text-primary"
-                  : "text-foreground/60 hover:text-foreground"
-              }`}
-            >
-              <item.icon className="w-4 h-4" strokeWidth={active ? 2.5 : 2} />
-              <span>{item.label}</span>
-              {active && (
-                <motion.div
-                  layoutId="nav-pill"
-                  className="absolute inset-0 rounded-full bg-primary/10"
-                  transition={{ type: "spring", stiffness: 350, damping: 30 }}
-                />
-              )}
-            </Link>
-          );
-        })}
+          {navItems.map((item) => {
+            const active = location.pathname === item.path;
+            return (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`relative flex items-center gap-1 lg:gap-1.5 px-2 lg:px-3 py-2 text-xs lg:text-sm font-medium rounded-full transition-all duration-[400ms] ease-in-out hover:scale-[1.03] whitespace-nowrap ${
+                  active
+                    ? "text-primary"
+                    : "text-foreground/60 hover:text-foreground"
+                }`}
+              >
+                <item.icon className="w-3.5 h-3.5 lg:w-4 lg:h-4" strokeWidth={active ? 2.5 : 2} />
+                <span>{item.label}</span>
+                {active && (
+                  <motion.div
+                    layoutId="nav-pill"
+                    className="absolute inset-0 rounded-full bg-primary/10"
+                    transition={{ type: "spring", stiffness: 350, damping: 30 }}
+                  />
+                )}
+              </Link>
+            );
+          })}
 
-        {/* Divider */}
-        <div className="w-px h-6 bg-border/60 mx-1" />
+          {/* Divider */}
+          <div className="w-px h-6 bg-border/60 mx-0.5 lg:mx-1 shrink-0" />
 
-        <Link to="/contact">
-          <Button size="sm" className="rounded-full font-heading gap-1.5">
-            <Calendar className="w-3.5 h-3.5" />
-            Book Appointment
-          </Button>
-        </Link>
+          <Link to="/contact" className="shrink-0">
+            <Button size="sm" className="rounded-full font-heading gap-1 lg:gap-1.5 text-xs lg:text-sm px-3 lg:px-4">
+              <Calendar className="w-3.5 h-3.5" />
+              <span className="hidden lg:inline">Book Appointment</span>
+              <span className="lg:hidden">Book</span>
+            </Button>
+          </Link>
         </motion.header>
       </div>
 
