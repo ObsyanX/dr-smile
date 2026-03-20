@@ -63,7 +63,7 @@ const AdminLogin = () => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="roy.tamaall@gmail.com"
+                    placeholder="admin@example.com"
                     className="pl-10 rounded-xl"
                     required
                   />
