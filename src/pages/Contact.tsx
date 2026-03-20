@@ -43,6 +43,23 @@ const Contact = () => {
     defaultValues: { name: "", phone: "", email: "", treatment: "", message: "", clinic_location: "" },
   });
 
+  const sendWhatsAppNotification = (data: FormValues) => {
+    const message = [
+      "🦷 *New Appointment Booking*",
+      "",
+      `*Name:* ${data.name}`,
+      `*Phone:* ${data.phone}`,
+      `*Email:* ${data.email}`,
+      `*Treatment:* ${data.treatment}`,
+      `*Date:* ${data.preferred_date ? format(data.preferred_date, "PPP") : "Not specified"}`,
+      `*Clinic:* ${data.clinic_location || "Not specified"}`,
+      data.message ? `*Message:* ${data.message}` : "",
+    ].filter(Boolean).join("\n");
+
+    const encoded = encodeURIComponent(message);
+    window.open(`https://wa.me/919804214790?text=${encoded}`, "_blank");
+  };
+
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     try {
@@ -56,6 +73,7 @@ const Contact = () => {
         clinic_location: data.clinic_location || null,
       });
       if (error) throw error;
+      sendWhatsAppNotification(data);
       setSubmitted(true);
     } catch {
       toast({ title: "Error", description: "Something went wrong. Please try again or call us directly.", variant: "destructive" });
