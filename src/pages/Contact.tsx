@@ -27,6 +27,7 @@ const formSchema = z.object({
   preferred_date: z.date().optional(),
   message: z.string().trim().max(1000).optional(),
   clinic_location: z.string().optional(),
+  website: z.string().max(0, "Bot detected").optional(), // honeypot
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -40,7 +41,7 @@ const Contact = () => {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: { name: "", phone: "", email: "", treatment: "", message: "", clinic_location: "" },
+    defaultValues: { name: "", phone: "", email: "", treatment: "", message: "", clinic_location: "", website: "" },
   });
 
   const sendWhatsAppNotification = (data: FormValues) => {
@@ -61,6 +62,7 @@ const Contact = () => {
   };
 
   const onSubmit = async (data: FormValues) => {
+    if (data.website) return; // honeypot triggered — silently reject
     setIsSubmitting(true);
     try {
       const { error } = await supabase.from("appointments").insert({
@@ -209,6 +211,15 @@ const Contact = () => {
                               <FormMessage />
                             </FormItem>
                           )} />
+                          {/* Honeypot field - hidden from real users, catches bots */}
+                          <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, overflow: 'hidden' }}>
+                            <FormField control={form.control} name="website" render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Website</FormLabel>
+                                <FormControl><Input tabIndex={-1} autoComplete="off" {...field} /></FormControl>
+                              </FormItem>
+                            )} />
+                          </div>
                           <Button type="submit" size="lg" className="w-full rounded-full font-heading" disabled={isSubmitting}>
                             {isSubmitting ? "Submitting..." : "Book Appointment"}
                           </Button>
