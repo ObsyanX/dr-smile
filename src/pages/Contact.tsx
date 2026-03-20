@@ -62,6 +62,7 @@ const Contact = () => {
   };
 
   const onSubmit = async (data: FormValues) => {
+    if (data.website) return; // honeypot triggered — silently reject
     setIsSubmitting(true);
     try {
       const { error } = await supabase.from("appointments").insert({
