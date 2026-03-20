@@ -27,6 +27,7 @@ const formSchema = z.object({
   preferred_date: z.date().optional(),
   message: z.string().trim().max(1000).optional(),
   clinic_location: z.string().optional(),
+  website: z.string().max(0, "Bot detected").optional(), // honeypot
 });
 
 type FormValues = z.infer<typeof formSchema>;
