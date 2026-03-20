@@ -211,6 +211,15 @@ const Contact = () => {
                               <FormMessage />
                             </FormItem>
                           )} />
+                          {/* Honeypot field - hidden from real users, catches bots */}
+                          <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', opacity: 0, height: 0, overflow: 'hidden' }}>
+                            <FormField control={form.control} name="website" render={({ field }) => (
+                              <FormItem>
+                                <FormLabel>Website</FormLabel>
+                                <FormControl><Input tabIndex={-1} autoComplete="off" {...field} /></FormControl>
+                              </FormItem>
+                            )} />
+                          </div>
                           <Button type="submit" size="lg" className="w-full rounded-full font-heading" disabled={isSubmitting}>
                             {isSubmitting ? "Submitting..." : "Book Appointment"}
                           </Button>
