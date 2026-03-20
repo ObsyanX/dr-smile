@@ -13,7 +13,7 @@ const EmergencyBanner = () => (
             <p className="text-accent-foreground/80 text-body-lg">Call now for immediate appointment. We're here when you need us most.</p>
           </div>
           <div className="flex flex-wrap gap-4">
-            <a href="tel:+15551234567">
+            <a href="tel:+919804214790">
               <Button size="lg" variant="secondary" className="rounded-full font-heading gap-2">
                 <Phone className="w-4 h-4" /> Call Now
               </Button>

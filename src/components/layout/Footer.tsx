@@ -38,14 +38,14 @@ const Footer = () => (
           </p>
           <div className="flex items-center gap-4">
             <a
-              href="tel:+15551234567"
+              href="tel:+919804214790"
               className="w-10 h-10 rounded-full border border-primary-foreground/15 flex items-center justify-center hover:border-primary hover:bg-primary/10 hover:text-primary transition-all duration-300"
               aria-label="Call us"
             >
               <Phone className="w-4 h-4" />
             </a>
             <a
-              href="mailto:hello@smilecare.com"
+              href="mailto:roy.tamaall@gmail.com"
               className="w-10 h-10 rounded-full border border-primary-foreground/15 flex items-center justify-center hover:border-primary hover:bg-primary/10 hover:text-primary transition-all duration-300"
               aria-label="Email us"
             >
@@ -105,14 +105,14 @@ const Footer = () => (
             </li>
             <li className="flex items-center gap-3">
               <Phone className="w-4 h-4 text-primary shrink-0" />
-              <a href="tel:+15551234567" className="hover:text-primary transition-colors">
-                +1 (555) 123-4567
+              <a href="tel:+919804214790" className="hover:text-primary transition-colors">
+                +91 9804214790
               </a>
             </li>
             <li className="flex items-center gap-3">
               <Mail className="w-4 h-4 text-primary shrink-0" />
-              <a href="mailto:hello@smilecare.com" className="hover:text-primary transition-colors">
-                hello@smilecare.com
+              <a href="mailto:roy.tamaall@gmail.com" className="hover:text-primary transition-colors">
+                roy.tamaall@gmail.com
               </a>
             </li>
           </ul>

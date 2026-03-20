@@ -43,6 +43,23 @@ const Contact = () => {
     defaultValues: { name: "", phone: "", email: "", treatment: "", message: "", clinic_location: "" },
   });
 
+  const sendWhatsAppNotification = (data: FormValues) => {
+    const message = [
+      "🦷 *New Appointment Booking*",
+      "",
+      `*Name:* ${data.name}`,
+      `*Phone:* ${data.phone}`,
+      `*Email:* ${data.email}`,
+      `*Treatment:* ${data.treatment}`,
+      `*Date:* ${data.preferred_date ? format(data.preferred_date, "PPP") : "Not specified"}`,
+      `*Clinic:* ${data.clinic_location || "Not specified"}`,
+      data.message ? `*Message:* ${data.message}` : "",
+    ].filter(Boolean).join("\n");
+
+    const encoded = encodeURIComponent(message);
+    window.open(`https://wa.me/919804214790?text=${encoded}`, "_blank");
+  };
+
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     try {
@@ -56,6 +73,7 @@ const Contact = () => {
         clinic_location: data.clinic_location || null,
       });
       if (error) throw error;
+      sendWhatsAppNotification(data);
       setSubmitted(true);
     } catch {
       toast({ title: "Error", description: "Something went wrong. Please try again or call us directly.", variant: "destructive" });
@@ -127,7 +145,7 @@ const Contact = () => {
                             <FormField control={form.control} name="phone" render={({ field }) => (
                               <FormItem>
                                 <FormLabel className="font-heading">Phone Number</FormLabel>
-                                <FormControl><Input placeholder="+1 (555) 123-4567" className="rounded-xl" {...field} /></FormControl>
+                                <FormControl><Input placeholder="+91 98042 14790" className="rounded-xl" {...field} /></FormControl>
                                 <FormMessage />
                               </FormItem>
                             )} />
@@ -230,8 +248,8 @@ const Contact = () => {
                   <div className="p-6 rounded-2xl bg-card border border-border/50">
                     <h3 className="font-heading font-semibold text-foreground mb-4">Contact Information</h3>
                     <ul className="space-y-3 text-sm">
-                      <li className="flex items-center gap-3"><Phone className="w-4 h-4 text-primary" /><a href="tel:+15551234567" className="text-muted-foreground hover:text-primary transition-colors">+1 (555) 123-4567</a></li>
-                      <li className="flex items-center gap-3"><Mail className="w-4 h-4 text-primary" /><a href="mailto:hello@smilecare.com" className="text-muted-foreground hover:text-primary transition-colors">hello@smilecare.com</a></li>
+                      <li className="flex items-center gap-3"><Phone className="w-4 h-4 text-primary" /><a href="tel:+919804214790" className="text-muted-foreground hover:text-primary transition-colors">+91 9804214790</a></li>
+                      <li className="flex items-center gap-3"><Mail className="w-4 h-4 text-primary" /><a href="mailto:roy.tamaall@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">roy.tamaall@gmail.com</a></li>
                       <li className="flex items-start gap-3"><MapPin className="w-4 h-4 text-primary mt-0.5" /><span className="text-muted-foreground">123 Dental Avenue, Downtown, NY 10001<br />Near Central Park, parking available</span></li>
                     </ul>
                   </div>

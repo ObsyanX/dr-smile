@@ -37,7 +37,7 @@ const HeroSection = () => (
                   Book Appointment
                 </Button>
               </Link>
-              <a href="https://wa.me/15551234567" target="_blank" rel="noopener noreferrer">
+              <a href="https://wa.me/919804214790" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline" size="lg" className="rounded-full font-heading gap-2 px-8">
                   <MessageCircle className="w-4 h-4" />
                   Chat on WhatsApp
