@@ -41,7 +41,7 @@ const Contact = () => {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: { name: "", phone: "", email: "", treatment: "", message: "", clinic_location: "" },
+    defaultValues: { name: "", phone: "", email: "", treatment: "", message: "", clinic_location: "", website: "" },
   });
 
   const sendWhatsAppNotification = (data: FormValues) => {
