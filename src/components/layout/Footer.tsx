@@ -45,7 +45,7 @@ const Footer = () => (
               <Phone className="w-4 h-4" />
             </a>
             <a
-              href="mailto:hello@smilecare.com"
+              href="mailto:roy.tamaall@gmail.com"
               className="w-10 h-10 rounded-full border border-primary-foreground/15 flex items-center justify-center hover:border-primary hover:bg-primary/10 hover:text-primary transition-all duration-300"
               aria-label="Email us"
             >
