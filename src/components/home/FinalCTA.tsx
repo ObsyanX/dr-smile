@@ -22,7 +22,7 @@ const FinalCTA = () => (
                   <Calendar className="w-4 h-4" /> Book Appointment
                 </Button>
               </Link>
-              <a href="tel:+15551234567">
+              <a href="tel:+919804214790">
                 <Button variant="outline" size="lg" className="rounded-full font-heading gap-2 px-8">
                   <Phone className="w-4 h-4" /> Call Now
                 </Button>

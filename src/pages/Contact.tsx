@@ -230,8 +230,8 @@ const Contact = () => {
                   <div className="p-6 rounded-2xl bg-card border border-border/50">
                     <h3 className="font-heading font-semibold text-foreground mb-4">Contact Information</h3>
                     <ul className="space-y-3 text-sm">
-                      <li className="flex items-center gap-3"><Phone className="w-4 h-4 text-primary" /><a href="tel:+15551234567" className="text-muted-foreground hover:text-primary transition-colors">+1 (555) 123-4567</a></li>
-                      <li className="flex items-center gap-3"><Mail className="w-4 h-4 text-primary" /><a href="mailto:hello@smilecare.com" className="text-muted-foreground hover:text-primary transition-colors">hello@smilecare.com</a></li>
+                      <li className="flex items-center gap-3"><Phone className="w-4 h-4 text-primary" /><a href="tel:+919804214790" className="text-muted-foreground hover:text-primary transition-colors">+91 9804214790</a></li>
+                      <li className="flex items-center gap-3"><Mail className="w-4 h-4 text-primary" /><a href="mailto:roy.tamaall@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">roy.tamaall@gmail.com</a></li>
                       <li className="flex items-start gap-3"><MapPin className="w-4 h-4 text-primary mt-0.5" /><span className="text-muted-foreground">123 Dental Avenue, Downtown, NY 10001<br />Near Central Park, parking available</span></li>
                     </ul>
                   </div>

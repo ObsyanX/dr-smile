@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const WhatsAppButton = () => (
   <motion.a
-    href="https://wa.me/15551234567?text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment"
+    href="https://wa.me/919804214790?text=Hi%2C%20I%20would%20like%20to%20book%20an%20appointment"
     target="_blank"
     rel="noopener noreferrer"
     initial={{ scale: 0 }}
