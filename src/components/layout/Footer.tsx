@@ -38,7 +38,7 @@ const Footer = () => (
           </p>
           <div className="flex items-center gap-4">
             <a
-              href="tel:+15551234567"
+              href="tel:+919804214790"
               className="w-10 h-10 rounded-full border border-primary-foreground/15 flex items-center justify-center hover:border-primary hover:bg-primary/10 hover:text-primary transition-all duration-300"
               aria-label="Call us"
             >
