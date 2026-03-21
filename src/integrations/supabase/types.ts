@@ -16,6 +16,7 @@ export type Database = {
     Tables: {
       appointments: {
         Row: {
+          appointment_time: string | null
           clinic_location: string | null
           created_at: string
           email: string
@@ -24,10 +25,12 @@ export type Database = {
           name: string
           phone: string
           preferred_date: string | null
+          reminder_sent: boolean
           status: Database["public"]["Enums"]["appointment_status"]
           treatment: string
         }
         Insert: {
+          appointment_time?: string | null
           clinic_location?: string | null
           created_at?: string
           email: string
@@ -36,10 +39,12 @@ export type Database = {
           name: string
           phone: string
           preferred_date?: string | null
+          reminder_sent?: boolean
           status?: Database["public"]["Enums"]["appointment_status"]
           treatment: string
         }
         Update: {
+          appointment_time?: string | null
           clinic_location?: string | null
           created_at?: string
           email?: string
@@ -48,6 +53,7 @@ export type Database = {
           name?: string
           phone?: string
           preferred_date?: string | null
+          reminder_sent?: boolean
           status?: Database["public"]["Enums"]["appointment_status"]
           treatment?: string
         }
