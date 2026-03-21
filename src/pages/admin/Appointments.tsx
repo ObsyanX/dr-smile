@@ -104,15 +104,12 @@ const Appointments = () => {
       toast({ title: "Error", description: error.message, variant: "destructive" });
     } else {
       toast({ title: "Cancelled", description: "Appointment cancelled" });
-      const msg = [
-        "❌ *Appointment Update*",
-        "",
-        `Dear ${apt.name},`,
-        "Your appointment could not be scheduled at this time.",
-        "Please rebook at your convenience.",
-        "",
-        "📞 +91 9804214790",
-      ].join("\n");
+
+      // Send cancellation email (non-blocking)
+      const patient = { name: apt.name, email: apt.email, phone: apt.phone, treatment: apt.treatment, preferred_date: apt.preferred_date, appointment_time: apt.appointment_time, clinic_location: apt.clinic_location };
+      supabase.functions.invoke("send-appointment-email", { body: { type: "cancelled", patient } }).catch(console.error);
+
+      const msg = ["❌ *Appointment Update*", "", `Dear ${apt.name},`, "Your appointment could not be scheduled at this time.", "Please rebook at your convenience.", "", "📞 +91 9804214790"].join("\n");
       window.open(`https://wa.me/${apt.phone.replace(/\D/g, "")}?text=${encodeURIComponent(msg)}`, "_blank");
     }
   };
