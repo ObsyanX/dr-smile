@@ -13,13 +13,13 @@
 # 🎥 Product Preview
 
 <p align="center">
-  <video src="https://res.cloudinary.com/dyo65gtea/video/upload/f_auto,q_auto/Dr-SMILE_kaugva" width="900" controls autoplay muted loop playsinline>
-    <img src="public/Dr-SMILE-ezgif.com-video-to-gif-converter.gif" width="900" alt="Dr Smile Demo GIF">
-  </video>
+<video src="https://res.cloudinary.com/dyo65gtea/video/upload/f_auto,q_auto/Dr-SMILE_kaugva" width="900" controls autoplay muted loop playsinline>
+<img src="public/Dr-SMILE-ezgif.com-video-to-gif-converter.gif" width="900" alt="Dr Smile Demo">
+</video>
 </p>
 
 <p align="center">
-  <i>⚡ Smooth booking → Admin control → Automated notifications → Calendar sync</i>
+<i>⚡ Smooth booking → Admin control → Automated notifications → Calendar sync</i>
 </p>
 
 ---
