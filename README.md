@@ -13,7 +13,7 @@
 # 🎥 Product Preview
 
 <p align="center">
-  <video src="https://res.cloudinary.com/dyo65gtea/video/upload/f_auto,q_auto/Dr-SMILE_kaugva" width="900" controls autoplay muted loop playsinline>
+  <video src="[https://res.cloudinary.com/dyo65gtea/video/upload/f_auto,q_auto/Dr-SMILE_kaugva](https://player.cloudinary.com/embed/?cloud_name=dyo65gtea&public_id=Dr-SMILE_kaugva)" width="900" controls autoplay muted loop playsinline>
     Your browser does not support the video tag.
   </video>
 </p>
