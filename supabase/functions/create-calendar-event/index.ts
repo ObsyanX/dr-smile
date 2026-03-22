@@ -30,7 +30,20 @@ serve(async (req) => {
   }
 
   try {
-    const creds = JSON.parse(credsJson);
+    let creds: Record<string, string>;
+    try {
+      creds = JSON.parse(credsJson);
+    } catch {
+      return new Response(JSON.stringify({ success: false, error: 'GOOGLE_CALENDAR_CREDENTIALS must be a service account JSON object, not an API key string. Please update the secret with the full JSON from your Google Cloud service account.' }), {
+        status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+    if (!creds.client_email || !creds.private_key) {
+      return new Response(JSON.stringify({ success: false, error: 'Invalid service account JSON: missing client_email or private_key fields.' }), {
+        status: 400, headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      });
+    }
+
     const { patient } = await req.json();
 
     // Create JWT for Google API
