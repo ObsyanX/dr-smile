@@ -1,73 +1,346 @@
-# Welcome to your Lovable project
+# 🦷 Dr Smile — Smart Dental Appointment System
 
-## Project info
+A modern, production-ready **dental appointment management system** designed for real clinic workflows.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+Patients can book appointments easily, while doctors/admins can review, confirm, cancel, and manage schedules with automated notifications and calendar integration.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## ✨ Overview
 
-**Use Lovable**
+**Dr Smile** is a premium dental clinic booking and management platform built for:
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+- Smooth patient appointment booking
+- Secure admin/doctor login
+- Appointment confirmation and scheduling
+- Email notifications
+- WhatsApp communication
+- Google Calendar sync
+- Reminder automation
 
-Changes made via Lovable will be committed automatically to this repo.
+It is designed to feel **clean, fast, trustworthy, and professional**.
 
-**Use your preferred IDE**
+---
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🚀 Key Features
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 👤 Patient Side
+- Clean appointment booking form
+- No OTP friction
+- Responsive UI
+- Fast submission flow
+- WhatsApp access
 
-Follow these steps:
+### 🧑‍⚕️ Admin / Doctor Panel
+- Secure login
+- View all appointments
+- Accept / cancel bookings
+- Assign appointment time
+- Track appointment status
+- Safe tab switching and stable UI
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### 📩 Notifications
+- Gmail SMTP email integration
+- Appointment confirmation emails
+- Cancellation emails
+- Reminder emails before appointment
+- WhatsApp message redirect
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### 📅 Scheduling
+- Google Calendar integration
+- Event creation on confirmation
+- Appointment time assignment
+- Double-booking prevention
 
-# Step 3: Install the necessary dependencies.
-npm i
+### 🛡 Stability
+- Global error boundary
+- Safe async handling
+- Loading state protection
+- Crash prevention for login and forms
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+---
+
+## 🧠 Workflow
+
+```text
+Patient books appointment
+        ↓
+Appointment stored as "pending"
+        ↓
+Admin reviews request
+        ↓
+Doctor:
+   → Accepts and assigns time
+   → OR Cancels
+        ↓
+Patient receives email / WhatsApp notification
+        ↓
+Google Calendar event created
+        ↓
+Reminder sent before appointment
+```
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+- React
+- Vite
+- Tailwind CSS
+
+### Backend
+- Supabase Auth
+- Supabase Database
+- Supabase Edge Functions
+
+### Integrations
+- Gmail SMTP (Nodemailer)
+- Google Calendar API
+- WhatsApp redirect (`wa.me`)
+
+---
+
+## 🔐 Authentication
+
+- Supabase Auth
+- Persistent sessions
+- Auto token refresh
+- Protected admin routes
+
+---
+
+## 🗃 Database Fields
+
+Core appointment fields:
+
+| Field | Purpose |
+|------|------|
+| `status` | `pending`, `confirmed`, `cancelled` |
+| `appointment_time` | Doctor-assigned time |
+| `reminder_sent` | Tracks reminder status |
+
+Suggested additional fields:
+
+| Field | Purpose |
+|------|------|
+| `appointment_id` | Unique tracking ID |
+| `email_sent` | Email success flag |
+| `calendar_created` | Calendar event success flag |
+| `status_history` | Track status changes |
+
+---
+
+## 📁 Suggested Folder Structure
+
+```text
+src/
+├── components/
+├── pages/
+│   ├── admin/
+│   ├── auth/
+│   └── ...
+├── hooks/
+├── lib/
+├── utils/
+├── styles/
+└── assets/
+```
+
+---
+
+## ⚙️ Setup Instructions
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/your-username/dr-smile.git
+cd dr-smile
+```
+
+### 2. Install dependencies
+
+```bash
+npm install
+```
+
+### 3. Create `.env`
+
+Create a `.env` file in the root directory:
+
+```env
+SUPABASE_URL=your_supabase_url
+SUPABASE_ANON_KEY=your_supabase_anon_key
+
+GMAIL_USER=your_email@gmail.com
+GMAIL_APP_PASSWORD=your_gmail_app_password
+
+GOOGLE_SERVICE_ACCOUNT_JSON=your_service_account_json_or_path
+```
+
+### 4. Run the project
+
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 📧 Gmail SMTP Configuration
 
-**Use GitHub Codespaces**
+This project uses **Gmail SMTP** via Nodemailer.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### Requirements
+- Enable 2-Step Verification on Gmail
+- Generate a Gmail App Password
+- Store it in `.env`
 
-## What technologies are used for this project?
+### Example Nodemailer Setup
 
-This project is built with:
+```js
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.GMAIL_USER,
+    pass: process.env.GMAIL_APP_PASSWORD,
+  },
+});
+```
 
-- Vite
-- TypeScript
+---
+
+## 📅 Google Calendar Integration
+
+On appointment confirmation, the system creates a Google Calendar event.
+
+### Important
+- Use a Google Service Account or OAuth
+- Do not hardcode API keys in frontend code
+- Keep credentials secured in environment variables
+
+### Suggested Event Data
+- Patient name
+- Appointment date
+- Appointment time
+- Treatment type
+- Clinic location
+
+---
+
+## 💬 WhatsApp Integration
+
+WhatsApp is triggered through a redirect using:
+
+```js
+window.open(
+  `https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(message)}`,
+  "_blank"
+);
+```
+
+This avoids blocked API calls and keeps the integration simple and reliable.
+
+---
+
+## 🧯 Error Handling
+
+This project includes protections for common production issues:
+
+### Fixed / Handled
+- `.length` on undefined
+- Login stuck on "Signing in..."
+- Form stuck on "Submitting..."
+- Google Calendar invalid JSON errors
+- WhatsApp connection blocking issues
+- Browser extension console noise
+- Admin tab switching crashes
+
+### Stability Features
+- Try/catch around async actions
+- `finally` blocks for loader reset
+- Null safety checks
+- Controlled auth/session handling
+- Global error boundary
+
+---
+
+## 🔄 Appointment Status Flow
+
+```text
+pending → confirmed → cancelled
+```
+
+### Status Actions
+- **Pending**: Newly submitted appointment
+- **Confirmed**: Doctor accepted and assigned time
+- **Cancelled**: Doctor rejected or removed booking
+
+---
+
+## 🧪 Testing Checklist
+
+Before deployment, test the following:
+
+- [ ] Patient booking form submits correctly
+- [ ] Appointment appears in admin dashboard
+- [ ] Admin login works after refresh
+- [ ] Accept flow opens time selection modal
+- [ ] Confirmed appointment updates status
+- [ ] Cancellation flow works
+- [ ] Gmail email sends successfully
+- [ ] Google Calendar event is created
+- [ ] Reminder email is triggered
+- [ ] WhatsApp redirect opens properly
+- [ ] No console crash on login page
+- [ ] Admin tabs switch without losing state
+
+---
+
+## 🚀 Future Improvements
+
+- Multi-doctor support
+- Patient history tracking
+- Revenue analytics
+- SMS reminders
+- Payment integration
+- Role-based access control
+- Audit logs
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome.
+
+If you want to improve this project:
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Open a pull request
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## 💡 Note
+
+This project is built to simulate a **real clinic-grade booking workflow** with a strong focus on:
+- clean UX
+- admin control
+- reliable notifications
+- production safety
+
+---
+
+## ⭐ Acknowledgements
+
+Built with:
 - React
-- shadcn-ui
+- Supabase
 - Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+- Gmail SMTP
+- Google Calendar API
