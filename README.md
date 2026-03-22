@@ -13,7 +13,9 @@
 # 🎥 Product Preview
 
 <p align="center">
-  <img src="https://your-gif-link-here.gif" width="900" alt="Dr Smile Demo"/>
+  <video src="public/Dr-SMILE.mp4" width="900" controls autoplay muted loop>
+    Your browser does not support the video tag.
+  </video>
 </p>
 
 <p align="center">
