@@ -13,14 +13,13 @@
 # 🎥 Product Preview
 
 <p align="center">
-<video src="https://res.cloudinary.com/dyo65gtea/video/upload/f_auto,q_auto/Dr-SMILE_kaugva.mp4" width="900" controls autoplay muted loop playsinline>
-<img src="https://github.com/ObsyanX/Dr-smile/raw/main/public/Dr-SMILE-ezgif.com-video-to-gif-converter.gif" width="900" alt="Dr Smile Demo">
-</video>
+  <img src="https://github.com/user-attachments/assets/0089dc4f-32ef-4931-a7e3-3a38663f6880" width="900" alt="Dr Smile Demo">
 </p>
 
 <p align="center">
 <i>⚡ Smooth booking → Admin control → Automated notifications → Calendar sync</i>
 </p>
+
 
 ---
 
