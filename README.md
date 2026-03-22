@@ -14,7 +14,7 @@
 
 <p align="center">
   <video src="https://res.cloudinary.com/dyo65gtea/video/upload/f_auto,q_auto/Dr-SMILE_kaugva" width="900" controls autoplay muted loop playsinline>
-    Your browser does not support the video tag.
+    <img src="public/Dr-SMILE-ezgif.com-video-to-gif-converter.gif" width="900" alt="Dr Smile Demo GIF">
   </video>
 </p>
 
