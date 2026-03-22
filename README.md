@@ -13,7 +13,7 @@
 # 🎥 Product Preview
 
 <p align="center">
-  <video src="public/Dr-SMILE.mp4" width="900" controls autoplay muted loop>
+  <video src="https://res.cloudinary.com/dyo65gtea/video/upload/f_auto,q_auto/Dr-SMILE_kaugva" width="900" controls autoplay muted loop playsinline>
     Your browser does not support the video tag.
   </video>
 </p>
@@ -21,7 +21,6 @@
 <p align="center">
   <i>⚡ Smooth booking → Admin control → Automated notifications → Calendar sync</i>
 </p>
-
 ---
 
 # ✨ Overview
