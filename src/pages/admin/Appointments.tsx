@@ -71,6 +71,22 @@ const Appointments = () => {
   const confirmWithTime = async (time: string) => {
     if (!timeModal.appointment) return;
     const apt = timeModal.appointment;
+
+    // Double-booking check
+    if (apt.preferred_date) {
+      const { data: existing } = await supabase
+        .from("appointments")
+        .select("id")
+        .eq("preferred_date", apt.preferred_date)
+        .eq("appointment_time", time)
+        .eq("status", "confirmed")
+        .neq("id", apt.id);
+      if (existing && existing.length > 0) {
+        toast({ title: "Time Conflict", description: `Another appointment is already confirmed at ${time} on this date. Please choose a different time.`, variant: "destructive" });
+        return;
+      }
+    }
+
     const { error } = await supabase
       .from("appointments")
       .update({ status: "confirmed" as const, appointment_time: time })
@@ -82,7 +98,7 @@ const Appointments = () => {
 
       const patient = { name: apt.name, email: apt.email, phone: apt.phone, treatment: apt.treatment, preferred_date: apt.preferred_date, appointment_time: time, clinic_location: apt.clinic_location };
 
-      // Send email notification (non-blocking)
+      // Send email via Gmail SMTP (non-blocking)
       supabase.functions.invoke("send-appointment-email", { body: { type: "confirmed", patient } }).catch(console.error);
 
       // Create Google Calendar event (non-blocking)
