@@ -169,17 +169,6 @@ Reminder sent before appointment
 
 ---
 
-# ⚙️ Setup
-
-```bash
-git clone [https://github.com/your-username/dr-smile.git](https://github.com/your-username/dr-smile.git)
-cd dr-smile
-npm install
-npm run dev
-```
-
----
-
 ## 🛠 Tech Stack
 
 | 💻 Languages | 🎨 Frontend |
