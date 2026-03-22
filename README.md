@@ -31,6 +31,42 @@ It eliminates friction in booking while giving doctors **complete control, autom
 
 ---
 
+# 📐 System Architecture
+
+> 🧠 **The Logic Flow:** How a single click triggers a global automated sequence.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant P as 👤 Patient
+    participant FE as 🎨 React Frontend (Vite)
+    participant BE as ⚡ Supabase / Logic
+    participant AD as 🧑‍⚕️ Admin Dashboard
+    participant API as 🤖 External Services (SMTP/GCal)
+
+    Note over P, FE: Booking Phase
+    P->>FE: Fills Booking Form
+    FE->>BE: POST Appointment Data
+    BE-->>FE: 200 OK (Pending Status)
+    FE-->>P: Show "Success" Message
+
+    Note over AD, BE: Management Phase
+    AD->>BE: Fetch "Pending" Bookings
+    BE-->>AD: Returns List
+    AD->>BE: Approve + Assign Time
+    BE->>BE: Update Row (Status: Confirmed)
+
+    Note over BE, API: Automation Phase
+    par Background Tasks
+        BE->>API: Trigger Gmail SMTP (Nodemailer)
+        BE->>API: Create Google Calendar Event
+    end
+    
+    API-->>P: 📩 Confirmation Email Sent
+    API-->>P: 📅 Calendar Invite Added
+```
+---
+
 # 🧊 Core Features (Glassmorphism Style)
 
 ---
