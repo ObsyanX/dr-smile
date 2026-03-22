@@ -21,6 +21,7 @@
 <p align="center">
   <i>⚡ Smooth booking → Admin control → Automated notifications → Calendar sync</i>
 </p>
+
 ---
 
 # ✨ Overview
