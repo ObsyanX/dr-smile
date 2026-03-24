@@ -102,7 +102,7 @@ const formSchema = z.object({
 type FormValues = z.infer<typeof formSchema>;
 
 const treatments = ["Dental Implants", "Root Canal", "Teeth Whitening", "Braces & Aligners", "Smile Design", "Pediatric Dentistry", "General Check-up"];
-const locations = ["SmileCare Downtown", "SmileCare Midtown", "SmileCare Brooklyn"];
+const locations = ["Madhyamgram", "Dum Dum"];
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
@@ -319,10 +319,16 @@ const Contact = () => {
               <ScrollReveal delay={0.15}>
                 <div className="p-6 rounded-2xl bg-card border border-border/50">
                   <h3 className="font-heading font-semibold text-foreground mb-4 flex items-center gap-2"><Clock className="w-5 h-5 text-primary" /> Clinic Timings</h3>
-                  <div className="space-y-2 text-sm">
-                    <div className="flex justify-between"><span className="text-muted-foreground">Mon – Fri</span><span className="font-medium text-foreground">10 AM – 7 PM</span></div>
-                    <div className="flex justify-between"><span className="text-muted-foreground">Saturday</span><span className="font-medium text-foreground">10 AM – 5 PM</span></div>
-                    <div className="flex justify-between"><span className="text-muted-foreground">Sunday</span><span className="font-medium text-foreground text-red-500">Closed</span></div>
+                  <div className="space-y-3 text-sm">
+                    <div>
+                      <p className="font-medium text-foreground mb-1">Madhyamgram</p>
+                      <div className="flex justify-between text-muted-foreground"><span>Mon – Sun</span><span>6:15 PM – 9:00 PM</span></div>
+                    </div>
+                    <div>
+                      <p className="font-medium text-foreground mb-1">Dum Dum</p>
+                      <div className="flex justify-between text-muted-foreground"><span>Mon – Sat</span><span>10:30 AM – 2:30 PM</span></div>
+                      <div className="flex justify-between text-muted-foreground"><span>Sunday</span><span className="text-red-500">Closed</span></div>
+                    </div>
                   </div>
                 </div>
               </ScrollReveal>
@@ -333,7 +339,7 @@ const Contact = () => {
                   <ul className="space-y-3 text-sm">
                     <li className="flex items-center gap-3"><Phone className="w-4 h-4 text-primary" /><a href="tel:+919804214790" className="text-muted-foreground hover:text-primary transition-colors">+91 9804214790</a></li>
                     <li className="flex items-center gap-3"><Mail className="w-4 h-4 text-primary" /><a href="mailto:roy.tamaall@gmail.com" className="text-muted-foreground hover:text-primary transition-colors">roy.tamaall@gmail.com</a></li>
-                    <li className="flex items-start gap-3"><MapPin className="w-4 h-4 text-primary mt-0.5" /><span className="text-muted-foreground">123 Dental Avenue, Downtown, NY 10001<br />Near Central Park, parking available</span></li>
+                    <li className="flex items-start gap-3"><MapPin className="w-4 h-4 text-primary mt-0.5" /><span className="text-muted-foreground">9 No Railgate, Station Road, Kora, Madhyamgram, Kolkata — 700130<br />Jessore Rd, Basak Bagan, South Dum Dum, Kolkata — 700048</span></li>
                   </ul>
                 </div>
               </ScrollReveal>

@@ -7,31 +7,22 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 
 const clinics = [
   {
-    name: "SmileCare Downtown",
-    address: "123 Dental Avenue, Downtown, NY 10001",
-    days: "Mon – Fri",
-    hours: "10:00 AM – 7:00 PM",
+    name: "Tooth Zone Dental Clinic — Madhyamgram",
+    address: "9 No Railgate, Station Road, Kora, Madhyamgram, Kolkata, West Bengal 700130",
+    days: "Mon – Sun",
+    hours: "6:15 PM – 9:00 PM",
     image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=500&q=80",
-    mapUrl: "https://www.google.com/maps?q=40.7128,-74.0060",
-    coords: { lat: 40.7128, lng: -74.0060 },
+    mapUrl: "https://maps.app.goo.gl/caB9HBPh61tJKgX36",
+    coords: { lat: 22.702722, lng: 88.460868 },
   },
   {
-    name: "SmileCare Midtown",
-    address: "456 Health Blvd, Midtown, NY 10018",
+    name: "Tooth Zone Dental Clinic — Dum Dum",
+    address: "Jessore Rd, Basak Bagan, South Dum Dum, Kolkata, West Bengal 700048",
     days: "Mon – Sat",
-    hours: "9:00 AM – 6:00 PM",
+    hours: "10:30 AM – 2:30 PM",
     image: "https://images.unsplash.com/photo-1631549916768-4e9861c6af09?w=500&q=80",
-    mapUrl: "https://www.google.com/maps?q=40.7549,-73.9840",
-    coords: { lat: 40.7549, lng: -73.9840 },
-  },
-  {
-    name: "SmileCare Brooklyn",
-    address: "789 Wellness St, Brooklyn, NY 11201",
-    days: "Tue – Sat",
-    hours: "10:00 AM – 8:00 PM",
-    image: "https://images.unsplash.com/photo-1629909615184-74f495363b67?w=500&q=80",
-    mapUrl: "https://www.google.com/maps?q=40.6892,-73.9857",
-    coords: { lat: 40.6892, lng: -73.9857 },
+    mapUrl: "https://maps.app.goo.gl/7ZHCytdYZHkiDpKP8",
+    coords: { lat: 22.608571, lng: 88.395793 },
   },
 ];
 
@@ -45,11 +36,11 @@ const ClinicLocations = () => {
           <div className="text-center mb-16">
             <p className="text-primary font-heading font-semibold text-sm uppercase tracking-wider mb-3">Locations</p>
             <h2 className="text-h2 font-heading font-bold text-foreground">Visit Our Clinics</h2>
-            <p className="text-muted-foreground mt-4 max-w-lg mx-auto">We have multiple convenient locations to serve you better.</p>
+            <p className="text-muted-foreground mt-4 max-w-lg mx-auto">We have two convenient locations in Kolkata to serve you better.</p>
           </div>
         </ScrollReveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12">
           {clinics.map((clinic, i) => (
             <ScrollReveal key={clinic.name} delay={i * 0.1}>
               <div className="rounded-2xl overflow-hidden bg-card border border-border/50 hover:border-primary/30 transition-all duration-400 hover:-translate-y-1 hover:shadow-lg">
