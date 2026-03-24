@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import AdminLayout from "@/components/admin/AdminLayout";
 import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   CalendarCheck,
   Clock,
@@ -21,23 +22,32 @@ interface Stats {
   estimatedRevenue: number;
 }
 
+const statusColor = (s: string) => {
+  switch (s) {
+    case "pending": return "bg-yellow-100 text-yellow-700";
+    case "confirmed": return "bg-green-100 text-green-700";
+    case "completed": return "bg-muted text-muted-foreground";
+    case "cancelled": return "bg-red-100 text-red-700";
+    default: return "bg-muted text-muted-foreground";
+  }
+};
+
 const Dashboard = () => {
   const [stats, setStats] = useState<Stats>({
     total: 0, today: 0, pending: 0, confirmed: 0, totalPatients: 0, estimatedRevenue: 0,
   });
-  const [recentAppointments, setRecentAppointments] = useState<any[]>([]);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [appointments, setAppointments] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchData();
-
     const channel = supabase
       .channel("admin-dashboard")
       .on("postgres_changes", { event: "*", schema: "public", table: "appointments" }, () => {
         fetchData();
       })
       .subscribe();
-
     return () => { supabase.removeChannel(channel); };
   }, []);
 
@@ -45,30 +55,28 @@ const Dashboard = () => {
     const today = format(new Date(), "yyyy-MM-dd");
 
     const [appointmentsRes, pricesRes] = await Promise.all([
-      supabase.from("appointments").select("*").order("created_at", { ascending: false }),
+      supabase.from("appointments").select("*").order("preferred_date", { ascending: true }),
       supabase.from("treatment_prices").select("*"),
     ]);
 
-    const appointments = appointmentsRes.data || [];
+    const apts = appointmentsRes.data || [];
     const prices = pricesRes.data || [];
     const priceMap = new Map(prices.map((p) => [p.treatment_name, Number(p.price)]));
-
-    const uniquePhones = new Set(appointments.map((a) => a.phone));
-
-    const revenue = appointments
+    const uniquePhones = new Set(apts.map((a) => a.phone));
+    const revenue = apts
       .filter((a) => a.status === "confirmed" || a.status === "completed")
       .reduce((sum, a) => sum + (priceMap.get(a.treatment) || 0), 0);
 
     setStats({
-      total: appointments.length,
-      today: appointments.filter((a) => a.preferred_date === today).length,
-      pending: appointments.filter((a) => a.status === "pending").length,
-      confirmed: appointments.filter((a) => a.status === "confirmed").length,
+      total: apts.length,
+      today: apts.filter((a) => a.preferred_date === today).length,
+      pending: apts.filter((a) => a.status === "pending").length,
+      confirmed: apts.filter((a) => a.status === "confirmed").length,
       totalPatients: uniquePhones.size,
       estimatedRevenue: revenue,
     });
 
-    setRecentAppointments(appointments.slice(0, 5));
+    setAppointments(apts);
     setLoading(false);
   };
 
@@ -85,20 +93,37 @@ const Dashboard = () => {
     return (
       <AdminLayout>
         <div className="flex items-center justify-center h-64">
-          <div className="w-8 h-8 border-3 border-primary/30 border-t-primary rounded-full animate-spin" />
+          <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
         </div>
       </AdminLayout>
     );
   }
 
-  const statusColor = (s: string) => {
-    switch (s) {
-      case "pending": return "bg-yellow-100 text-yellow-700";
-      case "confirmed": return "bg-green-100 text-green-700";
-      case "completed": return "bg-muted text-muted-foreground";
-      case "cancelled": return "bg-red-100 text-red-700";
-      default: return "bg-muted text-muted-foreground";
+  const todayStr = format(new Date(), "yyyy-MM-dd");
+  const todayApts = appointments.filter(a => a.preferred_date === todayStr).slice(0, 8);
+  const upcomingApts = appointments.filter(a => a.preferred_date && a.preferred_date > todayStr).slice(0, 8);
+  const pastApts = appointments.filter(a => !a.preferred_date || a.preferred_date < todayStr).slice(0, 8);
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const renderList = (data: any[]) => {
+    if (data.length === 0) {
+      return <p className="text-sm text-muted-foreground py-4">No appointments in this category.</p>;
     }
+    return (
+      <div className="space-y-2">
+        {data.map((apt) => (
+          <div key={apt.id} className="flex items-center justify-between p-3 rounded-xl bg-muted/50 hover:bg-muted/80 transition-colors">
+            <div>
+              <p className="font-medium text-foreground text-sm">{apt.name}</p>
+              <p className="text-xs text-muted-foreground">{apt.treatment} • {apt.preferred_date || "No date set"} {apt.appointment_time ? `at ${apt.appointment_time}` : ""}</p>
+            </div>
+            <span className={`px-2.5 py-1 rounded-full text-xs font-medium capitalize ${statusColor(apt.status)}`}>
+              {apt.status}
+            </span>
+          </div>
+        ))}
+      </div>
+    );
   };
 
   return (
@@ -123,27 +148,35 @@ const Dashboard = () => {
           ))}
         </div>
 
-        {/* Recent Appointments */}
+        {/* Appointments by Category */}
         <Card className="border-border/50">
           <CardContent className="p-6">
-            <h2 className="font-heading font-semibold text-foreground mb-4">Recent Appointments</h2>
-            {recentAppointments.length === 0 ? (
-              <p className="text-sm text-muted-foreground">No appointments yet.</p>
-            ) : (
-              <div className="space-y-3">
-                {recentAppointments.map((apt) => (
-                  <div key={apt.id} className="flex items-center justify-between p-3 rounded-xl bg-muted/50">
-                    <div>
-                      <p className="font-medium text-foreground text-sm">{apt.name}</p>
-                      <p className="text-xs text-muted-foreground">{apt.treatment} • {apt.preferred_date || "No date"}</p>
-                    </div>
-                    <span className={`px-2.5 py-1 rounded-full text-xs font-medium capitalize ${statusColor(apt.status)}`}>
-                      {apt.status}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            )}
+            <h2 className="font-heading font-semibold text-foreground mb-4">Appointments</h2>
+            <Tabs defaultValue="today" className="w-full">
+              <TabsList className="grid w-full sm:w-auto sm:inline-grid grid-cols-3 mb-4">
+                <TabsTrigger value="past" className="gap-1.5">
+                  Past
+                  <span className="bg-muted-foreground/20 text-muted-foreground text-xs rounded-full px-1.5 py-0.5 min-w-[20px] text-center">{appointments.filter(a => !a.preferred_date || a.preferred_date < todayStr).length}</span>
+                </TabsTrigger>
+                <TabsTrigger value="today" className="gap-1.5">
+                  Today
+                  <span className="bg-primary/15 text-primary text-xs rounded-full px-1.5 py-0.5 min-w-[20px] text-center">{appointments.filter(a => a.preferred_date === todayStr).length}</span>
+                </TabsTrigger>
+                <TabsTrigger value="upcoming" className="gap-1.5">
+                  Upcoming
+                  <span className="bg-muted-foreground/20 text-muted-foreground text-xs rounded-full px-1.5 py-0.5 min-w-[20px] text-center">{appointments.filter(a => a.preferred_date && a.preferred_date > todayStr).length}</span>
+                </TabsTrigger>
+              </TabsList>
+              <TabsContent value="past" className="mt-0 focus-visible:outline-none">
+                {renderList(pastApts)}
+              </TabsContent>
+              <TabsContent value="today" className="mt-0 focus-visible:outline-none">
+                {renderList(todayApts)}
+              </TabsContent>
+              <TabsContent value="upcoming" className="mt-0 focus-visible:outline-none">
+                {renderList(upcomingApts)}
+              </TabsContent>
+            </Tabs>
           </CardContent>
         </Card>
       </div>

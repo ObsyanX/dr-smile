@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { format } from "date-fns";
 import { supabase } from "@/integrations/supabase/client";
 import AdminLayout from "@/components/admin/AdminLayout";
 import { Card, CardContent } from "@/components/ui/card";
@@ -6,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "@/hooks/use-toast";
 import { Search, CheckCircle2, XCircle, Trash2, Check } from "lucide-react";
 import TimeSelectionModal from "@/components/admin/TimeSelectionModal";
@@ -56,7 +58,7 @@ const Appointments = () => {
     const { data, error } = await supabase
       .from("appointments")
       .select("*")
-      .order("created_at", { ascending: false });
+      .order("preferred_date", { ascending: true });
     if (error) {
       toast({ title: "Error", description: error.message, variant: "destructive" });
     }
@@ -72,7 +74,6 @@ const Appointments = () => {
     if (!timeModal.appointment) return;
     const apt = timeModal.appointment;
 
-    // Double-booking check
     if (apt.preferred_date) {
       const { data: existing } = await supabase
         .from("appointments")
@@ -82,7 +83,7 @@ const Appointments = () => {
         .eq("status", "confirmed")
         .neq("id", apt.id);
       if (existing && existing.length > 0) {
-        toast({ title: "Time Conflict", description: `Another appointment is already confirmed at ${time} on this date. Please choose a different time.`, variant: "destructive" });
+        toast({ title: "Time Conflict", description: `Another appointment is already confirmed at ${time} on this date.`, variant: "destructive" });
         return;
       }
     }
@@ -95,16 +96,9 @@ const Appointments = () => {
       toast({ title: "Error", description: error.message, variant: "destructive" });
     } else {
       toast({ title: "Confirmed", description: `Appointment confirmed at ${time}` });
-
       const patient = { name: apt.name, email: apt.email, phone: apt.phone, treatment: apt.treatment, preferred_date: apt.preferred_date, appointment_time: time, clinic_location: apt.clinic_location };
-
-      // Send email via Gmail SMTP (non-blocking)
       supabase.functions.invoke("send-appointment-email", { body: { type: "confirmed", patient } }).catch(console.error);
-
-      // Create Google Calendar event (non-blocking)
       supabase.functions.invoke("create-calendar-event", { body: { patient } }).catch(console.error);
-
-      // WhatsApp notification
       const msg = ["✅ *Appointment Confirmed*", "", `*Patient:* ${apt.name}`, `*Treatment:* ${apt.treatment}`, `*Date:* ${apt.preferred_date || "TBD"}`, `*Time:* ${time}`, `*Clinic:* ${apt.clinic_location || "TBD"}`].join("\n");
       window.open(`https://wa.me/${apt.phone.replace(/\D/g, "")}?text=${encodeURIComponent(msg)}`, "_blank");
     }
@@ -112,19 +106,13 @@ const Appointments = () => {
   };
 
   const cancelAppointment = async (apt: Appointment) => {
-    const { error } = await supabase
-      .from("appointments")
-      .update({ status: "cancelled" as const })
-      .eq("id", apt.id);
+    const { error } = await supabase.from("appointments").update({ status: "cancelled" as const }).eq("id", apt.id);
     if (error) {
       toast({ title: "Error", description: error.message, variant: "destructive" });
     } else {
       toast({ title: "Cancelled", description: "Appointment cancelled" });
-
-      // Send cancellation email (non-blocking)
       const patient = { name: apt.name, email: apt.email, phone: apt.phone, treatment: apt.treatment, preferred_date: apt.preferred_date, appointment_time: apt.appointment_time, clinic_location: apt.clinic_location };
       supabase.functions.invoke("send-appointment-email", { body: { type: "cancelled", patient } }).catch(console.error);
-
       const msg = ["❌ *Appointment Update*", "", `Dear ${apt.name},`, "Your appointment could not be scheduled at this time.", "Please rebook at your convenience.", "", "📞 +91 9804214790"].join("\n");
       window.open(`https://wa.me/${apt.phone.replace(/\D/g, "")}?text=${encodeURIComponent(msg)}`, "_blank");
     }
@@ -158,11 +146,80 @@ const Appointments = () => {
     return matchSearch && matchStatus && matchClinic;
   });
 
+  const todayStr = format(new Date(), "yyyy-MM-dd");
+  const todayApts = filtered.filter(a => a.preferred_date === todayStr);
+  const upcomingApts = filtered.filter(a => a.preferred_date && a.preferred_date > todayStr);
+  const pastApts = filtered.filter(a => !a.preferred_date || a.preferred_date < todayStr);
+
+  const renderTable = (data: Appointment[]) => (
+    <div className="overflow-x-auto">
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Name</TableHead>
+            <TableHead>Phone</TableHead>
+            <TableHead>Treatment</TableHead>
+            <TableHead>Date</TableHead>
+            <TableHead>Time</TableHead>
+            <TableHead>Clinic</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead className="text-right">Actions</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {data.length === 0 ? (
+            <TableRow>
+              <TableCell colSpan={8} className="text-center py-12 text-muted-foreground">No appointments in this category</TableCell>
+            </TableRow>
+          ) : (
+            data.map((apt) => (
+              <TableRow key={apt.id}>
+                <TableCell className="font-medium">{apt.name}</TableCell>
+                <TableCell>{apt.phone}</TableCell>
+                <TableCell>{apt.treatment}</TableCell>
+                <TableCell>{apt.preferred_date || "—"}</TableCell>
+                <TableCell>{apt.appointment_time || "—"}</TableCell>
+                <TableCell>{apt.clinic_location || "—"}</TableCell>
+                <TableCell>
+                  <span className={`px-2.5 py-1 rounded-full text-xs font-medium capitalize ${statusColor(apt.status)}`}>
+                    {apt.status}
+                  </span>
+                </TableCell>
+                <TableCell>
+                  <div className="flex items-center justify-end gap-1">
+                    {apt.status === "pending" && (
+                      <Button size="icon" variant="ghost" className="h-8 w-8 text-green-600 hover:bg-green-50" onClick={() => handleAccept(apt)} title="Accept & Assign Time">
+                        <CheckCircle2 className="w-4 h-4" />
+                      </Button>
+                    )}
+                    {apt.status === "confirmed" && (
+                      <Button size="icon" variant="ghost" className="h-8 w-8 text-primary hover:bg-primary/10" onClick={() => completeAppointment(apt.id)} title="Complete">
+                        <Check className="w-4 h-4" />
+                      </Button>
+                    )}
+                    {(apt.status === "pending" || apt.status === "confirmed") && (
+                      <Button size="icon" variant="ghost" className="h-8 w-8 text-red-500 hover:bg-red-50" onClick={() => cancelAppointment(apt)} title="Cancel">
+                        <XCircle className="w-4 h-4" />
+                      </Button>
+                    )}
+                    <Button size="icon" variant="ghost" className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10" onClick={() => deleteAppointment(apt.id)} title="Delete">
+                      <Trash2 className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </TableCell>
+              </TableRow>
+            ))
+          )}
+        </TableBody>
+      </Table>
+    </div>
+  );
+
   if (loading) {
     return (
       <AdminLayout>
         <div className="flex items-center justify-center h-64">
-          <div className="w-8 h-8 border-3 border-primary/30 border-t-primary rounded-full animate-spin" />
+          <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
         </div>
       </AdminLayout>
     );
@@ -171,6 +228,7 @@ const Appointments = () => {
   return (
     <AdminLayout>
       <div className="space-y-6">
+        {/* Filters */}
         <Card className="border-border/50">
           <CardContent className="p-4">
             <div className="flex flex-col sm:flex-row gap-3">
@@ -199,69 +257,36 @@ const Appointments = () => {
           </CardContent>
         </Card>
 
+        {/* Tabbed Appointments Table */}
         <Card className="border-border/50">
           <CardContent className="p-0">
-            <div className="overflow-x-auto">
-              <Table>
-                <TableHeader>
-                  <TableRow>
-                    <TableHead>Name</TableHead>
-                    <TableHead>Phone</TableHead>
-                    <TableHead>Treatment</TableHead>
-                    <TableHead>Date</TableHead>
-                    <TableHead>Time</TableHead>
-                    <TableHead>Clinic</TableHead>
-                    <TableHead>Status</TableHead>
-                    <TableHead className="text-right">Actions</TableHead>
-                  </TableRow>
-                </TableHeader>
-                <TableBody>
-                  {filtered.length === 0 ? (
-                    <TableRow>
-                      <TableCell colSpan={8} className="text-center py-12 text-muted-foreground">No appointments found</TableCell>
-                    </TableRow>
-                  ) : (
-                    filtered.map((apt) => (
-                      <TableRow key={apt.id}>
-                        <TableCell className="font-medium">{apt.name}</TableCell>
-                        <TableCell>{apt.phone}</TableCell>
-                        <TableCell>{apt.treatment}</TableCell>
-                        <TableCell>{apt.preferred_date || "—"}</TableCell>
-                        <TableCell>{apt.appointment_time || "—"}</TableCell>
-                        <TableCell>{apt.clinic_location || "—"}</TableCell>
-                        <TableCell>
-                          <span className={`px-2.5 py-1 rounded-full text-xs font-medium capitalize ${statusColor(apt.status)}`}>
-                            {apt.status}
-                          </span>
-                        </TableCell>
-                        <TableCell>
-                          <div className="flex items-center justify-end gap-1">
-                            {apt.status === "pending" && (
-                              <Button size="icon" variant="ghost" className="h-8 w-8 text-green-600 hover:bg-green-50" onClick={() => handleAccept(apt)} title="Accept & Assign Time">
-                                <CheckCircle2 className="w-4 h-4" />
-                              </Button>
-                            )}
-                            {apt.status === "confirmed" && (
-                              <Button size="icon" variant="ghost" className="h-8 w-8 text-primary hover:bg-primary/10" onClick={() => completeAppointment(apt.id)} title="Complete">
-                                <Check className="w-4 h-4" />
-                              </Button>
-                            )}
-                            {(apt.status === "pending" || apt.status === "confirmed") && (
-                              <Button size="icon" variant="ghost" className="h-8 w-8 text-red-500 hover:bg-red-50" onClick={() => cancelAppointment(apt)} title="Cancel">
-                                <XCircle className="w-4 h-4" />
-                              </Button>
-                            )}
-                            <Button size="icon" variant="ghost" className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10" onClick={() => deleteAppointment(apt.id)} title="Delete">
-                              <Trash2 className="w-4 h-4" />
-                            </Button>
-                          </div>
-                        </TableCell>
-                      </TableRow>
-                    ))
-                  )}
-                </TableBody>
-              </Table>
-            </div>
+            <Tabs defaultValue="today" className="w-full">
+              <div className="px-4 pt-4 pb-2 border-b border-border/50">
+                <TabsList className="grid w-full sm:w-auto sm:inline-grid grid-cols-3 gap-1">
+                  <TabsTrigger value="past" className="gap-1.5">
+                    Past
+                    <span className="bg-muted text-muted-foreground text-xs rounded-full px-1.5 py-0.5 min-w-[20px] text-center">{pastApts.length}</span>
+                  </TabsTrigger>
+                  <TabsTrigger value="today" className="gap-1.5">
+                    Today
+                    <span className="bg-primary/15 text-primary text-xs rounded-full px-1.5 py-0.5 min-w-[20px] text-center">{todayApts.length}</span>
+                  </TabsTrigger>
+                  <TabsTrigger value="upcoming" className="gap-1.5">
+                    Upcoming
+                    <span className="bg-muted text-muted-foreground text-xs rounded-full px-1.5 py-0.5 min-w-[20px] text-center">{upcomingApts.length}</span>
+                  </TabsTrigger>
+                </TabsList>
+              </div>
+              <TabsContent value="past" className="mt-0 focus-visible:outline-none">
+                {renderTable(pastApts)}
+              </TabsContent>
+              <TabsContent value="today" className="mt-0 focus-visible:outline-none">
+                {renderTable(todayApts)}
+              </TabsContent>
+              <TabsContent value="upcoming" className="mt-0 focus-visible:outline-none">
+                {renderTable(upcomingApts)}
+              </TabsContent>
+            </Tabs>
           </CardContent>
         </Card>
       </div>

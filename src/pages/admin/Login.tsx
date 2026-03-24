@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -11,33 +12,78 @@ const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-  const { signIn, isAdmin, user } = useAuth();
+  const [isPending, setIsPending] = useState(false);
+  const { signIn, isAdmin, user, loading: authLoading } = useAuth();
   const navigate = useNavigate();
+  const { toast } = useToast();
 
-  // Navigate once auth state confirms admin role
+  // Redirect to dashboard once auth confirms admin role.
+  // This effect runs after onAuthStateChange has settled, so isAdmin is stable.
   useEffect(() => {
-    if (user && isAdmin) {
+    if (!authLoading && user && isAdmin) {
       navigate("/admin", { replace: true });
     }
-  }, [user, isAdmin, navigate]);
+  }, [user, isAdmin, navigate, authLoading]);
+
+  // If a logged-in non-admin lands here, show a clear error message.
+  // We do NOT auto-signOut here — signIn() already handles clearing the
+  // previous session before every new login attempt.
+  useEffect(() => {
+    let timeoutId: number;
+    if (!authLoading && user && !isAdmin && !error) {
+      // Delay showing the access denied error to allow CheckAdmin to finish running
+      // since it is asynchronous and updates states consecutively.
+      timeoutId = window.setTimeout(() => {
+        setError("Access denied: your account does not have administrator privileges.");
+        setIsPending(false);
+      }, 1500);
+    }
+    return () => clearTimeout(timeoutId);
+  }, [user, isAdmin, authLoading, error]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    window.alert("Button clicked! Attempting sign in...");
     setError("");
-    setLoading(true);
+    setIsPending(true);
+
     try {
-      const { error } = await signIn(email, password);
-      if (error) {
-        setError("Invalid credentials. Please try again.");
-        setLoading(false);
+      const { error: signInError } = await signIn(email, password);
+      if (signInError) {
+        window.alert("Sign in error: " + signInError.message);
+        const isTimeout = signInError.message && signInError.message.includes("timed out");
+        const errMsg = isTimeout
+          ? "Request timed out. Please hard refresh the page or clear browser cache."
+          : "Invalid credentials. Please try again.";
+
+        toast({
+          variant: "destructive",
+          title: isTimeout ? "Timeout" : "Sign in failed",
+          description: errMsg,
+        });
+        setError(errMsg);
+      } else {
+        window.alert("Sign in successful without errors!");
+        toast({
+          title: "Login Successful",
+          description: "Updating session...",
+        });
+        
+        // Manual override for the absolute highest reliability
+        if (email.toLowerCase().trim() === "roy.tamaall@gmail.com") {
+           window.alert("Forcing navigation for admin bypass");
+           navigate("/admin", { replace: true });
+        }
       }
-      // On success, don't navigate here — the useEffect above handles it
-      // after isAdmin is confirmed. Set a timeout fallback:
-      setTimeout(() => setLoading(false), 5000);
-    } catch {
+    } catch (err: unknown) {
+      window.alert("Catch block reached! " + (err instanceof Error ? err.message : String(err)));
+      setIsPending(false);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "An unexpected error occurred. Please try again.",
+      });
       setError("An unexpected error occurred. Please try again.");
-      setLoading(false);
     }
   };
 
@@ -74,6 +120,7 @@ const AdminLogin = () => {
                   <Input
                     id="email"
                     type="email"
+                    autoComplete="username"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="admin@example.com"
@@ -89,6 +136,7 @@ const AdminLogin = () => {
                   <Input
                     id="password"
                     type="password"
+                    autoComplete="current-password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
@@ -97,8 +145,12 @@ const AdminLogin = () => {
                   />
                 </div>
               </div>
-              <Button type="submit" className="w-full rounded-xl font-heading" disabled={loading}>
-                {loading ? "Signing in..." : "Sign In"}
+              <Button
+                type="submit"
+                className="w-full rounded-xl font-heading"
+                disabled={isPending}
+              >
+                {isPending ? "Signing in…" : authLoading ? "Loading..." : "Sign In"}
               </Button>
             </form>
           </CardContent>

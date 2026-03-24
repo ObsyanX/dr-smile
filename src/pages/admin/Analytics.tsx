@@ -21,10 +21,10 @@ import { format, subDays, parseISO } from "date-fns";
 const COLORS = ["hsl(187,62%,48%)", "hsl(224,70%,33%)", "hsl(0,84%,60%)", "#f59e0b", "#10b981", "#8b5cf6", "#f97316"];
 
 const Analytics = () => {
-  const [dailyData, setDailyData] = useState<any[]>([]);
-  const [treatmentData, setTreatmentData] = useState<any[]>([]);
-  const [clinicData, setClinicData] = useState<any[]>([]);
-  const [revenue, setRevenue] = useState({ total: 0, daily: 0, byClinic: [] as any[] });
+  const [dailyData, setDailyData] = useState<{ date: string; appointments: number }[]>([]);
+  const [treatmentData, setTreatmentData] = useState<{ name: string; value: number }[]>([]);
+  const [clinicData, setClinicData] = useState<{ name: string; count: number }[]>([]);
+  const [revenue, setRevenue] = useState({ total: 0, daily: 0, byClinic: [] as { name: string; amount: number }[] });
   const [topStats, setTopStats] = useState({
     totalPatients: 0, returningPatients: 0, mostPopular: "", appointmentsToday: 0,
   });
