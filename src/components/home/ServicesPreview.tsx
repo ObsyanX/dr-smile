@@ -6,6 +6,7 @@ import { ArrowRight } from "lucide-react";
 const services = [
   {
     icon: "🦷",
+<<<<<<< HEAD
     title: "Dental Implants",
     description: "Permanent tooth replacement with natural-looking results using advanced implant technology.",
     image: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=400&q=80",
@@ -21,12 +22,33 @@ const services = [
     title: "Root Canal Treatment",
     description: "Pain-free root canal procedures with modern techniques and gentle anesthesia.",
     image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&q=80",
+=======
+    title: "Fixed Partial Denture",
+    description: "Permanent replacement of missing teeth anchored to adjacent teeth, restoring function and aesthetics.",
+    image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774282815/ChatGPT_Image_Mar_23_2026_09_47_21_PM_y4fcg9.png",
+  },
+  {
+    icon: "✨",
+    title: "Tooth Scaling",
+    description: "A professional cleaning procedure that removes plaque and tartar to maintain healthy gums and prevent dental issues.",
+    image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774283039/ChatGPT_Image_Mar_23_2026_09_53_22_PM_vf5jy1.png",
+  },
+  {
+    icon: "🔧",
+    title: "Oral cyst and tumor surgery",
+    description: "A surgical procedure to remove abnormal growths in the mouth, restoring oral health and preventing complications.",
+    image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774283182/ChatGPT_Image_Mar_23_2026_09_56_04_PM_hndsut.png",
+>>>>>>> 20a29a9 (Fresh start for dr-smile project)
   },
   {
     icon: "😁",
     title: "Braces & Aligners",
     description: "Invisible aligners and modern braces for perfectly aligned teeth at any age.",
+<<<<<<< HEAD
     image: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=400&q=80",
+=======
+    image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774283315/ChatGPT_Image_Mar_23_2026_09_58_17_PM_xh5isa.png",
+>>>>>>> 20a29a9 (Fresh start for dr-smile project)
   },
 ];
 

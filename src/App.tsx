@@ -23,7 +23,18 @@ const AdminAppointments = lazy(() => import("./pages/admin/Appointments"));
 const AdminPatients = lazy(() => import("./pages/admin/Patients"));
 const AdminAnalytics = lazy(() => import("./pages/admin/Analytics"));
 
+<<<<<<< HEAD
 const queryClient = new QueryClient();
+=======
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 5 * 60 * 1000, // 5 minutes
+      refetchOnWindowFocus: false, // Prevent unnecessary refetches for public pages
+    },
+  },
+});
+>>>>>>> 20a29a9 (Fresh start for dr-smile project)
 
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-background">

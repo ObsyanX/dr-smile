@@ -1,0 +1,1062 @@
+﻿
+[1m[46m RUN [49m[22m [36mv3.2.4 [39m[90mC:/Users/91947/Downloads/dr-smile-main/dr-smile-main[39m
+
+node.exe : (node:3060) [DEP0040] 
+DeprecationWarning: The `punycode` module is 
+deprecated. Please use a userland alternative 
+instead.
+At C:\Program Files\nodejs\npx.ps1:29 char:3
++   & $NODE_EXE $NPX_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: ( 
+   (node:3060) [DE...native instead.:String)  
+   [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandEr 
+   ror
+ 
+(Use `node --trace-deprecation ...` to show 
+where the warning was created)
+[90mstderr[2m | 
+src/test-contact.test.tsx[2m > 
+[22m[2mContact[2m > [22m[2mrenders 
+without crashing
+[22m[39mError: Uncaught [ReferenceError: 
+IntersectionObserver is not defined]
+    at reportException (C:\Users\91947\Downloa
+ds\dr-smile-main\dr-smile-main\node_modules\js
+dom\lib\jsdom\living\helpers\runtime-script-er
+rors.js:66:24)
+    at innerInvokeEventListeners (C:\Users\919
+47\Downloads\dr-smile-main\dr-smile-main\node_
+modules\jsdom\lib\jsdom\living\events\EventTar
+get-impl.js:353:9)
+    at invokeEventListeners (C:\Users\91947\Do
+wnloads\dr-smile-main\dr-smile-main\node_modul
+es\jsdom\lib\jsdom\living\events\EventTarget-i
+mpl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch (C:\Us
+ers\91947\Downloads\dr-smile-main\dr-smile-mai
+n\node_modules\jsdom\lib\jsdom\living\events\E
+ventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent (C
+:\Users\91947\Downloads\dr-smile-main\dr-smile
+-main\node_modules\jsdom\lib\jsdom\living\even
+ts\EventTarget-impl.js:104:17)
+    at HTMLUnknownElement.dispatchEvent (C:\Us
+ers\91947\Downloads\dr-smile-main\dr-smile-mai
+n\node_modules\jsdom\lib\jsdom\living\generate
+d\EventTarget.js:241:34)
+    at Object.invokeGuardedCallbackDev (C:\Use
+rs\91947\Downloads\dr-smile-main\dr-smile-main
+\node_modules\react-dom\cjs\react-dom.developm
+ent.js:4213:16)
+    at invokeGuardedCallback (C:\Users\91947\D
+ownloads\dr-smile-main\dr-smile-main\node_modu
+les\react-dom\cjs\react-dom.development.js:427
+7:31)
+    at reportUncaughtErrorInDEV (C:\Users\9194
+7\Downloads\dr-smile-main\dr-smile-main\node_m
+odules\react-dom\cjs\react-dom.development.js:
+22877:5)
+    at captureCommitPhaseError (C:\Users\91947
+\Downloads\dr-smile-main\dr-smile-main\node_mo
+dules\react-dom\cjs\react-dom.development.js:2
+7165:5) ReferenceError: IntersectionObserver 
+is not defined
+    at initIntersectionObserver [90m(file:///
+C:/Users/91947/Downloads/dr-smile-main/dr-smil
+e-main/[39mnode_modules/[4mframer-motion[24
+m/src/motion/features/viewport/observers.ts:54
+:34[90m)[39m
+    at observeIntersection [90m(file:///C:/Us
+ers/91947/Downloads/dr-smile-main/dr-smile-mai
+n/[39mnode_modules/[4mframer-motion[24m/src
+/motion/features/viewport/observers.ts:68:39[
+90m)[39m
+    at InViewFeature.startObserver [90m(file:
+///C:/Users/91947/Downloads/dr-smile-main/dr-s
+mile-main/[39mnode_modules/[4mframer-motion
+[24m/src/motion/features/viewport/index.ts:66:
+29[90m)[39m
+    at InViewFeature.mount [90m(file:///C:/Us
+ers/91947/Downloads/dr-smile-main/dr-smile-mai
+n/[39mnode_modules/[4mframer-motion[24m/src
+/motion/features/viewport/index.ts:74:14[90m)
+[39m
+    at HTMLVisualElement.updateFeatures [90m(
+file:///C:/Users/91947/Downloads/dr-smile-main
+/dr-smile-main/[39mnode_modules/[4mmotion-do
+m[24m/src/render/VisualElement.ts:656:29[90m
+)[39m
+    at [90mfile:///C:/Users/91947/Downloads/d
+r-smile-main/dr-smile-main/[39mnode_modules/
+[4mframer-motion[24m/dist/es/motion/utils/use
+-visual-element.mjs:95:23
+    at commitHookEffectListMount [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:23189:26[90m)[39m
+    at commitLayoutEffectOnFiber [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:23312:15[90m)[39m
+    at commitLayoutMountEffects_complete [90m
+(C:\Users\91947\Downloads\dr-smile-main\dr-smi
+le-main\[39mnode_modules\[4mreact-dom[24m\c
+js\react-dom.development.js:24727:9[90m)[39m
+    at commitLayoutEffects_begin [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:24713:7[90m)[39m
+Error: Uncaught [ReferenceError: 
+IntersectionObserver is not defined]
+    at reportException (C:\Users\91947\Downloa
+ds\dr-smile-main\dr-smile-main\node_modules\js
+dom\lib\jsdom\living\helpers\runtime-script-er
+rors.js:66:24)
+    at innerInvokeEventListeners (C:\Users\919
+47\Downloads\dr-smile-main\dr-smile-main\node_
+modules\jsdom\lib\jsdom\living\events\EventTar
+get-impl.js:353:9)
+    at invokeEventListeners (C:\Users\91947\Do
+wnloads\dr-smile-main\dr-smile-main\node_modul
+es\jsdom\lib\jsdom\living\events\EventTarget-i
+mpl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch (C:\Us
+ers\91947\Downloads\dr-smile-main\dr-smile-mai
+n\node_modules\jsdom\lib\jsdom\living\events\E
+ventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent (C
+:\Users\91947\Downloads\dr-smile-main\dr-smile
+-main\node_modules\jsdom\lib\jsdom\living\even
+ts\EventTarget-impl.js:104:17)
+    at HTMLUnknownElement.dispatchEvent (C:\Us
+ers\91947\Downloads\dr-smile-main\dr-smile-mai
+n\node_modules\jsdom\lib\jsdom\living\generate
+d\EventTarget.js:241:34)
+    at Object.invokeGuardedCallbackDev (C:\Use
+rs\91947\Downloads\dr-smile-main\dr-smile-main
+\node_modules\react-dom\cjs\react-dom.developm
+ent.js:4213:16)
+    at invokeGuardedCallback (C:\Users\91947\D
+ownloads\dr-smile-main\dr-smile-main\node_modu
+les\react-dom\cjs\react-dom.development.js:427
+7:31)
+    at reportUncaughtErrorInDEV (C:\Users\9194
+7\Downloads\dr-smile-main\dr-smile-main\node_m
+odules\react-dom\cjs\react-dom.development.js:
+22877:5)
+    at captureCommitPhaseError (C:\Users\91947
+\Downloads\dr-smile-main\dr-smile-main\node_mo
+dules\react-dom\cjs\react-dom.development.js:2
+7165:5) ReferenceError: IntersectionObserver 
+is not defined
+    at initIntersectionObserver [90m(file:///
+C:/Users/91947/Downloads/dr-smile-main/dr-smil
+e-main/[39mnode_modules/[4mframer-motion[24
+m/src/motion/features/viewport/observers.ts:54
+:34[90m)[39m
+    at observeIntersection [90m(file:///C:/Us
+ers/91947/Downloads/dr-smile-main/dr-smile-mai
+n/[39mnode_modules/[4mframer-motion[24m/src
+/motion/features/viewport/observers.ts:68:39[
+90m)[39m
+    at InViewFeature.startObserver [90m(file:
+///C:/Users/91947/Downloads/dr-smile-main/dr-s
+mile-main/[39mnode_modules/[4mframer-motion
+[24m/src/motion/features/viewport/index.ts:66:
+29[90m)[39m
+    at InViewFeature.mount [90m(file:///C:/Us
+ers/91947/Downloads/dr-smile-main/dr-smile-mai
+n/[39mnode_modules/[4mframer-motion[24m/src
+/motion/features/viewport/index.ts:74:14[90m)
+[39m
+    at HTMLVisualElement.updateFeatures [90m(
+file:///C:/Users/91947/Downloads/dr-smile-main
+/dr-smile-main/[39mnode_modules/[4mmotion-do
+m[24m/src/render/VisualElement.ts:656:29[90m
+)[39m
+    at [90mfile:///C:/Users/91947/Downloads/d
+r-smile-main/dr-smile-main/[39mnode_modules/
+[4mframer-motion[24m/dist/es/motion/utils/use
+-visual-element.mjs:95:23
+    at commitHookEffectListMount [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:23189:26[90m)[39m
+    at commitLayoutEffectOnFiber [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:23312:15[90m)[39m
+    at commitLayoutMountEffects_complete [90m
+(C:\Users\91947\Downloads\dr-smile-main\dr-smi
+le-main\[39mnode_modules\[4mreact-dom[24m\c
+js\react-dom.development.js:24727:9[90m)[39m
+    at commitLayoutEffects_begin [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:24713:7[90m)[39m
+Error: Uncaught [ReferenceError: 
+IntersectionObserver is not defined]
+    at reportException (C:\Users\91947\Downloa
+ds\dr-smile-main\dr-smile-main\node_modules\js
+dom\lib\jsdom\living\helpers\runtime-script-er
+rors.js:66:24)
+    at innerInvokeEventListeners (C:\Users\919
+47\Downloads\dr-smile-main\dr-smile-main\node_
+modules\jsdom\lib\jsdom\living\events\EventTar
+get-impl.js:353:9)
+    at invokeEventListeners (C:\Users\91947\Do
+wnloads\dr-smile-main\dr-smile-main\node_modul
+es\jsdom\lib\jsdom\living\events\EventTarget-i
+mpl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch (C:\Us
+ers\91947\Downloads\dr-smile-main\dr-smile-mai
+n\node_modules\jsdom\lib\jsdom\living\events\E
+ventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent (C
+:\Users\91947\Downloads\dr-smile-main\dr-smile
+-main\node_modules\jsdom\lib\jsdom\living\even
+ts\EventTarget-impl.js:104:17)
+    at HTMLUnknownElement.dispatchEvent (C:\Us
+ers\91947\Downloads\dr-smile-main\dr-smile-mai
+n\node_modules\jsdom\lib\jsdom\living\generate
+d\EventTarget.js:241:34)
+    at Object.invokeGuardedCallbackDev (C:\Use
+rs\91947\Downloads\dr-smile-main\dr-smile-main
+\node_modules\react-dom\cjs\react-dom.developm
+ent.js:4213:16)
+    at invokeGuardedCallback (C:\Users\91947\D
+ownloads\dr-smile-main\dr-smile-main\node_modu
+les\react-dom\cjs\react-dom.development.js:427
+7:31)
+    at reportUncaughtErrorInDEV (C:\Users\9194
+7\Downloads\dr-smile-main\dr-smile-main\node_m
+odules\react-dom\cjs\react-dom.development.js:
+22877:5)
+    at captureCommitPhaseError (C:\Users\91947
+\Downloads\dr-smile-main\dr-smile-main\node_mo
+dules\react-dom\cjs\react-dom.development.js:2
+7165:5) ReferenceError: IntersectionObserver 
+is not defined
+    at initIntersectionObserver [90m(file:///
+C:/Users/91947/Downloads/dr-smile-main/dr-smil
+e-main/[39mnode_modules/[4mframer-motion[24
+m/src/motion/features/viewport/observers.ts:54
+:34[90m)[39m
+    at observeIntersection [90m(file:///C:/Us
+ers/91947/Downloads/dr-smile-main/dr-smile-mai
+n/[39mnode_modules/[4mframer-motion[24m/src
+/motion/features/viewport/observers.ts:68:39[
+90m)[39m
+    at InViewFeature.startObserver [90m(file:
+///C:/Users/91947/Downloads/dr-smile-main/dr-s
+mile-main/[39mnode_modules/[4mframer-motion
+[24m/src/motion/features/viewport/index.ts:66:
+29[90m)[39m
+    at InViewFeature.mount [90m(file:///C:/Us
+ers/91947/Downloads/dr-smile-main/dr-smile-mai
+n/[39mnode_modules/[4mframer-motion[24m/src
+/motion/features/viewport/index.ts:74:14[90m)
+[39m
+    at HTMLVisualElement.updateFeatures [90m(
+file:///C:/Users/91947/Downloads/dr-smile-main
+/dr-smile-main/[39mnode_modules/[4mmotion-do
+m[24m/src/render/VisualElement.ts:656:29[90m
+)[39m
+    at [90mfile:///C:/Users/91947/Downloads/d
+r-smile-main/dr-smile-main/[39mnode_modules/
+[4mframer-motion[24m/dist/es/motion/utils/use
+-visual-element.mjs:95:23
+    at commitHookEffectListMount [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:23189:26[90m)[39m
+    at commitLayoutEffectOnFiber [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:23312:15[90m)[39m
+    at commitLayoutMountEffects_complete [90m
+(C:\Users\91947\Downloads\dr-smile-main\dr-smi
+le-main\[39mnode_modules\[4mreact-dom[24m\c
+js\react-dom.development.js:24727:9[90m)[39m
+    at commitLayoutEffects_begin [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:24713:7[90m)[39m
+Error: Uncaught [ReferenceError: 
+IntersectionObserver is not defined]
+    at reportException (C:\Users\91947\Downloa
+ds\dr-smile-main\dr-smile-main\node_modules\js
+dom\lib\jsdom\living\helpers\runtime-script-er
+rors.js:66:24)
+    at innerInvokeEventListeners (C:\Users\919
+47\Downloads\dr-smile-main\dr-smile-main\node_
+modules\jsdom\lib\jsdom\living\events\EventTar
+get-impl.js:353:9)
+    at invokeEventListeners (C:\Users\91947\Do
+wnloads\dr-smile-main\dr-smile-main\node_modul
+es\jsdom\lib\jsdom\living\events\EventTarget-i
+mpl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch (C:\Us
+ers\91947\Downloads\dr-smile-main\dr-smile-mai
+n\node_modules\jsdom\lib\jsdom\living\events\E
+ventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent (C
+:\Users\91947\Downloads\dr-smile-main\dr-smile
+-main\node_modules\jsdom\lib\jsdom\living\even
+ts\EventTarget-impl.js:104:17)
+    at HTMLUnknownElement.dispatchEvent (C:\Us
+ers\91947\Downloads\dr-smile-main\dr-smile-mai
+n\node_modules\jsdom\lib\jsdom\living\generate
+d\EventTarget.js:241:34)
+    at Object.invokeGuardedCallbackDev (C:\Use
+rs\91947\Downloads\dr-smile-main\dr-smile-main
+\node_modules\react-dom\cjs\react-dom.developm
+ent.js:4213:16)
+    at invokeGuardedCallback (C:\Users\91947\D
+ownloads\dr-smile-main\dr-smile-main\node_modu
+les\react-dom\cjs\react-dom.development.js:427
+7:31)
+    at reportUncaughtErrorInDEV (C:\Users\9194
+7\Downloads\dr-smile-main\dr-smile-main\node_m
+odules\react-dom\cjs\react-dom.development.js:
+22877:5)
+    at captureCommitPhaseError (C:\Users\91947
+\Downloads\dr-smile-main\dr-smile-main\node_mo
+dules\react-dom\cjs\react-dom.development.js:2
+7165:5) ReferenceError: IntersectionObserver 
+is not defined
+    at initIntersectionObserver [90m(file:///
+C:/Users/91947/Downloads/dr-smile-main/dr-smil
+e-main/[39mnode_modules/[4mframer-motion[24
+m/src/motion/features/viewport/observers.ts:54
+:34[90m)[39m
+    at observeIntersection [90m(file:///C:/Us
+ers/91947/Downloads/dr-smile-main/dr-smile-mai
+n/[39mnode_modules/[4mframer-motion[24m/src
+/motion/features/viewport/observers.ts:68:39[
+90m)[39m
+    at InViewFeature.startObserver [90m(file:
+///C:/Users/91947/Downloads/dr-smile-main/dr-s
+mile-main/[39mnode_modules/[4mframer-motion
+[24m/src/motion/features/viewport/index.ts:66:
+29[90m)[39m
+    at InViewFeature.mount [90m(file:///C:/Us
+ers/91947/Downloads/dr-smile-main/dr-smile-mai
+n/[39mnode_modules/[4mframer-motion[24m/src
+/motion/features/viewport/index.ts:74:14[90m)
+[39m
+    at HTMLVisualElement.updateFeatures [90m(
+file:///C:/Users/91947/Downloads/dr-smile-main
+/dr-smile-main/[39mnode_modules/[4mmotion-do
+m[24m/src/render/VisualElement.ts:656:29[90m
+)[39m
+    at [90mfile:///C:/Users/91947/Downloads/d
+r-smile-main/dr-smile-main/[39mnode_modules/
+[4mframer-motion[24m/dist/es/motion/utils/use
+-visual-element.mjs:95:23
+    at commitHookEffectListMount [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:23189:26[90m)[39m
+    at commitLayoutEffectOnFiber [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:23312:15[90m)[39m
+    at commitLayoutMountEffects_complete [90m
+(C:\Users\91947\Downloads\dr-smile-main\dr-smi
+le-main\[39mnode_modules\[4mreact-dom[24m\c
+js\react-dom.development.js:24727:9[90m)[39m
+    at commitLayoutEffects_begin [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:24713:7[90m)[39m
+Error: Uncaught [ReferenceError: 
+IntersectionObserver is not defined]
+    at reportException (C:\Users\91947\Downloa
+ds\dr-smile-main\dr-smile-main\node_modules\js
+dom\lib\jsdom\living\helpers\runtime-script-er
+rors.js:66:24)
+    at innerInvokeEventListeners (C:\Users\919
+47\Downloads\dr-smile-main\dr-smile-main\node_
+modules\jsdom\lib\jsdom\living\events\EventTar
+get-impl.js:353:9)
+    at invokeEventListeners (C:\Users\91947\Do
+wnloads\dr-smile-main\dr-smile-main\node_modul
+es\jsdom\lib\jsdom\living\events\EventTarget-i
+mpl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch (C:\Us
+ers\91947\Downloads\dr-smile-main\dr-smile-mai
+n\node_modules\jsdom\lib\jsdom\living\events\E
+ventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent (C
+:\Users\91947\Downloads\dr-smile-main\dr-smile
+-main\node_modules\jsdom\lib\jsdom\living\even
+ts\EventTarget-impl.js:104:17)
+    at HTMLUnknownElement.dispatchEvent (C:\Us
+ers\91947\Downloads\dr-smile-main\dr-smile-mai
+n\node_modules\jsdom\lib\jsdom\living\generate
+d\EventTarget.js:241:34)
+    at Object.invokeGuardedCallbackDev (C:\Use
+rs\91947\Downloads\dr-smile-main\dr-smile-main
+\node_modules\react-dom\cjs\react-dom.developm
+ent.js:4213:16)
+    at invokeGuardedCallback (C:\Users\91947\D
+ownloads\dr-smile-main\dr-smile-main\node_modu
+les\react-dom\cjs\react-dom.development.js:427
+7:31)
+    at reportUncaughtErrorInDEV (C:\Users\9194
+7\Downloads\dr-smile-main\dr-smile-main\node_m
+odules\react-dom\cjs\react-dom.development.js:
+22877:5)
+    at captureCommitPhaseError (C:\Users\91947
+\Downloads\dr-smile-main\dr-smile-main\node_mo
+dules\react-dom\cjs\react-dom.development.js:2
+7165:5) ReferenceError: IntersectionObserver 
+is not defined
+    at initIntersectionObserver [90m(file:///
+C:/Users/91947/Downloads/dr-smile-main/dr-smil
+e-main/[39mnode_modules/[4mframer-motion[24
+m/src/motion/features/viewport/observers.ts:54
+:34[90m)[39m
+    at observeIntersection [90m(file:///C:/Us
+ers/91947/Downloads/dr-smile-main/dr-smile-mai
+n/[39mnode_modules/[4mframer-motion[24m/src
+/motion/features/viewport/observers.ts:68:39[
+90m)[39m
+    at InViewFeature.startObserver [90m(file:
+///C:/Users/91947/Downloads/dr-smile-main/dr-s
+mile-main/[39mnode_modules/[4mframer-motion
+[24m/src/motion/features/viewport/index.ts:66:
+29[90m)[39m
+    at InViewFeature.mount [90m(file:///C:/Us
+ers/91947/Downloads/dr-smile-main/dr-smile-mai
+n/[39mnode_modules/[4mframer-motion[24m/src
+/motion/features/viewport/index.ts:74:14[90m)
+[39m
+    at HTMLVisualElement.updateFeatures [90m(
+file:///C:/Users/91947/Downloads/dr-smile-main
+/dr-smile-main/[39mnode_modules/[4mmotion-do
+m[24m/src/render/VisualElement.ts:656:29[90m
+)[39m
+    at [90mfile:///C:/Users/91947/Downloads/d
+r-smile-main/dr-smile-main/[39mnode_modules/
+[4mframer-motion[24m/dist/es/motion/utils/use
+-visual-element.mjs:95:23
+    at commitHookEffectListMount [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:23189:26[90m)[39m
+    at commitLayoutEffectOnFiber [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:23312:15[90m)[39m
+    at commitLayoutMountEffects_complete [90m
+(C:\Users\91947\Downloads\dr-smile-main\dr-smi
+le-main\[39mnode_modules\[4mreact-dom[24m\c
+js\react-dom.development.js:24727:9[90m)[39m
+    at commitLayoutEffects_begin [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:24713:7[90m)[39m
+Error: Uncaught [ReferenceError: 
+IntersectionObserver is not defined]
+    at reportException (C:\Users\91947\Downloa
+ds\dr-smile-main\dr-smile-main\node_modules\js
+dom\lib\jsdom\living\helpers\runtime-script-er
+rors.js:66:24)
+    at innerInvokeEventListeners (C:\Users\919
+47\Downloads\dr-smile-main\dr-smile-main\node_
+modules\jsdom\lib\jsdom\living\events\EventTar
+get-impl.js:353:9)
+    at invokeEventListeners (C:\Users\91947\Do
+wnloads\dr-smile-main\dr-smile-main\node_modul
+es\jsdom\lib\jsdom\living\events\EventTarget-i
+mpl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch (C:\Us
+ers\91947\Downloads\dr-smile-main\dr-smile-mai
+n\node_modules\jsdom\lib\jsdom\living\events\E
+ventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent (C
+:\Users\91947\Downloads\dr-smile-main\dr-smile
+-main\node_modules\jsdom\lib\jsdom\living\even
+ts\EventTarget-impl.js:104:17)
+    at HTMLUnknownElement.dispatchEvent (C:\Us
+ers\91947\Downloads\dr-smile-main\dr-smile-mai
+n\node_modules\jsdom\lib\jsdom\living\generate
+d\EventTarget.js:241:34)
+    at Object.invokeGuardedCallbackDev (C:\Use
+rs\91947\Downloads\dr-smile-main\dr-smile-main
+\node_modules\react-dom\cjs\react-dom.developm
+ent.js:4213:16)
+    at invokeGuardedCallback (C:\Users\91947\D
+ownloads\dr-smile-main\dr-smile-main\node_modu
+les\react-dom\cjs\react-dom.development.js:427
+7:31)
+    at reportUncaughtErrorInDEV (C:\Users\9194
+7\Downloads\dr-smile-main\dr-smile-main\node_m
+odules\react-dom\cjs\react-dom.development.js:
+22877:5)
+    at captureCommitPhaseError (C:\Users\91947
+\Downloads\dr-smile-main\dr-smile-main\node_mo
+dules\react-dom\cjs\react-dom.development.js:2
+7165:5) ReferenceError: IntersectionObserver 
+is not defined
+    at initIntersectionObserver [90m(file:///
+C:/Users/91947/Downloads/dr-smile-main/dr-smil
+e-main/[39mnode_modules/[4mframer-motion[24
+m/src/motion/features/viewport/observers.ts:54
+:34[90m)[39m
+    at observeIntersection [90m(file:///C:/Us
+ers/91947/Downloads/dr-smile-main/dr-smile-mai
+n/[39mnode_modules/[4mframer-motion[24m/src
+/motion/features/viewport/observers.ts:68:39[
+90m)[39m
+    at InViewFeature.startObserver [90m(file:
+///C:/Users/91947/Downloads/dr-smile-main/dr-s
+mile-main/[39mnode_modules/[4mframer-motion
+[24m/src/motion/features/viewport/index.ts:66:
+29[90m)[39m
+    at InViewFeature.mount [90m(file:///C:/Us
+ers/91947/Downloads/dr-smile-main/dr-smile-mai
+n/[39mnode_modules/[4mframer-motion[24m/src
+/motion/features/viewport/index.ts:74:14[90m)
+[39m
+    at HTMLVisualElement.updateFeatures [90m(
+file:///C:/Users/91947/Downloads/dr-smile-main
+/dr-smile-main/[39mnode_modules/[4mmotion-do
+m[24m/src/render/VisualElement.ts:656:29[90m
+)[39m
+    at [90mfile:///C:/Users/91947/Downloads/d
+r-smile-main/dr-smile-main/[39mnode_modules/
+[4mframer-motion[24m/dist/es/motion/utils/use
+-visual-element.mjs:95:23
+    at commitHookEffectListMount [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:23189:26[90m)[39m
+    at commitLayoutEffectOnFiber [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:23312:15[90m)[39m
+    at commitLayoutMountEffects_complete [90m
+(C:\Users\91947\Downloads\dr-smile-main\dr-smi
+le-main\[39mnode_modules\[4mreact-dom[24m\c
+js\react-dom.development.js:24727:9[90m)[39m
+    at commitLayoutEffects_begin [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:24713:7[90m)[39m
+Error: Uncaught [ReferenceError: 
+IntersectionObserver is not defined]
+    at reportException (C:\Users\91947\Downloa
+ds\dr-smile-main\dr-smile-main\node_modules\js
+dom\lib\jsdom\living\helpers\runtime-script-er
+rors.js:66:24)
+    at innerInvokeEventListeners (C:\Users\919
+47\Downloads\dr-smile-main\dr-smile-main\node_
+modules\jsdom\lib\jsdom\living\events\EventTar
+get-impl.js:353:9)
+    at invokeEventListeners (C:\Users\91947\Do
+wnloads\dr-smile-main\dr-smile-main\node_modul
+es\jsdom\lib\jsdom\living\events\EventTarget-i
+mpl.js:286:3)
+    at HTMLUnknownElementImpl._dispatch (C:\Us
+ers\91947\Downloads\dr-smile-main\dr-smile-mai
+n\node_modules\jsdom\lib\jsdom\living\events\E
+ventTarget-impl.js:233:9)
+    at HTMLUnknownElementImpl.dispatchEvent (C
+:\Users\91947\Downloads\dr-smile-main\dr-smile
+-main\node_modules\jsdom\lib\jsdom\living\even
+ts\EventTarget-impl.js:104:17)
+    at HTMLUnknownElement.dispatchEvent (C:\Us
+ers\91947\Downloads\dr-smile-main\dr-smile-mai
+n\node_modules\jsdom\lib\jsdom\living\generate
+d\EventTarget.js:241:34)
+    at Object.invokeGuardedCallbackDev (C:\Use
+rs\91947\Downloads\dr-smile-main\dr-smile-main
+\node_modules\react-dom\cjs\react-dom.developm
+ent.js:4213:16)
+    at invokeGuardedCallback (C:\Users\91947\D
+ownloads\dr-smile-main\dr-smile-main\node_modu
+les\react-dom\cjs\react-dom.development.js:427
+7:31)
+    at reportUncaughtErrorInDEV (C:\Users\9194
+7\Downloads\dr-smile-main\dr-smile-main\node_m
+odules\react-dom\cjs\react-dom.development.js:
+22877:5)
+    at captureCommitPhaseError (C:\Users\91947
+\Downloads\dr-smile-main\dr-smile-main\node_mo
+dules\react-dom\cjs\react-dom.development.js:2
+7165:5) ReferenceError: IntersectionObserver 
+is not defined
+    at initIntersectionObserver [90m(file:///
+C:/Users/91947/Downloads/dr-smile-main/dr-smil
+e-main/[39mnode_modules/[4mframer-motion[24
+m/src/motion/features/viewport/observers.ts:54
+:34[90m)[39m
+    at observeIntersection [90m(file:///C:/Us
+ers/91947/Downloads/dr-smile-main/dr-smile-mai
+n/[39mnode_modules/[4mframer-motion[24m/src
+/motion/features/viewport/observers.ts:68:39[
+90m)[39m
+    at InViewFeature.startObserver [90m(file:
+///C:/Users/91947/Downloads/dr-smile-main/dr-s
+mile-main/[39mnode_modules/[4mframer-motion
+[24m/src/motion/features/viewport/index.ts:66:
+29[90m)[39m
+    at InViewFeature.mount [90m(file:///C:/Us
+ers/91947/Downloads/dr-smile-main/dr-smile-mai
+n/[39mnode_modules/[4mframer-motion[24m/src
+/motion/features/viewport/index.ts:74:14[90m)
+[39m
+    at HTMLVisualElement.updateFeatures [90m(
+file:///C:/Users/91947/Downloads/dr-smile-main
+/dr-smile-main/[39mnode_modules/[4mmotion-do
+m[24m/src/render/VisualElement.ts:656:29[90m
+)[39m
+    at [90mfile:///C:/Users/91947/Downloads/d
+r-smile-main/dr-smile-main/[39mnode_modules/
+[4mframer-motion[24m/dist/es/motion/utils/use
+-visual-element.mjs:95:23
+    at commitHookEffectListMount [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:23189:26[90m)[39m
+    at commitLayoutEffectOnFiber [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:23312:15[90m)[39m
+    at commitLayoutMountEffects_complete [90m
+(C:\Users\91947\Downloads\dr-smile-main\dr-smi
+le-main\[39mnode_modules\[4mreact-dom[24m\c
+js\react-dom.development.js:24727:9[90m)[39m
+    at commitLayoutEffects_begin [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:24713:7[90m)[39m
+ΓÜá∩╕Å React Router Future Flag Warning: 
+React Router will begin wrapping state 
+updates in `React.startTransition` in v7. You 
+can use the `v7_startTransition` future flag 
+to opt-in early. For more information, see htt
+ps://reactrouter.com/v6/upgrading/future#v7_st
+arttransition.
+ΓÜá∩╕Å React Router Future Flag Warning: 
+Relative route resolution within Splat routes 
+is changing in v7. You can use the 
+`v7_relativeSplatPath` future flag to opt-in 
+early. For more information, see https://react
+router.com/v6/upgrading/future#v7_relativespla
+tpath.
+The above error occurred in the 
+<ForwardRef(motion.div)> component:
+
+    at MotionDOMComponent (file:///C:/Users/91
+947/Downloads/dr-smile-main/dr-smile-main/node
+_modules/framer-motion/dist/es/motion/index.mj
+s:45:16)
+    at ScrollReveal (C:\Users\91947\Downloads\
+dr-smile-main\dr-smile-main\src\components\sha
+red\ScrollReveal.tsx:23:25)
+    at div
+    at section
+    at div
+    at MotionDOMComponent (file:///C:/Users/91
+947/Downloads/dr-smile-main/dr-smile-main/node
+_modules/framer-motion/dist/es/motion/index.mj
+s:45:16)
+    at PageTransition (C:\Users\91947\Download
+s\dr-smile-main\dr-smile-main\src\components\s
+hared\PageTransition.tsx:19:27)
+    at main
+    at div
+    at Layout (C:\Users\91947\Downloads\dr-smi
+le-main\dr-smile-main\src\components\layout\La
+yout.tsx:11:19)
+    at Contact (C:\Users\91947\Downloads\dr-sm
+ile-main\dr-smile-main\src\pages\Contact.tsx:1
+95:71)
+    at Router (C:\Users\91947\Downloads\dr-smi
+le-main\dr-smile-main\node_modules\react-route
+r\dist\umd\react-router.development.js:1207:17
+)
+    at BrowserRouter (C:\Users\91947\Downloads
+\dr-smile-main\dr-smile-main\node_modules\reac
+t-router-dom\dist\umd\react-router-dom.develop
+ment.js:695:7)
+
+Consider adding an error boundary to your 
+tree to customize error handling behavior.
+Visit 
+https://reactjs.org/link/error-boundaries to 
+learn more about error boundaries.
+The above error occurred in the 
+<ForwardRef(motion.div)> component:
+
+    at MotionDOMComponent (file:///C:/Users/91
+947/Downloads/dr-smile-main/dr-smile-main/node
+_modules/framer-motion/dist/es/motion/index.mj
+s:45:16)
+    at ScrollReveal (C:\Users\91947\Downloads\
+dr-smile-main\dr-smile-main\src\components\sha
+red\ScrollReveal.tsx:23:25)
+    at div
+    at section
+    at div
+    at MotionDOMComponent (file:///C:/Users/91
+947/Downloads/dr-smile-main/dr-smile-main/node
+_modules/framer-motion/dist/es/motion/index.mj
+s:45:16)
+    at PageTransition (C:\Users\91947\Download
+s\dr-smile-main\dr-smile-main\src\components\s
+hared\PageTransition.tsx:19:27)
+    at main
+    at div
+    at Layout (C:\Users\91947\Downloads\dr-smi
+le-main\dr-smile-main\src\components\layout\La
+yout.tsx:11:19)
+    at Contact (C:\Users\91947\Downloads\dr-sm
+ile-main\dr-smile-main\src\pages\Contact.tsx:1
+95:71)
+    at Router (C:\Users\91947\Downloads\dr-smi
+le-main\dr-smile-main\node_modules\react-route
+r\dist\umd\react-router.development.js:1207:17
+)
+    at BrowserRouter (C:\Users\91947\Downloads
+\dr-smile-main\dr-smile-main\node_modules\reac
+t-router-dom\dist\umd\react-router-dom.develop
+ment.js:695:7)
+
+Consider adding an error boundary to your 
+tree to customize error handling behavior.
+Visit 
+https://reactjs.org/link/error-boundaries to 
+learn more about error boundaries.
+The above error occurred in the 
+<ForwardRef(motion.div)> component:
+
+    at MotionDOMComponent (file:///C:/Users/91
+947/Downloads/dr-smile-main/dr-smile-main/node
+_modules/framer-motion/dist/es/motion/index.mj
+s:45:16)
+    at ScrollReveal (C:\Users\91947\Downloads\
+dr-smile-main\dr-smile-main\src\components\sha
+red\ScrollReveal.tsx:23:25)
+    at div
+    at div
+    at div
+    at section
+    at div
+    at MotionDOMComponent (file:///C:/Users/91
+947/Downloads/dr-smile-main/dr-smile-main/node
+_modules/framer-motion/dist/es/motion/index.mj
+s:45:16)
+    at PageTransition (C:\Users\91947\Download
+s\dr-smile-main\dr-smile-main\src\components\s
+hared\PageTransition.tsx:19:27)
+    at main
+    at div
+    at Layout (C:\Users\91947\Downloads\dr-smi
+le-main\dr-smile-main\src\components\layout\La
+yout.tsx:11:19)
+    at Contact (C:\Users\91947\Downloads\dr-sm
+ile-main\dr-smile-main\src\pages\Contact.tsx:1
+95:71)
+    at Router (C:\Users\91947\Downloads\dr-smi
+le-main\dr-smile-main\node_modules\react-route
+r\dist\umd\react-router.development.js:1207:17
+)
+    at BrowserRouter (C:\Users\91947\Downloads
+\dr-smile-main\dr-smile-main\node_modules\reac
+t-router-dom\dist\umd\react-router-dom.develop
+ment.js:695:7)
+
+ [31mΓ¥»[39m src/test-contact.test.tsx [2m([22m[2m1 test[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 158[2mms[22m[39m
+[31m   [31m├ù[31m Contact[2m > [22mrenders without crashing[39m[32m 157[2mms[22m[39m
+[31m     ΓåÆ IntersectionObserver is not defined[39m
+Consider adding an error boundary to your 
+tree to customize error handling behavior.
+Visit 
+https://reactjs.org/link/error-boundaries to 
+learn more about error boundaries.
+The above error occurred in the 
+<ForwardRef(motion.div)> component:
+
+    at MotionDOMComponent (file:///C:/Users/91
+947/Downloads/dr-smile-main/dr-smile-main/node
+_modules/framer-motion/dist/es/motion/index.mj
+s:45:16)
+    at ScrollReveal (C:\Users\91947\Downloads\
+dr-smile-main\dr-smile-main\src\components\sha
+red\ScrollReveal.tsx:23:25)
+    at div
+    at div
+    at div
+    at section
+    at div
+    at MotionDOMComponent (file:///C:/Users/91
+947/Downloads/dr-smile-main/dr-smile-main/node
+_modules/framer-motion/dist/es/motion/index.mj
+s:45:16)
+    at PageTransition (C:\Users\91947\Download
+s\dr-smile-main\dr-smile-main\src\components\s
+hared\PageTransition.tsx:19:27)
+    at main
+    at div
+    at Layout (C:\Users\91947\Downloads\dr-smi
+le-main\dr-smile-main\src\components\layout\La
+yout.tsx:11:19)
+    at Contact (C:\Users\91947\Downloads\dr-sm
+ile-main\dr-smile-main\src\pages\Contact.tsx:1
+95:71)
+    at Router (C:\Users\91947\Downloads\dr-smi
+le-main\dr-smile-main\node_modules\react-route
+r\dist\umd\react-router.development.js:1207:17
+)
+    at BrowserRouter (C:\Users\91947\Downloads
+\dr-smile-main\dr-smile-main\node_modules\reac
+t-router-dom\dist\umd\react-router-dom.develop
+ment.js:695:7)
+
+Consider adding an error boundary to your 
+tree to customize error handling behavior.
+Visit 
+https://reactjs.org/link/error-boundaries to 
+learn more about error boundaries.
+The above error occurred in the 
+<ForwardRef(motion.div)> component:
+
+    at MotionDOMComponent (file:///C:/Users/91
+947/Downloads/dr-smile-main/dr-smile-main/node
+_modules/framer-motion/dist/es/motion/index.mj
+s:45:16)
+    at ScrollReveal (C:\Users\91947\Downloads\
+dr-smile-main\dr-smile-main\src\components\sha
+red\ScrollReveal.tsx:23:25)
+    at div
+    at div
+    at div
+    at section
+    at div
+    at MotionDOMComponent (file:///C:/Users/91
+947/Downloads/dr-smile-main/dr-smile-main/node
+_modules/framer-motion/dist/es/motion/index.mj
+s:45:16)
+    at PageTransition (C:\Users\91947\Download
+s\dr-smile-main\dr-smile-main\src\components\s
+hared\PageTransition.tsx:19:27)
+    at main
+    at div
+    at Layout (C:\Users\91947\Downloads\dr-smi
+le-main\dr-smile-main\src\components\layout\La
+yout.tsx:11:19)
+    at Contact (C:\Users\91947\Downloads\dr-sm
+ile-main\dr-smile-main\src\pages\Contact.tsx:1
+95:71)
+    at Router (C:\Users\91947\Downloads\dr-smi
+le-main\dr-smile-main\node_modules\react-route
+r\dist\umd\react-router.development.js:1207:17
+)
+    at BrowserRouter (C:\Users\91947\Downloads
+\dr-smile-main\dr-smile-main\node_modules\reac
+t-router-dom\dist\umd\react-router-dom.develop
+ment.js:695:7)
+
+Consider adding an error boundary to your 
+tree to customize error handling behavior.
+Visit 
+https://reactjs.org/link/error-boundaries to 
+learn more about error boundaries.
+The above error occurred in the 
+<ForwardRef(motion.div)> component:
+
+    at MotionDOMComponent (file:///C:/Users/91
+947/Downloads/dr-smile-main/dr-smile-main/node
+_modules/framer-motion/dist/es/motion/index.mj
+s:45:16)
+    at ScrollReveal (C:\Users\91947\Downloads\
+dr-smile-main\dr-smile-main\src\components\sha
+red\ScrollReveal.tsx:23:25)
+    at div
+    at div
+    at div
+    at section
+    at div
+    at MotionDOMComponent (file:///C:/Users/91
+947/Downloads/dr-smile-main/dr-smile-main/node
+_modules/framer-motion/dist/es/motion/index.mj
+s:45:16)
+    at PageTransition (C:\Users\91947\Download
+s\dr-smile-main\dr-smile-main\src\components\s
+hared\PageTransition.tsx:19:27)
+    at main
+    at div
+    at Layout (C:\Users\91947\Downloads\dr-smi
+le-main\dr-smile-main\src\components\layout\La
+yout.tsx:11:19)
+    at Contact (C:\Users\91947\Downloads\dr-sm
+ile-main\dr-smile-main\src\pages\Contact.tsx:1
+95:71)
+    at Router (C:\Users\91947\Downloads\dr-smi
+le-main\dr-smile-main\node_modules\react-route
+r\dist\umd\react-router.development.js:1207:17
+)
+    at BrowserRouter (C:\Users\91947\Downloads
+\dr-smile-main\dr-smile-main\node_modules\reac
+t-router-dom\dist\umd\react-router-dom.develop
+ment.js:695:7)
+
+Consider adding an error boundary to your 
+tree to customize error handling behavior.
+Visit 
+https://reactjs.org/link/error-boundaries to 
+learn more about error boundaries.
+The above error occurred in the 
+<ForwardRef(motion.div)> component:
+
+    at MotionDOMComponent (file:///C:/Users/91
+947/Downloads/dr-smile-main/dr-smile-main/node
+_modules/framer-motion/dist/es/motion/index.mj
+s:45:16)
+    at ScrollReveal (C:\Users\91947\Downloads\
+dr-smile-main\dr-smile-main\src\components\sha
+red\ScrollReveal.tsx:23:25)
+    at div
+    at div
+    at div
+    at section
+    at div
+    at MotionDOMComponent (file:///C:/Users/91
+947/Downloads/dr-smile-main/dr-smile-main/node
+_modules/framer-motion/dist/es/motion/index.mj
+s:45:16)
+    at PageTransition (C:\Users\91947\Download
+s\dr-smile-main\dr-smile-main\src\components\s
+hared\PageTransition.tsx:19:27)
+    at main
+    at div
+    at Layout (C:\Users\91947\Downloads\dr-smi
+le-main\dr-smile-main\src\components\layout\La
+yout.tsx:11:19)
+    at Contact (C:\Users\91947\Downloads\dr-sm
+ile-main\dr-smile-main\src\pages\Contact.tsx:1
+95:71)
+    at Router (C:\Users\91947\Downloads\dr-smi
+le-main\dr-smile-main\node_modules\react-route
+r\dist\umd\react-router.development.js:1207:17
+)
+    at BrowserRouter (C:\Users\91947\Downloads
+\dr-smile-main\dr-smile-main\node_modules\reac
+t-router-dom\dist\umd\react-router-dom.develop
+ment.js:695:7)
+
+Consider adding an error boundary to your 
+tree to customize error handling behavior.
+Visit 
+https://reactjs.org/link/error-boundaries to 
+learn more about error boundaries.
+ReferenceError: IntersectionObserver is not 
+defined
+    at initIntersectionObserver [90m(file:///
+C:/Users/91947/Downloads/dr-smile-main/dr-smil
+e-main/[39mnode_modules/[4mframer-motion[24
+m/src/motion/features/viewport/observers.ts:54
+:34[90m)[39m
+    at observeIntersection [90m(file:///C:/Us
+ers/91947/Downloads/dr-smile-main/dr-smile-mai
+n/[39mnode_modules/[4mframer-motion[24m/src
+/motion/features/viewport/observers.ts:68:39[
+90m)[39m
+    at InViewFeature.startObserver [90m(file:
+///C:/Users/91947/Downloads/dr-smile-main/dr-s
+mile-main/[39mnode_modules/[4mframer-motion
+[24m/src/motion/features/viewport/index.ts:66:
+29[90m)[39m
+    at InViewFeature.mount [90m(file:///C:/Us
+ers/91947/Downloads/dr-smile-main/dr-smile-mai
+n/[39mnode_modules/[4mframer-motion[24m/src
+/motion/features/viewport/index.ts:74:14[90m)
+[39m
+    at HTMLVisualElement.updateFeatures [90m(
+file:///C:/Users/91947/Downloads/dr-smile-main
+/dr-smile-main/[39mnode_modules/[4mmotion-do
+m[24m/src/render/VisualElement.ts:656:29[90m
+)[39m
+    at [90mfile:///C:/Users/91947/Downloads/d
+r-smile-main/dr-smile-main/[39mnode_modules/
+[4mframer-motion[24m/dist/es/motion/utils/use
+-visual-element.mjs:95:23
+    at commitHookEffectListMount [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:23189:26[90m)[39m
+    at commitLayoutEffectOnFiber [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:23312:15[90m)[39m
+    at commitLayoutMountEffects_complete [90m
+(C:\Users\91947\Downloads\dr-smile-main\dr-smi
+le-main\[39mnode_modules\[4mreact-dom[24m\c
+js\react-dom.development.js:24727:9[90m)[39m
+    at commitLayoutEffects_begin [90m(C:\User
+s\91947\Downloads\dr-smile-main\dr-smile-main\
+[39mnode_modules\[4mreact-dom[24m\cjs\react
+-dom.development.js:24713:7[90m)[39m
+
+
+[31mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[39m[1m[41m 
+Failed Tests 1 
+[49m[22m[31mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[39m
+
+[41m[1m FAIL [22m[49m 
+src/test-contact.test.tsx[2m > 
+[22mContact[2m > [22mrenders without 
+crashing
+[31m[1mReferenceError[22m: 
+IntersectionObserver is not defined[39m
+[90m [2mΓ¥»[22m initIntersectionObserver no
+de_modules/framer-motion/src/motion/features/v
+iewport/observers.ts:[2m54:34[22m[39m
+[90m [2mΓ¥»[22m observeIntersection node_mo
+dules/framer-motion/src/motion/features/viewpo
+rt/observers.ts:[2m68:39[22m[39m
+[90m [2mΓ¥»[22m 
+InViewFeature.startObserver node_modules/frame
+r-motion/src/motion/features/viewport/index.ts
+:[2m66:29[22m[39m
+[90m [2mΓ¥»[22m InViewFeature.mount node_mo
+dules/framer-motion/src/motion/features/viewpo
+rt/index.ts:[2m74:14[22m[39m
+[90m [2mΓ¥»[22m 
+HTMLVisualElement.updateFeatures node_modules/
+motion-dom/src/render/VisualElement.ts:[2m656
+:29[22m[39m
+[90m [2mΓ¥»[22m node_modules/framer-motion/
+dist/es/motion/utils/use-visual-element.mjs:[
+2m95:23[22m[39m
+[90m [2mΓ¥»[22m commitHookEffectListMount n
+ode_modules/react-dom/cjs/react-dom.developmen
+t.js:[2m23189:26[22m[39m
+[90m [2mΓ¥»[22m commitLayoutEffectOnFiber n
+ode_modules/react-dom/cjs/react-dom.developmen
+t.js:[2m23312:15[22m[39m
+[90m [2mΓ¥»[22m 
+commitLayoutMountEffects_complete node_modules
+/react-dom/cjs/react-dom.development.js:[2m24
+727:9[22m[39m
+[90m [2mΓ¥»[22m commitLayoutEffects_begin n
+ode_modules/react-dom/cjs/react-dom.developmen
+t.js:[2m24713:7[22m[39m
+
+[31m[2mΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»Γ
+Ä»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»ΓÄ»[1/1]ΓÄ»[2
+2m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m   Start at [22m 18:49:39
+[2m   Duration [22m 5.40s[2m (transform 279ms, setup 114ms, collect 3.73s, tests 158ms, environment 587ms, prepare 184ms)[22m
+

@@ -7,6 +7,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 
 const clinics = [
   {
+<<<<<<< HEAD
     name: "SmileCare Downtown",
     address: "123 Dental Avenue, Downtown, NY 10001",
     days: "Mon – Fri",
@@ -33,6 +34,25 @@ const clinics = [
     mapUrl: "https://www.google.com/maps?q=40.6892,-73.9857",
     coords: { lat: 40.6892, lng: -73.9857 },
   },
+=======
+    name: "Tooth Zone Dental Clinic - Madhyamgram",
+    address: "9 No Railgate, Madhyamgram, Station Road, Kora, Madhyamgram, Kolkata, West Bengal 700130",
+    days: "Mon – Fri",
+    hours: "6:15 PM – 9:00 PM",
+    image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=500&q=80",
+    mapUrl: "https://maps.app.goo.gl/caB9HBPh61tJKgX36?g_st=aw",
+    coords: { lat: 22.702722, lng: 88.460868 },
+  },
+  {
+    name: "Tooth Zone Dental Clinic - Dum Dum",
+    address: "Jessore Rd, Basak Bagan, South Dumdum, Kolkata, West Bengal 700048",
+    days: "Mon – Sat",
+    hours: "10:30 AM – 2:30 PM",
+    image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774324091/AHVAweozSRmlxxbBYeIcTc0aW1oGMqnP2b41eJ1KdfSG6tRnNVZ5yqwvZFT5ea9Mifp3EP3AvTenRjQYGUBw7YgcaKGhbDmbT4CFXPtkzPJnRKqXBt6QrdF5EItNC3u2YpXXrn6LRWIj_s483-k-no_scmuil.jpg",
+    mapUrl: "https://maps.app.goo.gl/7ZHCytdYZHkiDpKP8?g_st=aw",
+    coords: { lat: 22.608571, lng: 88.395793 },
+  }
+>>>>>>> 20a29a9 (Fresh start for dr-smile project)
 ];
 
 const ClinicLocations = () => {
@@ -49,7 +69,11 @@ const ClinicLocations = () => {
           </div>
         </ScrollReveal>
 
+<<<<<<< HEAD
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+=======
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-12">
+>>>>>>> 20a29a9 (Fresh start for dr-smile project)
           {clinics.map((clinic, i) => (
             <ScrollReveal key={clinic.name} delay={i * 0.1}>
               <div className="rounded-2xl overflow-hidden bg-card border border-border/50 hover:border-primary/30 transition-all duration-400 hover:-translate-y-1 hover:shadow-lg">
