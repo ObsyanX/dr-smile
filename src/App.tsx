@@ -23,7 +23,7 @@ const AdminAppointments = lazy(() => import("./pages/admin/Appointments"));
 const AdminPatients = lazy(() => import("./pages/admin/Patients"));
 const AdminAnalytics = lazy(() => import("./pages/admin/Analytics"));
 
-<<<<<<< HEAD
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -32,10 +32,7 @@ const queryClient = new QueryClient({
     },
   },
 });
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
-=======
-const queryClient = new QueryClient();
->>>>>>> 7204047 (Your message here)
+
 
 const PageLoader = () => (
   <div className="min-h-screen flex items-center justify-center bg-background">

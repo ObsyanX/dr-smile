@@ -1,10 +1,6 @@
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
-<<<<<<< HEAD
-
-=======
->>>>>>> 7204047 (Your message here)
 import { logger } from "@/lib/logger";
 
 // ── Global Safety Layer ─────────────────────────────────────────────────────
