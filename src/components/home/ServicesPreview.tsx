@@ -6,14 +6,14 @@ import { ArrowRight } from "lucide-react";
 const services = [
   {
     icon: "🦷",
-    title: "Dental Implants",
-    description: "Permanent tooth replacement with natural-looking results using advanced implant technology.",
+    title: "Fixed Partial Denture",
+    description: "Permanent replacement of missing teeth anchored to adjacent teeth, restoring function and aesthetics.",
     image: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=400&q=80",
   },
   {
     icon: "✨",
-    title: "Teeth Whitening",
-    description: "Professional whitening treatments for a brighter, more confident smile in just one visit.",
+    title: "Tooth Scaling",
+    description: "Professional cleaning that removes plaque and tartar to maintain healthy gums and prevent dental issues.",
     image: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=400&q=80",
   },
   {
