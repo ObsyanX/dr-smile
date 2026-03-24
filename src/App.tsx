@@ -23,9 +23,6 @@ const AdminAppointments = lazy(() => import("./pages/admin/Appointments"));
 const AdminPatients = lazy(() => import("./pages/admin/Patients"));
 const AdminAnalytics = lazy(() => import("./pages/admin/Analytics"));
 
-<<<<<<< HEAD
-const queryClient = new QueryClient();
-=======
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
