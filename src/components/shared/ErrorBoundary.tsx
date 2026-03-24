@@ -1,10 +1,6 @@
 import { Component, ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle } from "lucide-react";
-<<<<<<< HEAD
-=======
-import { logger } from "@/lib/logger";
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
 
 interface Props { children: ReactNode; }
 interface State { hasError: boolean; error: Error | null; }
@@ -20,11 +16,7 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   componentDidCatch(error: Error, info: React.ErrorInfo) {
-<<<<<<< HEAD
     console.error("ErrorBoundary caught:", error, info);
-=======
-    logger.error("ErrorBoundary caught an exception", error, { info });
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
   }
 
   render() {

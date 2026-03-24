@@ -2,10 +2,6 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import AdminLayout from "@/components/admin/AdminLayout";
 import { Card, CardContent } from "@/components/ui/card";
-<<<<<<< HEAD
-=======
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
 import {
   CalendarCheck,
   Clock,
@@ -29,25 +25,15 @@ const Dashboard = () => {
   const [stats, setStats] = useState<Stats>({
     total: 0, today: 0, pending: 0, confirmed: 0, totalPatients: 0, estimatedRevenue: 0,
   });
-<<<<<<< HEAD
   const [recentAppointments, setRecentAppointments] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchData();
-=======
-  const [appointments, setAppointments] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    let mounted = true;
-    fetchData(mounted);
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
 
     const channel = supabase
       .channel("admin-dashboard")
       .on("postgres_changes", { event: "*", schema: "public", table: "appointments" }, () => {
-<<<<<<< HEAD
         fetchData();
       })
       .subscribe();
@@ -56,19 +42,6 @@ const Dashboard = () => {
   }, []);
 
   const fetchData = async () => {
-=======
-        fetchData(mounted);
-      })
-      .subscribe();
-
-    return () => {
-      mounted = false;
-      supabase.removeChannel(channel);
-    };
-  }, []);
-
-  const fetchData = async (mounted = true) => {
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
     const today = format(new Date(), "yyyy-MM-dd");
 
     const [appointmentsRes, pricesRes] = await Promise.all([
@@ -76,11 +49,6 @@ const Dashboard = () => {
       supabase.from("treatment_prices").select("*"),
     ]);
 
-<<<<<<< HEAD
-=======
-    if (!mounted) return; // Component was unmounted while awaiting — bail out.
-
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
     const appointments = appointmentsRes.data || [];
     const prices = pricesRes.data || [];
     const priceMap = new Map(prices.map((p) => [p.treatment_name, Number(p.price)]));
@@ -100,11 +68,7 @@ const Dashboard = () => {
       estimatedRevenue: revenue,
     });
 
-<<<<<<< HEAD
     setRecentAppointments(appointments.slice(0, 5));
-=======
-    setAppointments(appointments);
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
     setLoading(false);
   };
 
@@ -137,35 +101,6 @@ const Dashboard = () => {
     }
   };
 
-<<<<<<< HEAD
-=======
-  const todayStr = format(new Date(), "yyyy-MM-dd");
-  const todayApts = appointments.filter(a => a.preferred_date === todayStr).slice(0, 5);
-  const upcomingApts = appointments.filter(a => a.preferred_date && a.preferred_date > todayStr).slice(0, 5);
-  const pastApts = appointments.filter(a => !a.preferred_date || a.preferred_date < todayStr).slice(0, 5);
-
-  const renderAppointmentList = (data: any[]) => {
-    if (data.length === 0) {
-      return <p className="text-sm text-muted-foreground">No appointments in this category.</p>;
-    }
-    return (
-      <div className="space-y-3">
-        {data.map((apt) => (
-          <div key={apt.id} className="flex items-center justify-between p-3 rounded-xl bg-muted/50">
-            <div>
-              <p className="font-medium text-foreground text-sm">{apt.name}</p>
-              <p className="text-xs text-muted-foreground">{apt.treatment} • {apt.preferred_date || "No date"}</p>
-            </div>
-            <span className={`px-2.5 py-1 rounded-full text-xs font-medium capitalize ${statusColor(apt.status)}`}>
-              {apt.status}
-            </span>
-          </div>
-        ))}
-      </div>
-    );
-  };
-
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
   return (
     <AdminLayout>
       <div className="space-y-8">
@@ -188,7 +123,6 @@ const Dashboard = () => {
           ))}
         </div>
 
-<<<<<<< HEAD
         {/* Recent Appointments */}
         <Card className="border-border/50">
           <CardContent className="p-6">
@@ -210,27 +144,6 @@ const Dashboard = () => {
                 ))}
               </div>
             )}
-=======
-        <Card className="border-border/50">
-          <CardContent className="p-6">
-            <h2 className="font-heading font-semibold text-foreground mb-4">Recent Appointments</h2>
-            <Tabs defaultValue="today" className="w-full">
-              <TabsList className="grid w-full grid-cols-3 mb-4">
-                <TabsTrigger value="past">Past</TabsTrigger>
-                <TabsTrigger value="today">Today</TabsTrigger>
-                <TabsTrigger value="upcoming">Upcoming</TabsTrigger>
-              </TabsList>
-              <TabsContent value="past" className="m-0 focus-visible:outline-none">
-                {renderAppointmentList(pastApts)}
-              </TabsContent>
-              <TabsContent value="today" className="m-0 focus-visible:outline-none">
-                {renderAppointmentList(todayApts)}
-              </TabsContent>
-              <TabsContent value="upcoming" className="m-0 focus-visible:outline-none">
-                {renderAppointmentList(upcomingApts)}
-              </TabsContent>
-            </Tabs>
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
           </CardContent>
         </Card>
       </div>

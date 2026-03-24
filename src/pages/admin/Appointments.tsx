@@ -6,18 +6,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-<<<<<<< HEAD
 import { toast } from "@/hooks/use-toast";
 import { Search, CheckCircle2, XCircle, Trash2, Check } from "lucide-react";
 import TimeSelectionModal from "@/components/admin/TimeSelectionModal";
-=======
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { format } from "date-fns";
-import { toast } from "@/hooks/use-toast";
-import { Search, CheckCircle2, XCircle, Trash2, Check } from "lucide-react";
-import TimeSelectionModal from "@/components/admin/TimeSelectionModal";
-import { isCustomTime } from "@/lib/clinic-rules";
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
 
 interface Appointment {
   id: string;
@@ -53,7 +44,6 @@ const Appointments = () => {
   const [timeModal, setTimeModal] = useState<{ open: boolean; appointment: Appointment | null }>({ open: false, appointment: null });
 
   useEffect(() => {
-<<<<<<< HEAD
     fetchAppointments();
     const channel = supabase
       .channel("admin-appointments")
@@ -63,33 +53,10 @@ const Appointments = () => {
   }, []);
 
   const fetchAppointments = async () => {
-=======
-    let mounted = true;
-    fetchAppointments(mounted);
-
-    const channel = supabase
-      .channel("admin-appointments")
-      .on("postgres_changes", { event: "*", schema: "public", table: "appointments" }, () => fetchAppointments(mounted))
-      .subscribe();
-
-    return () => {
-      mounted = false;
-      supabase.removeChannel(channel);
-    };
-  }, []);
-
-  const fetchAppointments = async (mounted = true) => {
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
     const { data, error } = await supabase
       .from("appointments")
       .select("*")
       .order("created_at", { ascending: false });
-<<<<<<< HEAD
-=======
-
-    if (!mounted) return; // Unmounted while awaiting — bail out.
-
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
     if (error) {
       toast({ title: "Error", description: error.message, variant: "destructive" });
     }
@@ -191,110 +158,11 @@ const Appointments = () => {
     return matchSearch && matchStatus && matchClinic;
   });
 
-<<<<<<< HEAD
-=======
-  const todayStr = format(new Date(), "yyyy-MM-dd");
-  const todayAppointments = filtered.filter(a => a.preferred_date === todayStr);
-  const upcomingAppointments = filtered.filter(a => a.preferred_date && a.preferred_date > todayStr);
-  const pastAppointments = filtered.filter(a => !a.preferred_date || a.preferred_date < todayStr);
-
-  const renderTable = (data: Appointment[]) => (
-    <div className="overflow-x-auto">
-      <Table>
-        <TableHeader>
-          <TableRow>
-            <TableHead>Name</TableHead>
-            <TableHead>Phone</TableHead>
-            <TableHead>Treatment</TableHead>
-            <TableHead>Date</TableHead>
-            <TableHead>Time</TableHead>
-            <TableHead>Clinic</TableHead>
-            <TableHead>Status</TableHead>
-            <TableHead className="text-right">Actions</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {data.length === 0 ? (
-            <TableRow>
-              <TableCell colSpan={8} className="text-center py-12 text-muted-foreground">No appointments found</TableCell>
-            </TableRow>
-          ) : (
-            data.map((apt) => (
-              <TableRow key={apt.id}>
-                <TableCell className="font-medium">{apt.name}</TableCell>
-                <TableCell>{apt.phone}</TableCell>
-                <TableCell>{apt.treatment}</TableCell>
-                <TableCell>{apt.preferred_date || "—"}</TableCell>
-                <TableCell>
-                  <div className="flex items-center gap-2">
-                    <span>{apt.appointment_time || "—"}</span>
-                    {apt.appointment_time && isCustomTime(apt.clinic_location, apt.preferred_date, apt.appointment_time) && (
-                      <span className="px-1.5 py-0.5 rounded text-[10px] font-medium bg-purple-100 text-purple-700 border border-purple-200 uppercase tracking-wider">
-                        Custom
-                      </span>
-                    )}
-                  </div>
-                </TableCell>
-                <TableCell>
-                  {apt.clinic_location === "Madhyamgram" ? (
-                    <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-amber-100 text-amber-800 border border-amber-200 whitespace-nowrap">
-                      Madhyamgram
-                    </span>
-                  ) : apt.clinic_location === "Dum Dum" ? (
-                    <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800 border border-blue-200 whitespace-nowrap">
-                      Dum Dum
-                    </span>
-                  ) : (
-                    <span className="px-2.5 py-1 rounded-full text-xs font-medium bg-muted text-muted-foreground whitespace-nowrap">
-                      {apt.clinic_location || "—"}
-                    </span>
-                  )}
-                </TableCell>
-                <TableCell>
-                  <span className={`px-2.5 py-1 rounded-full text-xs font-medium capitalize ${statusColor(apt.status)}`}>
-                    {apt.status}
-                  </span>
-                </TableCell>
-                <TableCell>
-                  <div className="flex items-center justify-end gap-1">
-                    {apt.status === "pending" && (
-                      <Button size="icon" variant="ghost" className="h-8 w-8 text-green-600 hover:bg-green-50" onClick={() => handleAccept(apt)} title="Accept & Assign Time">
-                        <CheckCircle2 className="w-4 h-4" />
-                      </Button>
-                    )}
-                    {apt.status === "confirmed" && (
-                      <Button size="icon" variant="ghost" className="h-8 w-8 text-primary hover:bg-primary/10" onClick={() => completeAppointment(apt.id)} title="Complete">
-                        <Check className="w-4 h-4" />
-                      </Button>
-                    )}
-                    {(apt.status === "pending" || apt.status === "confirmed") && (
-                      <Button size="icon" variant="ghost" className="h-8 w-8 text-red-500 hover:bg-red-50" onClick={() => cancelAppointment(apt)} title="Cancel">
-                        <XCircle className="w-4 h-4" />
-                      </Button>
-                    )}
-                    <Button size="icon" variant="ghost" className="h-8 w-8 text-muted-foreground hover:text-destructive hover:bg-destructive/10" onClick={() => deleteAppointment(apt.id)} title="Delete">
-                      <Trash2 className="w-4 h-4" />
-                    </Button>
-                  </div>
-                </TableCell>
-              </TableRow>
-            ))
-          )}
-        </TableBody>
-      </Table>
-    </div>
-  );
-
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
   if (loading) {
     return (
       <AdminLayout>
         <div className="flex items-center justify-center h-64">
-<<<<<<< HEAD
           <div className="w-8 h-8 border-3 border-primary/30 border-t-primary rounded-full animate-spin" />
-=======
-          <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
         </div>
       </AdminLayout>
     );
@@ -333,7 +201,6 @@ const Appointments = () => {
 
         <Card className="border-border/50">
           <CardContent className="p-0">
-<<<<<<< HEAD
             <div className="overflow-x-auto">
               <Table>
                 <TableHeader>
@@ -395,26 +262,6 @@ const Appointments = () => {
                 </TableBody>
               </Table>
             </div>
-=======
-            <Tabs defaultValue="today" className="w-full">
-              <div className="p-4 border-b border-border/50">
-                <TabsList className="grid w-full sm:w-[400px] grid-cols-3">
-                  <TabsTrigger value="past">Past ({pastAppointments.length})</TabsTrigger>
-                  <TabsTrigger value="today">Today ({todayAppointments.length})</TabsTrigger>
-                  <TabsTrigger value="upcoming">Upcoming ({upcomingAppointments.length})</TabsTrigger>
-                </TabsList>
-              </div>
-              <TabsContent value="past" className="m-0 focus-visible:outline-none">
-                {renderTable(pastAppointments)}
-              </TabsContent>
-              <TabsContent value="today" className="m-0 focus-visible:outline-none">
-                {renderTable(todayAppointments)}
-              </TabsContent>
-              <TabsContent value="upcoming" className="m-0 focus-visible:outline-none">
-                {renderTable(upcomingAppointments)}
-              </TabsContent>
-            </Tabs>
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
           </CardContent>
         </Card>
       </div>
@@ -426,10 +273,6 @@ const Appointments = () => {
         patientName={timeModal.appointment?.name || ""}
         treatment={timeModal.appointment?.treatment || ""}
         date={timeModal.appointment?.preferred_date || null}
-<<<<<<< HEAD
-=======
-        clinicLocation={timeModal.appointment?.clinic_location || null}
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
       />
     </AdminLayout>
   );

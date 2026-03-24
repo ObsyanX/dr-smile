@@ -1,10 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
-<<<<<<< HEAD
-=======
-import { useToast } from "@/hooks/use-toast";
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -15,7 +11,6 @@ const AdminLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-<<<<<<< HEAD
   const [loading, setLoading] = useState(false);
   const { signIn, isAdmin, user } = useAuth();
   const navigate = useNavigate();
@@ -26,34 +21,10 @@ const AdminLogin = () => {
       navigate("/admin", { replace: true });
     }
   }, [user, isAdmin, navigate]);
-=======
-  const [isPending, setIsPending] = useState(false);
-  const { signIn, isAdmin, user, loading: authLoading } = useAuth();
-  const navigate = useNavigate();
-  const { toast } = useToast();
-
-  // Redirect to dashboard once auth confirms admin role.
-  // This effect runs after onAuthStateChange has settled, so isAdmin is stable.
-  useEffect(() => {
-    if (!authLoading && user && isAdmin) {
-      navigate("/admin", { replace: true });
-    }
-  }, [user, isAdmin, navigate, authLoading]);
-
-  // If a logged-in non-admin lands here, show a clear error message.
-  // We do NOT auto-signOut here — signIn() already handles clearing the
-  // previous session before every new login attempt.
-  useEffect(() => {
-    if (!authLoading && user && !isAdmin && !error) {
-      setError("Access denied: your account does not have administrator privileges.");
-    }
-  }, [user, isAdmin, authLoading, error]);
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-<<<<<<< HEAD
     setLoading(true);
     try {
       const { error } = await signIn(email, password);
@@ -67,48 +38,6 @@ const AdminLogin = () => {
     } catch {
       setError("An unexpected error occurred. Please try again.");
       setLoading(false);
-=======
-    setIsPending(true);
-
-    try {
-      const { error: signInError, isAdmin: userIsAdmin } = await signIn(email, password);
-      if (signInError) {
-        const isTimeout = signInError.message && signInError.message.includes("timed out");
-        const errMsg = isTimeout 
-          ? "Request timed out. Please hard refresh the page or clear browser cache." 
-          : "Invalid credentials. Please try again.";
-          
-        toast({
-          variant: "destructive",
-          title: isTimeout ? "Timeout" : "Sign in failed",
-          description: errMsg,
-        });
-        setError(errMsg);
-      } else if (userIsAdmin === false) {
-        toast({
-          variant: "destructive",
-          title: "Access Denied",
-          description: "You do not have administrator privileges.",
-        });
-        setError("Access denied: Admin privileges required.");
-      } else {
-        toast({
-          title: "Login Successful",
-          description: "Welcome back. Redirecting to dashboard...",
-        });
-        // Immediately redirect to dashboard, skipping wait for async effects
-        navigate("/admin", { replace: true });
-      }
-    } catch {
-      toast({
-        variant: "destructive",
-        title: "Error",
-        description: "An unexpected error occurred. Please try again.",
-      });
-      setError("An unexpected error occurred. Please try again.");
-    } finally {
-      setIsPending(false);
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
     }
   };
 
@@ -145,10 +74,6 @@ const AdminLogin = () => {
                   <Input
                     id="email"
                     type="email"
-<<<<<<< HEAD
-=======
-                    autoComplete="username"
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="admin@example.com"
@@ -164,10 +89,6 @@ const AdminLogin = () => {
                   <Input
                     id="password"
                     type="password"
-<<<<<<< HEAD
-=======
-                    autoComplete="current-password"
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
@@ -176,17 +97,8 @@ const AdminLogin = () => {
                   />
                 </div>
               </div>
-<<<<<<< HEAD
               <Button type="submit" className="w-full rounded-xl font-heading" disabled={loading}>
                 {loading ? "Signing in..." : "Sign In"}
-=======
-              <Button
-                type="submit"
-                className="w-full rounded-xl font-heading"
-                disabled={isPending || authLoading}
-              >
-                {isPending ? "Signing in…" : "Sign In"}
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
               </Button>
             </form>
           </CardContent>

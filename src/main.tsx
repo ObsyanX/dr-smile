@@ -1,7 +1,10 @@
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7204047 (Your message here)
 import { logger } from "@/lib/logger";
 
 // ── Global Safety Layer ─────────────────────────────────────────────────────
@@ -38,7 +41,5 @@ window.addEventListener("error", (event) => {
   }
   logger.warn("Global error caught", { message: event.message, filename: event.filename });
 });
-// ───────────────────────────────────────────────────────────────────────────
->>>>>>> 20a29a9 (Fresh start for dr-smile project)
 
 createRoot(document.getElementById("root")!).render(<App />);
