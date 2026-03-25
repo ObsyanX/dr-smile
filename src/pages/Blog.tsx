@@ -48,15 +48,15 @@ export default function Blog() {
   }, []);
 
   const categories = ["All", ...Array.from(new Set(blogs.map(b => b.category).filter(Boolean)))];
-  const filteredBlogs = activeCategory === "All" 
-    ? blogs 
+  const filteredBlogs = activeCategory === "All"
+    ? blogs
     : blogs.filter(b => b.category === activeCategory);
 
   return (
     <Layout>
       <SEOHead
-        title={activeCategory === "All" 
-          ? "Dental Health Blog & Treatment Guides — ToothZone" 
+        title={activeCategory === "All"
+          ? "Dental Health Blog & Treatment Guides — ToothZone"
           : `${activeCategory} Guides & Practical Tips — ToothZone`}
         description="Read the latest articles on root canals, dental implants, braces, and oral hygiene from the experts at ToothZone Dental Clinic."
       />
@@ -80,7 +80,7 @@ export default function Blog() {
 
         {/* Content Section */}
         <section className="container mx-auto px-4 lg:px-8 -mt-8 relative z-20">
-          
+
           {/* Category Filter */}
           <div className="flex flex-wrap gap-2 justify-center mb-12">
             {categories.map((c: any) => (
@@ -112,8 +112,8 @@ export default function Blog() {
                 <article key={blog.slug} className="group bg-card border border-border/50 rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/20 transition-all duration-300 flex flex-col h-full hover:-translate-y-1">
                   <div className="relative h-56 overflow-hidden bg-muted">
                     {blog.cover_image ? (
-                      <img 
-                        src={blog.cover_image} 
+                      <img
+                        src={blog.cover_image}
                         alt={blog.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                       />
@@ -128,7 +128,7 @@ export default function Blog() {
                       </Badge>
                     </div>
                   </div>
-                  
+
                   <div className="p-6 md:p-8 flex flex-col flex-1">
                     <div className="flex items-center gap-4 text-xs font-medium text-muted-foreground mb-4">
                       <span className="flex items-center gap-1.5">
@@ -138,18 +138,18 @@ export default function Blog() {
                         <Eye className="w-3.5 h-3.5" /> {blog.views?.toLocaleString() || 0}
                       </span>
                     </div>
-                    
+
                     <h3 className="text-2xl font-bold font-heading text-foreground mb-3 leading-snug group-hover:text-primary transition-colors line-clamp-2">
                       <Link to={`/blog/${blog.slug}`}>
                         {blog.title}
                         <span className="absolute inset-0 z-10" />
                       </Link>
                     </h3>
-                    
+
                     <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-3 flex-1 flex-grow">
                       {blog.excerpt}
                     </p>
-                    
+
                     <div className="pt-4 border-t border-border/50 flex items-center justify-between font-medium mt-auto">
                       <span className="text-sm text-foreground">{blog.author}</span>
                       <span className="text-sm text-primary flex items-center gap-1 inline-flex group/link">
@@ -188,5 +188,6 @@ export default function Blog() {
         </section>
       </div>
     </Layout>
+
   );
 }

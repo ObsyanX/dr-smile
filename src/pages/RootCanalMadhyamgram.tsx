@@ -76,7 +76,7 @@ const RootCanalMadhyamgram = () => (
                 </a>
               </div>
               <div className="flex items-center gap-3 mt-8">
-                <div className="flex">{[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}</div>
+                <div className="flex">{[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}</div>
                 <span className="text-sm text-muted-foreground">500+ successful root canals in Madhyamgram</span>
               </div>
             </ScrollReveal>
@@ -236,7 +236,7 @@ const RootCanalMadhyamgram = () => (
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact"><Button size="lg" variant="secondary" className="rounded-full font-heading px-10">Book Now</Button></Link>
               <a href="tel:+919804214790">
-                <Button size="lg" variant="outline" className="rounded-full font-heading px-10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
+                <Button size="lg" variant="outline" className="rounded-full font-heading px-10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-black">
                   <Phone className="w-4 h-4 mr-2" /> Emergency Call
                 </Button>
               </a>

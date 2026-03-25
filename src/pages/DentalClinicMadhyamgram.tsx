@@ -90,7 +90,7 @@ const DentalClinicMadhyamgram = () => (
               </div>
               <div className="flex items-center gap-3 mt-8">
                 <div className="flex">
-                  {[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
+                  {[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}
                 </div>
                 <span className="text-sm text-muted-foreground">4.9★ — Trusted by 500+ patients in Madhyamgram</span>
               </div>
@@ -235,11 +235,21 @@ const DentalClinicMadhyamgram = () => (
                   Book Appointment
                 </Button>
               </Link>
-              <a href="https://maps.google.com/?q=Madhyamgram+West+Bengal" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" variant="outline" className="rounded-full font-heading px-10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
-                  <MapPin className="w-4 h-4 mr-2" /> Get Directions
-                </Button>
-              </a>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="rounded-full font-heading px-10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-black"
+              >
+                <a
+                  href="https://maps.google.com/?q=Tooth+Zone+Dental+Clinic+Madhyamgram"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MapPin className="w-4 h-4 mr-2" />
+                  Get Directions
+                </a>
+              </Button>
             </div>
           </ScrollReveal>
         </div>

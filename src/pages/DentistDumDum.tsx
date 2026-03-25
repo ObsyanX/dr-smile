@@ -69,7 +69,7 @@ const DentistDumDum = () => (
                 </a>
               </div>
               <div className="flex items-center gap-3 mt-8">
-                <div className="flex">{[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}</div>
+                <div className="flex">{[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}</div>
                 <span className="text-sm text-muted-foreground">Trusted by patients across Dum Dum &amp; Madhyamgram</span>
               </div>
             </ScrollReveal>
@@ -184,11 +184,21 @@ const DentistDumDum = () => (
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact"><Button size="lg" variant="secondary" className="rounded-full font-heading px-10">Book Appointment</Button></Link>
-              <a href="https://maps.google.com/?q=Madhyamgram+West+Bengal" target="_blank" rel="noopener noreferrer">
-                <Button size="lg" variant="outline" className="rounded-full font-heading px-10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
-                  <MapPin className="w-4 h-4 mr-2" /> Get Directions
-                </Button>
-              </a>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="rounded-full font-heading px-10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-black"
+              >
+                <a
+                  href="https://www.google.com/maps/dir//Tooth+Zone+Dental+Clinic,+Jessore+Rd,+Basak+Bagan,+South+Dumdum,+Kolkata,+West+Bengal+700048/@22.6085595,88.3957902,17z/data=!4m16!1m7!3m6!1s0x3a027733376dce25:0x7d897aace8f1b0d6!2sTooth+Zone+Dental+Clinic!8m2!3d22.6085595!4d88.3957902!16s%2Fg%2F11tnn5qtz3!4m7!1m0!1m5!1m1!1s0x3a027733376dce25:0x7d897aace8f1b0d6!2m2!1d88.3957806!2d22.608558!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDMyMi4wIKXMDSoASAFQAw%3D%3D"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <MapPin className="w-4 h-4 mr-2" />
+                  Get Directions
+                </a>
+              </Button>
             </div>
           </ScrollReveal>
         </div>

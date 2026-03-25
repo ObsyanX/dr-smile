@@ -474,16 +474,31 @@ interface ProgrammaticPageProps {
 }
 
 const ProgrammaticPage = ({ page }: ProgrammaticPageProps) => {
+  const isDumDum = page.location.includes("Dum Dum");
   const schema = {
     "@context": "https://schema.org",
     "@type": "Dentist",
     "name": `ToothZone Dental Clinic — ${page.service} ${page.location}`,
     "description": page.metaDescription,
     "url": page.canonical,
-    "address": { "@type": "PostalAddress", "addressLocality": "Madhyamgram", "addressRegion": "West Bengal", "addressCountry": "IN" },
-    "areaServed": [page.location, "Madhyamgram", "Kolkata"],
+    "address": { 
+      "@type": "PostalAddress", 
+      "streetAddress": isDumDum ? "Jessore Rd, Basak Bagan" : "9 No Railgate, Madhyamgram",
+      "addressLocality": isDumDum ? "South Dumdum" : "Madhyamgram", 
+      "addressRegion": "West Bengal", 
+      "postalCode": isDumDum ? "700048" : "700130",
+      "addressCountry": "IN" 
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": isDumDum ? "22.608571" : "22.702722",
+      "longitude": isDumDum ? "88.395793" : "88.460868"
+    },
+    "areaServed": [page.location, "Madhyamgram", "Dum Dum", "Kolkata"],
     "priceRange": "₹₹",
-    "openingHours": "Mo-Sa 09:00-20:00",
+    "openingHours": isDumDum 
+      ? ["Mo-Sa 10:30-14:00", "Su 18:15-21:00"]
+      : ["Mo-Sa 18:15-21:00"],
   };
 
   return (
@@ -598,7 +613,13 @@ const ProgrammaticPage = ({ page }: ProgrammaticPageProps) => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact"><Button size="lg" variant="secondary" className="rounded-full font-heading px-10">Book Appointment</Button></Link>
-                <a href="https://maps.google.com/?q=Madhyamgram+West+Bengal" target="_blank" rel="noopener noreferrer">
+                <a
+                  href={page.location.includes("Dum Dum") 
+                    ? "https://maps.app.goo.gl/7ZHCytdYZHkiDpKP8" 
+                    : "https://maps.app.goo.gl/caB9HBPh61tJKgX36"} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                >
                   <Button size="lg" variant="outline" className="rounded-full font-heading px-10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
                     <MapPin className="w-4 h-4 mr-2" /> Directions
                   </Button>
