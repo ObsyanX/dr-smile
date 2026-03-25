@@ -6,16 +6,16 @@ const LOCATIONS = ["Madhyamgram", "Dum Dum", "Barasat", "New Town", "Sodepur"];
 const SERVICES = [
   { id: "cavity-treatment", name: "Cavity Treatment", img: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774283315/ChatGPT_Image_Mar_23_2026_09_58_17_PM_xh5isa.png" },
   { id: "tooth-filling", name: "Tooth Filling", img: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774283315/ChatGPT_Image_Mar_23_2026_09_58_17_PM_xh5isa.png" },
-  { id: "gum-treatment", name: "Gum Treatment", img: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80" },
-  { id: "wisdom-tooth-removal", name: "Wisdom Tooth Removal", img: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80" },
-  { id: "pediatric-dentistry", name: "Pediatric Dentistry", img: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80" },
-  { id: "smile-makeover", name: "Smile Makeover", img: "https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&q=80" },
-  { id: "dental-veneers", name: "Dental Veneers", img: "https://images.unsplash.com/photo-1544507888-56d73eb6046e?auto=format&fit=crop&q=80" },
-  { id: "invisible-aligners", name: "Invisible Aligners", img: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774283594/ChatGPT_Image_Mar_23_2026_10_02_57_PM_b0uylf.png" },
-  { id: "emergency-dentist", name: "Emergency Dentist", img: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80" },
-  { id: "full-mouth-rehab", name: "Full Mouth Rehabilitation", img: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&q=80" },
-  { id: "root-canal-treatment", name: "Root Canal Treatment", img: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?auto=format&fit=crop&q=80" },
-  { id: "dental-implants", name: "Dental Implants", img: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&q=80" },
+  { id: "gum-treatment", name: "Gum Treatment", img: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774446256/ChatGPT_Image_Mar_25_2026_07_13_57_PM_jn8rx5.png" },
+  { id: "wisdom-tooth-removal", name: "Wisdom Tooth Removal", img: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774446256/ChatGPT_Image_Mar_25_2026_07_13_57_PM_jn8rx5.png" },
+  { id: "pediatric-dentistry", name: "Pediatric Dentistry", img: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774445606/ChatGPT_Image_Mar_25_2026_07_03_03_PM_u6xy4h.png" },
+  { id: "smile-makeover", name: "Smile Makeover", img: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774445225/ChatGPT_Image_Mar_25_2026_06_56_37_PM_aitkt0.png" },
+  { id: "dental-veneers", name: "Dental Veneers", img: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774446952/ChatGPT_Image_Mar_25_2026_07_25_35_PM_ddlvdh.png" },
+  { id: "invisible-aligners", name: "Invisible Aligners", img: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774444854/ChatGPT_Image_Mar_25_2026_06_50_28_PM_fzivhx.png" },
+  { id: "emergency-dentist", name: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774447246/WhatsApp_Image_2026-03-24_at_11.24.27_AM_seaivg.jpg" },
+  { id: "full-mouth-rehab", name: "Full Mouth Rehabilitation", img: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774447120/ChatGPT_Image_Mar_25_2026_07_28_00_PM_ydo6ff.png" },
+  { id: "root-canal-treatment", name: "Root Canal Treatment", img: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774444304/Before_and_after_root_canal_treatment_oyqcxh.png" },
+  { id: "dental-implants", name: "Dental Implants", img: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774444125/45991c19-590a-4e4a-8ff9-f0f9a8b987d0_lhbsf1.png" },
 ];
 
 const buildFaqs = (service: string, location: string, clinic: string): FAQItem[] => [
@@ -52,7 +52,7 @@ export const generateProgrammaticPages = (): ProgrammaticPageData[] => {
       const title = `${service.name} in ${location} | Best Dentist | ToothZone`;
       const metaDescription = `Looking for the best ${service.name} in ${location}? ToothZone Dental Clinic in ${nearestClinic} provides affordable, painless, and premium level ${service.name}. Book an appointment today!`;
       const keywords = `${service.name.toLowerCase()} in ${location.toLowerCase()}, best ${service.name.toLowerCase()} ${location.toLowerCase()}, dental clinic near ${location.toLowerCase()}, dentist ${location.toLowerCase()}`;
-      
+
       pages.push({
         slug,
         title,
