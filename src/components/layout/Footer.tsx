@@ -46,7 +46,7 @@ const Footer = () => (
           <p className="text-sm leading-relaxed mb-3 max-w-xs">
             Best dental clinic in Madhyamgram. Advanced dental care for Madhyamgram, Dum Dum &amp; all of North Kolkata.
           </p>
-          <p className="text-xs text-primary-foreground/40 mb-5">📍 Madhyamgram, West Bengal — 700129</p>
+          <p className="text-xs text-primary-foreground/40 mb-5">📍 Madhyamgram, West Bengal — 700130</p>
           <div className="flex items-center gap-4">
             <a
               href="tel:+919804214790"
@@ -132,7 +132,7 @@ const Footer = () => (
           <ul className="space-y-4 text-sm">
             <li className="flex items-start gap-3">
               <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-              <span>Madhyamgram, North 24 Parganas,<br />West Bengal — 700129</span>
+              <span>9 No Railgate, Madhyamgram,<br />West Bengal — 700130</span>
             </li>
             <li className="flex items-center gap-3">
               <Phone className="w-4 h-4 text-primary shrink-0" />
@@ -156,6 +156,10 @@ const Footer = () => (
                   <span>Mon – Sat</span>
                   <span className="text-primary-foreground/90 font-medium">6:15 PM – 9:00 PM</span>
                 </div>
+                <div className="flex justify-between text-[11px] opacity-60">
+                  <span>Sunday</span>
+                  <span className="text-destructive/80 font-medium">Closed</span>
+                </div>
               </div>
               <div className="flex flex-col">
                 <span className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">Dum Dum Clinic</span>
@@ -163,10 +167,10 @@ const Footer = () => (
                   <span>Mon – Sat</span>
                   <span className="text-primary-foreground/90 font-medium">10:30 AM – 2:00 PM</span>
                 </div>
-              </div>
-              <div className="flex justify-between text-xs pt-1 opacity-60">
-                <span>Sunday</span>
-                <span className="text-destructive/80 font-medium">Closed</span>
+                <div className="flex justify-between text-primary-foreground/90 font-medium">
+                  <span>Sunday</span>
+                  <span className="font-semibold text-primary">6:15 PM – 9:00 PM</span>
+                </div>
               </div>
             </div>
           </div>

@@ -35,7 +35,7 @@ const schema = {
     "@type": "PostalAddress",
     "addressLocality": "Madhyamgram",
     "addressRegion": "West Bengal",
-    "postalCode": "700129",
+    "postalCode": "700130",
     "addressCountry": "IN",
   },
   "geo": { "@type": "GeoCoordinates", "latitude": "22.7007", "longitude": "88.4355" },

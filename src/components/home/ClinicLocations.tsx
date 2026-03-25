@@ -8,8 +8,8 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/u
 const clinics = [
   {
     name: "Tooth Zone Dental Clinic — Madhyamgram",
-    address: "9 No Railgate, Station Road, Kora, Madhyamgram, Kolkata, West Bengal 700130",
-    days: "Mon – Sun",
+    address: "9 No Railgate, Madhyamgram, Station Road, Kora, Madhyamgram, Kolkata — 700130",
+    days: "Mon – Sat (Sun Closed)",
     hours: "6:15 PM – 9:00 PM",
     image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=500&q=80",
     mapUrl: "https://maps.app.goo.gl/caB9HBPh61tJKgX36",
@@ -17,9 +17,9 @@ const clinics = [
   },
   {
     name: "Tooth Zone Dental Clinic — Dum Dum",
-    address: "Jessore Rd, Basak Bagan, South Dum Dum, Kolkata, West Bengal 700048",
-    days: "Mon – Sat",
-    hours: "10:30 AM – 2:30 PM",
+    address: "Jessore Rd, Basak Bagan, South Dumdum, Kolkata — 700048",
+    days: "Mon-Sat: 10:30AM–2PM; Sun: 6:15–9PM",
+    hours: "Multiple Shifts",
     image: "https://images.unsplash.com/photo-1631549916768-4e9861c6af09?w=500&q=80",
     mapUrl: "https://maps.app.goo.gl/7ZHCytdYZHkiDpKP8",
     coords: { lat: 22.608571, lng: 88.395793 },

@@ -52,18 +52,24 @@ type ClinicKey = "Madhyamgram" | "Dum Dum";
 
 // ─── Clinic Configuration ────────────────────────────────────────────────────
 
+interface TimingShift {
+  days: string;
+  hours: string;
+  openHour: number;
+  openMinute: number;
+  closeHour: number;
+  closeMinute: number;
+  note: string;
+}
+
 interface ClinicInfo {
   label: string;
   address: string;
   shortAddress: string;
   phone: string;
   mapSrc: string;
-  openHour: number;
-  openMinute: number;
-  closeHour: number;
-  closeMinute: number;
-  timingLabel: string;
-  timingNote: string;
+  mapUrl: string;
+  shifts: TimingShift[];
   waNumber: string;
 }
 
@@ -71,33 +77,63 @@ const CLINIC_DATA: Record<ClinicKey, ClinicInfo> = {
   Madhyamgram: {
     label: "Madhyamgram",
     address:
-      "9 No Railgate, Station Road, Kora, Madhyamgram, Kolkata, West Bengal 700130",
-    shortAddress: "Station Road, Kora, Madhyamgram — 700130",
+      "9 No Railgate, Madhyamgram, Station Road, Kora, Madhyamgram, Kolkata, West Bengal 700130",
+    shortAddress: "9 No Railgate, Station Road, Madhyamgram — 700130",
     phone: "+91 98042 14790",
     mapSrc:
-      "https://maps.google.com/maps?q=9+No+Railgate+Station+Road+Kora+Madhyamgram+Kolkata+West+Bengal+700130&z=15&output=embed",
-    openHour: 18,
-    openMinute: 15,
-    closeHour: 21,
-    closeMinute: 0,
-    timingLabel: "6:15 PM – 9:00 PM",
-    timingNote: "Evening Clinic",
+      "https://maps.google.com/maps?q=22.702722,88.460868&z=15&output=embed",
+    mapUrl: "https://maps.app.goo.gl/caB9HBPh61tJKgX36",
+    shifts: [
+      {
+        days: "Mon – Sat",
+        hours: "6:15 PM – 9:00 PM",
+        openHour: 18,
+        openMinute: 15,
+        closeHour: 21,
+        closeMinute: 0,
+        note: "Evening Clinic",
+      },
+      {
+        days: "Sunday",
+        hours: "Closed",
+        openHour: -1,
+        openMinute: -1,
+        closeHour: -1,
+        closeMinute: -1,
+        note: "Closed",
+      },
+    ],
     waNumber: "919804214790",
   },
   "Dum Dum": {
     label: "Dum Dum",
     address:
-      "Jessore Road, Basak Bagan, South Dum Dum, Kolkata, West Bengal 700048",
-    shortAddress: "Jessore Road, Basak Bagan, South Dum Dum — 700048",
+      "Jessore Rd, Basak Bagan, South Dumdum, Kolkata, West Bengal 700048",
+    shortAddress: "Basak Bagan, South Dumdum — 700048",
     phone: "+91 98042 14790",
     mapSrc:
-      "https://maps.google.com/maps?q=Jessore+Road+Basak+Bagan+South+Dum+Dum+Kolkata+West+Bengal+700048&z=15&output=embed",
-    openHour: 10,
-    openMinute: 30,
-    closeHour: 14,
-    closeMinute: 0,
-    timingLabel: "10:30 AM – 2:00 PM",
-    timingNote: "Morning Clinic",
+      "https://maps.google.com/maps?q=22.608571,88.395793&z=15&output=embed",
+    mapUrl: "https://maps.app.goo.gl/7ZHCytdYZHkiDpKP8",
+    shifts: [
+      {
+        days: "Mon – Sat",
+        hours: "10:30 AM – 2:00 PM",
+        openHour: 10,
+        openMinute: 30,
+        closeHour: 14,
+        closeMinute: 0,
+        note: "Morning Clinic",
+      },
+      {
+        days: "Sunday",
+        hours: "6:15 PM – 9:00 PM",
+        openHour: 18,
+        openMinute: 15,
+        closeHour: 21,
+        closeMinute: 0,
+        note: "Evening Clinic",
+      },
+    ],
     waNumber: "919804214790",
   },
 };
@@ -108,12 +144,33 @@ const CLINIC_KEYS: ClinicKey[] = ["Madhyamgram", "Dum Dum"];
 
 function getClinicStatus(key: ClinicKey): { open: boolean; text: string } {
   const now = new Date();
+  const day = now.getDay(); // 0 = Sun
   const total = now.getHours() * 60 + now.getMinutes();
   const info = CLINIC_DATA[key];
-  const opens = info.openHour * 60 + info.openMinute;
-  const closes = info.closeHour * 60 + info.closeMinute;
-  const openStr = info.timingLabel.split("–")[0].trim();
-  const closeStr = info.timingLabel.split("–")[1].trim();
+  
+  // Find shift for today
+  const shift = info.shifts.find(s => {
+    if (day === 0) return s.days === "Sunday";
+    return s.days === "Mon – Sat";
+  });
+
+  if (!shift || shift.openHour === -1) {
+    // Check if it opens tomorrow
+    const nextDay = (day + 1) % 7;
+    const tomorrowShift = info.shifts.find(s => {
+      if (nextDay === 0) return s.days === "Sunday";
+      return s.days === "Mon – Sat";
+    });
+    const tomorrowOpener = tomorrowShift && tomorrowShift.openHour !== -1 
+      ? `Opens tomorrow at ${tomorrowShift.hours.split("–")[0].trim()}`
+      : "Closed tomorrow";
+    return { open: false, text: "Closed — " + tomorrowOpener };
+  }
+
+  const opens = shift.openHour * 60 + shift.openMinute;
+  const closes = shift.closeHour * 60 + shift.closeMinute;
+  const openStr = shift.hours.split("–")[0].trim();
+  const closeStr = shift.hours.split("–")[1].trim();
 
   if (total >= opens && total < closes) {
     return { open: true, text: "Open Now — Closes at " + closeStr };
@@ -121,7 +178,17 @@ function getClinicStatus(key: ClinicKey): { open: boolean; text: string } {
   if (total < opens) {
     return { open: false, text: "Closed — Opens at " + openStr };
   }
-  return { open: false, text: "Closed — Opens tomorrow at " + openStr };
+  
+  // After hours, check tomorrow
+  const nextDay = (day + 1) % 7;
+  const tomorrowShift = info.shifts.find(s => {
+    if (nextDay === 0) return s.days === "Sunday";
+    return s.days === "Mon – Sat";
+  });
+  const tomorrowOpener = tomorrowShift && tomorrowShift.openHour !== -1 
+    ? `Opens tomorrow at ${tomorrowShift.hours.split("–")[0].trim()}`
+    : "Closed tomorrow";
+  return { open: false, text: "Closed — " + tomorrowOpener };
 }
 
 // ─── Form Schema ─────────────────────────────────────────────────────────────
@@ -514,12 +581,23 @@ const Contact = () => {
                       <div className="flex flex-wrap items-center gap-3 px-4 py-3 rounded-xl bg-primary/5 border border-primary/15 mb-6">
                         <Clock className="w-4 h-4 text-primary flex-shrink-0" />
                         <div className="flex-1 min-w-0">
-                          <p className="text-xs font-semibold text-primary font-heading">
-                            {activeClinic.timingNote}
-                          </p>
-                          <p className="text-xs text-muted-foreground">
-                            Clinic hours: {activeClinic.timingLabel}
-                          </p>
+                          {(() => {
+                            const day = new Date().getDay();
+                            const shift = activeClinic.shifts.find(s => {
+                              if (day === 0) return s.days === "Sunday";
+                              return s.days === "Mon – Sat";
+                            });
+                            return (
+                              <>
+                                <p className="text-xs font-semibold text-primary font-heading">
+                                  {shift ? shift.note : "Closed Today"}
+                                </p>
+                                <p className="text-xs text-muted-foreground">
+                                  Clinic hours: {shift ? shift.hours : "N/A"}
+                                </p>
+                              </>
+                            );
+                          })()}
                         </div>
                         <div
                           className={cn(

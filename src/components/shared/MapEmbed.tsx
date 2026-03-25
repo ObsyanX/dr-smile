@@ -20,7 +20,7 @@ const MapEmbed = () => {
       {loaded ? (
         <iframe
           title="ToothZone Dental Clinic Madhyamgram location map"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.9912628043655!2d88.43302887528835!3d22.700702579368714!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f88f7a9d0b6c31%3A0x5b8d6e1a8c4d5f21!2sMadhyamgram%2C%20West%20Bengal%20700129!5e0!3m2!1sen!2sin!4v1711300000000!5m2!1sen!2sin"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.9912628043655!2d88.460868!3d22.702722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f88f7a9d0b6c31%3A0x5b8d6e1a8c4d5f21!2sMadhyamgram%2C%20West%20Bengal%20700130!5e0!3m2!1sen!2sin!4v1711300000000!5m2!1sen!2sin"
           width="100%"
           height="350"
           style={{ border: 0, display: "block" }}
@@ -38,9 +38,9 @@ const MapEmbed = () => {
         </div>
       )}
       <div className="bg-background px-5 py-3 flex items-center justify-between flex-wrap gap-3">
-        <span className="text-xs text-muted-foreground">📍 Madhyamgram, North 24 Parganas, West Bengal — 700129</span>
-        <a
-          href="https://maps.google.com/?q=Madhyamgram+West+Bengal+700129"
+        <span className="text-xs text-muted-foreground">📍 9 No Railgate, Madhyamgram, West Bengal — 700130</span>
+        <a 
+          href="https://maps.app.goo.gl/caB9HBPh61tJKgX36"
           target="_blank"
           rel="noopener noreferrer"
           className="text-xs text-primary font-heading font-semibold hover:underline"
