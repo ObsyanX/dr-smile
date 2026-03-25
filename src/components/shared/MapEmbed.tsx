@@ -1,8 +1,25 @@
 import { useState, useEffect } from "react";
 import { MapPin } from "lucide-react";
 
-const MapEmbed = () => {
+interface MapEmbedProps {
+  location?: string;
+}
+
+const MapEmbed = ({ location = "Madhyamgram" }: MapEmbedProps) => {
   const [loaded, setLoaded] = useState(false);
+  const isDumDum = location.includes("Dum Dum") || location.includes("Dumdum");
+
+  const clinicData = isDumDum ? {
+    name: "ToothZone Dental Clinic — Dum Dum",
+    embedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14731.332371971752!2d88.395793!3d22.608571!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027733376dce25:0x7d897aace8f1b0d6!2sTooth+Zone+Dental+Clinic!5e0!3m2!1sen!2sin!4v1711300000000!5m2!1sen!2sin",
+    address: "📍 Jessore Rd, Basak Bagan, South Dumdum, Kolkata — 700048",
+    mapUrl: "https://maps.app.goo.gl/7ZHCytdYZHkiDpKP8"
+  } : {
+    name: "ToothZone Dental Clinic — Madhyamgram",
+    embedUrl: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.9912628043655!2d88.460868!3d22.702722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f88f7a9d0b6c31%3A0x5b8d6e1a8c4d5f21!2sMadhyamgram%2C%20West%20Bengal%20700130!5e0!3m2!1sen!2sin!4v1711300000000!5m2!1sen!2sin",
+    address: "📍 9 No Railgate, Madhyamgram, West Bengal — 700130",
+    mapUrl: "https://maps.app.goo.gl/caB9HBPh61tJKgX36"
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), 300);
@@ -14,20 +31,20 @@ const MapEmbed = () => {
       <div className="bg-primary/5 border-b border-border/50 px-5 py-3 flex items-center gap-2">
         <MapPin className="w-4 h-4 text-primary" />
         <span className="text-sm font-heading font-semibold text-foreground">
-          ToothZone Dental Clinic — Madhyamgram, West Bengal
+          {clinicData.name}
         </span>
       </div>
       {loaded ? (
         <iframe
-          title="ToothZone Dental Clinic Madhyamgram location map"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3679.9912628043655!2d88.460868!3d22.702722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f88f7a9d0b6c31%3A0x5b8d6e1a8c4d5f21!2sMadhyamgram%2C%20West%20Bengal%20700130!5e0!3m2!1sen!2sin!4v1711300000000!5m2!1sen!2sin"
+          title={`Map of ${clinicData.name}`}
+          src={clinicData.embedUrl}
           width="100%"
           height="350"
           style={{ border: 0, display: "block" }}
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          aria-label="Google Map showing ToothZone Dental Clinic location in Madhyamgram, West Bengal"
+          aria-label={`Google Map showing ${clinicData.name}`}
         />
       ) : (
         <div className="h-[350px] bg-secondary/40 flex items-center justify-center">
@@ -38,9 +55,9 @@ const MapEmbed = () => {
         </div>
       )}
       <div className="bg-background px-5 py-3 flex items-center justify-between flex-wrap gap-3">
-        <span className="text-xs text-muted-foreground">📍 9 No Railgate, Madhyamgram, West Bengal — 700130</span>
+        <span className="text-xs text-muted-foreground">{clinicData.address}</span>
         <a 
-          href="https://maps.app.goo.gl/caB9HBPh61tJKgX36"
+          href={clinicData.mapUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="text-xs text-primary font-heading font-semibold hover:underline"

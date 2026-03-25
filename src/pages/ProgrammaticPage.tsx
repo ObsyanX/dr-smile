@@ -481,13 +481,13 @@ const ProgrammaticPage = ({ page }: ProgrammaticPageProps) => {
     "name": `ToothZone Dental Clinic — ${page.service} ${page.location}`,
     "description": page.metaDescription,
     "url": page.canonical,
-    "address": { 
-      "@type": "PostalAddress", 
+    "address": {
+      "@type": "PostalAddress",
       "streetAddress": isDumDum ? "Jessore Rd, Basak Bagan" : "9 No Railgate, Madhyamgram",
-      "addressLocality": isDumDum ? "South Dumdum" : "Madhyamgram", 
-      "addressRegion": "West Bengal", 
+      "addressLocality": isDumDum ? "South Dumdum" : "Madhyamgram",
+      "addressRegion": "West Bengal",
       "postalCode": isDumDum ? "700048" : "700130",
-      "addressCountry": "IN" 
+      "addressCountry": "IN"
     },
     "geo": {
       "@type": "GeoCoordinates",
@@ -496,7 +496,7 @@ const ProgrammaticPage = ({ page }: ProgrammaticPageProps) => {
     },
     "areaServed": [page.location, "Madhyamgram", "Dum Dum", "Kolkata"],
     "priceRange": "₹₹",
-    "openingHours": isDumDum 
+    "openingHours": isDumDum
       ? ["Mo-Sa 10:30-14:00", "Su 18:15-21:00"]
       : ["Mo-Sa 18:15-21:00"],
   };
@@ -535,7 +535,7 @@ const ProgrammaticPage = ({ page }: ProgrammaticPageProps) => {
                   </a>
                 </div>
                 <div className="flex items-center gap-3 mt-8">
-                  <div className="flex">{[1,2,3,4,5].map(s => <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}</div>
+                  <div className="flex">{[1, 2, 3, 4, 5].map(s => <Star key={s} className="w-4 h-4 fill-yellow-400 text-yellow-400" />)}</div>
                   <span className="text-sm text-muted-foreground">4.9★ — Trusted by patients in {page.location}</span>
                 </div>
               </ScrollReveal>
@@ -594,10 +594,10 @@ const ProgrammaticPage = ({ page }: ProgrammaticPageProps) => {
                 Find ToothZone — Near {page.location}
               </h2>
               <p className="text-center text-muted-foreground mb-6 text-sm">
-                Located in Madhyamgram, near Madhyamgram Chowmatha — easily accessible from {page.location} by road or train
+                Located in Madhyamgram, near 9 no. Railgate, Station Road — easily accessible from {page.location} by road or train
               </p>
             </ScrollReveal>
-            <MapEmbed />
+            <MapEmbed location={page.location} />
           </div>
         </section>
 
@@ -614,13 +614,13 @@ const ProgrammaticPage = ({ page }: ProgrammaticPageProps) => {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Link to="/contact"><Button size="lg" variant="secondary" className="rounded-full font-heading px-10">Book Appointment</Button></Link>
                 <a
-                  href={page.location.includes("Dum Dum") 
-                    ? "https://maps.app.goo.gl/7ZHCytdYZHkiDpKP8" 
-                    : "https://maps.app.goo.gl/caB9HBPh61tJKgX36"} 
-                  target="_blank" 
+                  href={page.location.includes("Dum Dum")
+                    ? "https://maps.app.goo.gl/7ZHCytdYZHkiDpKP8"
+                    : "https://maps.app.goo.gl/caB9HBPh61tJKgX36"}
+                  target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Button size="lg" variant="outline" className="rounded-full font-heading px-10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">
+                  <Button size="lg" variant="outline" className="rounded-full font-heading px-10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10 text-black">
                     <MapPin className="w-4 h-4 mr-2" /> Directions
                   </Button>
                 </a>
