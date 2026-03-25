@@ -38,10 +38,10 @@ const schema = {
     "postalCode": "700130",
     "addressCountry": "IN",
   },
-  "geo": { "@type": "GeoCoordinates", "latitude": "22.7007", "longitude": "88.4355" },
+  "geo": { "@type": "GeoCoordinates", "latitude": "22.702722", "longitude": "88.460868" },
   "areaServed": ["Madhyamgram", "Dum Dum", "Kolkata"],
   "priceRange": "₹₹",
-  "openingHours": "Mo-Sa 09:00-20:00",
+  "openingHours": "Mo-Sa 18:15-21:00",
   "medicalSpecialty": "Dentistry",
 };
 

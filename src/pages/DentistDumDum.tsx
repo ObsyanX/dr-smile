@@ -22,10 +22,22 @@ const schema = {
   "name": "ToothZone Dental Clinic — Near Dum Dum",
   "description": "Best dentist near Dum Dum, located in Madhyamgram. Full-service dental clinic serving Dum Dum, Shyamnagar, Bangaon & North Kolkata.",
   "url": "https://thetoothzone.vercel.app/dentist-dum-dum",
-  "address": { "@type": "PostalAddress", "addressLocality": "Madhyamgram", "addressRegion": "West Bengal", "addressCountry": "IN" },
+  "address": { 
+    "@type": "PostalAddress", 
+    "streetAddress": "Jessore Rd, Basak Bagan, South Dumdum",
+    "addressLocality": "Kolkata", 
+    "addressRegion": "West Bengal", 
+    "postalCode": "700048",
+    "addressCountry": "IN" 
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "22.608571",
+    "longitude": "88.395793"
+  },
   "areaServed": ["Dum Dum", "Madhyamgram", "Kolkata", "Barasat"],
   "priceRange": "₹₹",
-  "openingHours": "Mo-Sa 09:00-20:00",
+  "openingHours": ["Mo-Sa 10:30-14:00", "Su 18:15-21:00"],
 };
 
 const DentistDumDum = () => (

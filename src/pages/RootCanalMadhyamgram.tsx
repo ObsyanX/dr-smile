@@ -31,7 +31,20 @@ const schema = {
   "name": "ToothZone Dental Clinic — Root Canal Treatment Madhyamgram",
   "description": "Painless root canal treatment in Madhyamgram. Modern rotary endodontics, single-visit RCT available. Serving Dum Dum & North Kolkata.",
   "url": "https://thetoothzone.vercel.app/root-canal-madhyamgram",
-  "address": { "@type": "PostalAddress", "addressLocality": "Madhyamgram", "addressRegion": "West Bengal", "addressCountry": "IN" },
+  "address": { 
+    "@type": "PostalAddress", 
+    "streetAddress": "9 No Railgate, Madhyamgram, Station Road",
+    "addressLocality": "Madhyamgram", 
+    "addressRegion": "West Bengal", 
+    "postalCode": "700130",
+    "addressCountry": "IN" 
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "22.702722",
+    "longitude": "88.460868"
+  },
+  "openingHours": "Mo-Sa 18:15-21:00",
   "medicalSpecialty": "Endodontics",
   "availableService": { "@type": "MedicalProcedure", "name": "Root Canal Treatment", "procedureType": "Therapeutic" },
 };

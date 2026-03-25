@@ -30,28 +30,33 @@ export interface ProgrammaticPageData {
 
 // ─── Shared FAQ helpers ──────────────────────────────────────────────────────
 
-const buildFaqs = (service: string, location: string): FAQItem[] => [
-  {
-    question: `Is there a good ${service} clinic near ${location}?`,
-    answer: `Yes! ToothZone Dental Clinic in Madhyamgram is the nearest premium dental clinic serving ${location} and all surrounding areas. We offer ${service} with modern technology and experienced dentists.`,
-  },
-  {
-    question: `What is the cost of ${service} near ${location}?`,
-    answer: `The cost depends on the complexity of your case. Contact ToothZone Madhyamgram for a transparent, no-hidden-fee quote. We offer competitive pricing compared to Kolkata city clinics.`,
-  },
-  {
-    question: `Is ${service} painful?`,
-    answer: `No. At ToothZone, all procedures are performed with effective local anaesthesia and modern instruments. Patient comfort is our priority.`,
-  },
-  {
-    question: `How far is ToothZone from ${location}?`,
-    answer: `ToothZone Dental Clinic is located in Madhyamgram, easily accessible from ${location} by road, train, or auto in 15–30 minutes depending on your starting point.`,
-  },
-  {
-    question: `Can I book an emergency appointment for ${service}?`,
-    answer: `Yes. We offer emergency same-day appointments for urgent dental needs. Call us directly for immediate assistance.`,
-  },
-];
+const buildFaqs = (service: string, location: string): FAQItem[] => {
+  const isDumDum = location.includes("Dum Dum") || location.includes("Dumdum");
+  const clinic = isDumDum ? "Dum Dum" : "Madhyamgram";
+  
+  return [
+    {
+      question: `Is there a good ${service} clinic near ${location}?`,
+      answer: `Yes! ToothZone Dental Clinic in ${clinic} is the nearest premium dental clinic serving ${location} and all surrounding areas. We offer ${service} with modern technology and experienced dentists.`,
+    },
+    {
+      question: `What is the cost of ${service} near ${location}?`,
+      answer: `The cost depends on the complexity of your case. Contact ToothZone ${clinic} for a transparent, no-hidden-fee quote. We offer competitive pricing compared to Kolkata city clinics.`,
+    },
+    {
+      question: `Is ${service} painful?`,
+      answer: `No. At ToothZone, all procedures are performed with effective local anaesthesia and modern instruments. Patient comfort is our priority.`,
+    },
+    {
+      question: `How far is ToothZone from ${location}?`,
+      answer: `ToothZone Dental Clinic is located in ${clinic}, easily accessible from ${location} by road, train, or auto in 15–30 minutes depending on your starting point.`,
+    },
+    {
+      question: `Can I book an emergency appointment for ${service}?`,
+      answer: `Yes. We offer emergency same-day appointments for urgent dental needs. Call us directly for immediate assistance.`,
+    },
+  ];
+};
 
 // ─── All Programmatic Page Configs ──────────────────────────────────────────
 
@@ -78,23 +83,23 @@ const customProgrammaticPages: ProgrammaticPageData[] = [
   },
   {
     slug: "dental-clinic-near-dum-dum",
-    title: "Dental Clinic Near Dum Dum (Modern, Affordable) | ToothZone",
-    metaDescription: "Looking for a dental clinic near Dum Dum? ToothZone Madhyamgram is just 20 minutes away. Expert dentists, affordable care. Book now!",
-    keywords: "dental clinic near dum dum, dentist near dum dum, best dental clinic dum dum, affordable dentist dum dum",
+    title: "Best Dental Clinic in Dum Dum (Modern & Affordable) | ToothZone",
+    metaDescription: "Looking for the best dental clinic in Dum Dum? ToothZone Dental Clinic on Jessore Rd provides affordable, painless, and premium dental care. Book your appointment today!",
+    keywords: "dental clinic in dum dum, dentist in dum dum, best dental clinic dum dum, affordable dentist dum dum, teeth treatment dum dum",
     canonical: "https://thetoothzone.vercel.app/dental-clinic-near-dum-dum",
-    h1: "Dental Clinic Near Dum Dum — ToothZone Madhyamgram",
+    h1: "Best Dental Clinic in Dum Dum — ToothZone",
     location: "Dum Dum",
     service: "Full Dental Services",
-    heroDesc: "The nearest full-service dental clinic to Dum Dum is ToothZone in Madhyamgram — just 20–25 minutes away. No need to travel to central Kolkata for quality dental care.",
+    heroDesc: "ToothZone Dental Clinic is now in Dum Dum! Located on Jessore Rd, Basak Bagan, we bring world-class dental care to your doorstep. Highly experienced dentists, painless treatments, and affordable prices.",
     aboutContent: [
-      "Dum Dum residents searching for a reliable dental clinic near them no longer need to travel to central Kolkata. ToothZone Dental Clinic in Madhyamgram is just a short 20–25 minute journey and offers the same standard of care as top Kolkata city clinics at significantly more competitive prices.",
-      "We serve hundreds of patients from Dum Dum, Dum Dum Cantonment, Shyamnagar, and the broader North 24 Parganas area. Our advanced dental facility in Madhyamgram features digital OPG X-rays, fully sterilised instruments, rotary endodontic systems, LED whitening, and implant-grade titanium materials.",
-      "Whether you are looking for a routine scaling near Dum Dum or need complex dental implants, our team at ToothZone provides personalised treatment plans that prioritise your comfort, health, and budget.",
+      "Residents of Dum Dum no longer need to travel far for premium dental care. ToothZone Dental Clinic is now centrally located at Jessore Rd, Basak Bagan, serving South Dumdum and all surrounding areas with the highest clinical standards.",
+      "Our Dum Dum branch is equipped with state-of-the-art dental technology, including digital diagnostics, rotary endodontics for painless root canals, and advanced sterilization protocols. We offer everything from routine check-ups to complex dental implants and cosmetic smile design.",
+      "At ToothZone Dum Dum, we prioritize patient comfort and transparent pricing. Our team of BDS and MDS specialists is dedicated to providing a stress-free experience for patients of all ages, ensuring you get the best smile possible without any compromise.",
     ],
-    benefits: ["Just 20–25 min from Dum Dum", "Modern dental technology", "Full-service — single clinic for all needs", "Affordable vs Kolkata city clinics", "Emergency appointments available", "Evenings & Saturdays available", "Experienced dental team", "Family & paediatric dentistry"],
+    benefits: ["Centrally located on Jessore Rd, Dum Dum", "Modern clinic with advanced diagnostics", "Painless treatments & expert MDS team", "Affordable & transparent pricing", "Emergency & same-day appointments", "Child-friendly dental environment", "Open 6 days a week + Sunday evening", "Sterile & safe clinical practice"],
     faqs: buildFaqs("full dental services", "Dum Dum"),
     heroImage: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774283039/ChatGPT_Image_Mar_23_2026_09_53_22_PM_vf5jy1.png",
-    heroImageAlt: "Dental clinic near Dum Dum - ToothZone Madhyamgram",
+    heroImageAlt: "Best dental clinic in Dum Dum - ToothZone branch",
   },
   {
     slug: "braces-treatment-madhyamgram",

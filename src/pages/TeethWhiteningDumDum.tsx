@@ -29,9 +29,21 @@ const schema = {
   "name": "ToothZone Dental Clinic — Teeth Whitening Near Dum Dum",
   "description": "Professional teeth whitening near Dum Dum at ToothZone Dental Clinic Madhyamgram. Get up to 8 shades whiter in 60 minutes.",
   "url": "https://thetoothzone.vercel.app/teeth-whitening-dum-dum",
-  "address": { "@type": "PostalAddress", "addressLocality": "Madhyamgram", "addressRegion": "West Bengal", "addressCountry": "IN" },
+  "address": { 
+    "@type": "PostalAddress", 
+    "streetAddress": "Jessore Rd, Basak Bagan, South Dumdum",
+    "addressLocality": "Kolkata", 
+    "addressRegion": "West Bengal", 
+    "postalCode": "700048",
+    "addressCountry": "IN" 
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "22.608571",
+    "longitude": "88.395793"
+  },
   "priceRange": "₹₹",
-  "openingHours": "Mo-Sa 09:00-20:00",
+  "openingHours": ["Mo-Sa 10:30-14:00", "Su 18:15-21:00"],
 };
 
 const TeethWhiteningDumDum = () => (

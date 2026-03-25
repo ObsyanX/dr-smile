@@ -18,10 +18,10 @@ const SERVICES = [
   { id: "dental-implants", name: "Dental Implants", img: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?auto=format&fit=crop&q=80" },
 ];
 
-const buildFaqs = (service: string, location: string): FAQItem[] => [
+const buildFaqs = (service: string, location: string, clinic: string): FAQItem[] => [
   {
     question: `Is there a good ${service} specialist near ${location}?`,
-    answer: `Yes! ToothZone Dental Clinic in Madhyamgram is the premier facility extending premium ${service} to patients from ${location}.`,
+    answer: `Yes! ToothZone Dental Clinic in ${clinic} is the premier facility extending premium ${service} to patients from ${location}.`,
   },
   {
     question: `What is the cost of ${service} near ${location}?`,
@@ -33,7 +33,7 @@ const buildFaqs = (service: string, location: string): FAQItem[] => [
   },
   {
     question: `How far is ToothZone from ${location}?`,
-    answer: `ToothZone Dental Clinic is positioned centrally in Madhyamgram, just a brief commute from ${location} by road, train, or auto-rickshaw.`,
+    answer: `ToothZone Dental Clinic is positioned centrally in ${clinic}, just a brief commute from ${location} by road, train, or auto-rickshaw.`,
   },
   {
     question: `Can I book an emergency appointment for ${service} near ${location}?`,
@@ -46,9 +46,11 @@ export const generateProgrammaticPages = (): ProgrammaticPageData[] => {
 
   for (const location of LOCATIONS) {
     for (const service of SERVICES) {
+      const isDumDum = location === "Dum Dum";
+      const nearestClinic = isDumDum ? "Dum Dum" : "Madhyamgram";
       const slug = `${service.id}-${location.toLowerCase().replace(/\s+/g, "-")}`;
       const title = `${service.name} in ${location} | Best Dentist | ToothZone`;
-      const metaDescription = `Looking for the best ${service.name} in ${location}? ToothZone Dental Clinic in Madhyamgram provides affordable, painless, and premium level ${service.name}. Book an appointment today!`;
+      const metaDescription = `Looking for the best ${service.name} in ${location}? ToothZone Dental Clinic in ${nearestClinic} provides affordable, painless, and premium level ${service.name}. Book an appointment today!`;
       const keywords = `${service.name.toLowerCase()} in ${location.toLowerCase()}, best ${service.name.toLowerCase()} ${location.toLowerCase()}, dental clinic near ${location.toLowerCase()}, dentist ${location.toLowerCase()}`;
       
       pages.push({
@@ -62,7 +64,7 @@ export const generateProgrammaticPages = (): ProgrammaticPageData[] => {
         service: service.name,
         heroDesc: `ToothZone Dental Clinic is your trusted partner for premium ${service.name} in the ${location} area. We combine advanced technology with deeply empathetic patient care.`,
         aboutContent: [
-          `When residents of ${location} search for a highly reputable and exceptionally skilled solution for ${service.name}, ToothZone Dental Clinic is consistently the top choice. Our advanced clinical facility located in the heart of Madhyamgram caters to a wide spectrum of specialized dental needs—uniquely tailored for you and your family.`,
+          `When residents of ${location} search for a highly reputable and exceptionally skilled solution for ${service.name}, ToothZone Dental Clinic is consistently the top choice. Our advanced clinical facility located in ${nearestClinic} caters to a wide spectrum of specialized dental needs—uniquely tailored for you and your family.`,
           `Our elite team of BDS and highly experienced MDS specialists utilize state-of-the-art diagnostic tools like digital OPG X-rays and precisely calibrated instruments to perform flawless ${service.name}. At ToothZone, patient safety, total comfort, and rigorous ISO-grade instrument sterilization protocols always come first.`,
           `You no longer need to travel into the heavy traffic of central Kolkata to receive world-class ${service.name}. Our clinic provides flexible evening slots and weekend schedules, ensuring you can prioritize your oral health without disrupting your busy daily routine.`
         ],
@@ -74,9 +76,9 @@ export const generateProgrammaticPages = (): ProgrammaticPageData[] => {
           `Transparent & affordable pricing models`,
           `Evening and weekend appointments available`,
           `Immediate emergency dental slots`,
-          `Just a short drive from ${location}`
+          isDumDum ? `Located directly in ${location}` : `Just a short drive from ${location}`
         ],
-        faqs: buildFaqs(service.name, location),
+        faqs: buildFaqs(service.name, location, nearestClinic),
         heroImage: service.img,
         heroImageAlt: `${service.name} in ${location} - ToothZone Dental Clinic`,
       });
