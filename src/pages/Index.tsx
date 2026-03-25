@@ -16,8 +16,10 @@ import FinalCTA from "@/components/home/FinalCTA";
 const Index = () => (
   <Layout>
     <SEOHead
-      title="SmileCare Dental Clinic — Premium Dental Care"
-      description="Advanced dental care with modern technology and compassionate treatment. Book your appointment for dental implants, teeth whitening, braces, and more."
+      title="Best Dental Clinic in Madhyamgram | ToothZone Dental Care"
+      description="ToothZone Dental Clinic — best dental clinic in Madhyamgram & Dum Dum. Root canal, teeth whitening, braces, implants & more. Affordable & painless. Book your appointment today!"
+      canonical="https://thetoothzone.vercel.app/"
+      keywords="dental clinic madhyamgram, dentist dum dum, root canal madhyamgram, teeth whitening dum dum, best dentist near me, dental implants madhyamgram, braces madhyamgram, emergency dentist madhyamgram"
     />
     <PageTransition>
       <HeroSection />

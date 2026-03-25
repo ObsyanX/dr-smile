@@ -31,7 +31,7 @@ const Gallery = () => {
   return (
     <Layout>
       <SEOHead
-        title="Smile Gallery — SmileCare Dental Clinic"
+        title="Smile Gallery — ToothZone Dental Clinic"
         description="View our smile transformation gallery. Before and after photos of teeth whitening, braces, veneers, and dental implant treatments."
       />
       <PageTransition>

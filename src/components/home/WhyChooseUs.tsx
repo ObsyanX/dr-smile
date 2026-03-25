@@ -14,7 +14,7 @@ const WhyChooseUs = () => (
       <ScrollReveal>
         <div className="text-center mb-16">
           <p className="text-primary font-heading font-semibold text-sm uppercase tracking-wider mb-3">Why Choose Us</p>
-          <h2 className="text-h2 font-heading font-bold text-foreground">The SmileCare Difference</h2>
+          <h2 className="text-h2 font-heading font-bold text-foreground">The ToothZone Difference</h2>
         </div>
       </ScrollReveal>
 

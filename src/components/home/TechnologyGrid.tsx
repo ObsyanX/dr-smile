@@ -1,10 +1,12 @@
 import ScrollReveal from "@/components/shared/ScrollReveal";
 
 const tech = [
-  { title: "Digital X-Ray", description: "Low-radiation digital imaging for precise diagnostics.", image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?w=400&q=80" },
-  { title: "Laser Dentistry", description: "Minimally invasive laser treatments for faster healing.", image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=400&q=80" },
-  { title: "Intraoral Scanner", description: "3D digital impressions for accurate treatment planning.", image: "https://images.unsplash.com/photo-1551076805-e1869033e561?w=400&q=80" },
-  { title: "Advanced Sterilization", description: "Hospital-grade autoclave sterilization for every instrument.", image: "https://images.unsplash.com/photo-1583912267550-d6c2ac893eb3?w=400&q=80" },
+
+
+  { title: "Digital X-Ray", description: "Low-radiation digital imaging for precise diagnostics.", image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774283969/ChatGPT_Image_Mar_23_2026_10_09_11_PM_iurghy.png" },
+  { title: "Laser Dentistry", description: "Minimally invasive laser treatments for faster healing.", image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774284186/ChatGPT_Image_Mar_23_2026_10_12_50_PM_fpldxh.png" },
+  { title: "Intraoral Scanner", description: "3D digital impressions for accurate treatment planning.", image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774284584/ChatGPT_Image_Mar_23_2026_10_17_26_PM_e9lcjq.png" },
+  { title: "Advanced Sterilization", description: "Hospital-grade autoclave sterilization for every instrument.", image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774284698/Class_N_gokf1n.jpg" },
 ];
 
 const TechnologyGrid = () => (

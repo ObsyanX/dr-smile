@@ -47,7 +47,7 @@ const AdminLayout = ({ children }: { children: ReactNode }) => {
         <div className={cn("flex items-center h-16 border-b border-border px-4", collapsed && "justify-center")}>
           {!collapsed && (
             <Link to="/admin" className="font-heading font-bold text-lg text-primary tracking-tight">
-              Smile<span className="text-foreground">Care</span>
+              Tooth<span className="text-foreground">Zone</span>
             </Link>
           )}
           {collapsed && (

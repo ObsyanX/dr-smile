@@ -8,6 +8,7 @@ import { AnimatePresence } from "framer-motion";
 import { AuthProvider } from "@/hooks/useAuth";
 import AdminGuard from "@/components/admin/AdminGuard";
 import ErrorBoundary from "@/components/shared/ErrorBoundary";
+import { programmaticPages } from "./pages/ProgrammaticPage";
 
 const Index = lazy(() => import("./pages/Index"));
 const Services = lazy(() => import("./pages/Services"));
@@ -15,6 +16,19 @@ const Gallery = lazy(() => import("./pages/Gallery"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+
+// SEO Landing Pages
+const DentalClinicMadhyamgram = lazy(() => import("./pages/DentalClinicMadhyamgram"));
+const DentistDumDum = lazy(() => import("./pages/DentistDumDum"));
+const RootCanalMadhyamgram = lazy(() => import("./pages/RootCanalMadhyamgram"));
+const TeethWhiteningDumDum = lazy(() => import("./pages/TeethWhiteningDumDum"));
+const ProgrammaticPageComponent = lazy(() => import("./pages/ProgrammaticPage"));
+
+// Blog
+const Blog = lazy(() => import("./pages/Blog"));
+const BestDentalClinicMadhyamgram = lazy(() => import("./pages/blog/BestDentalClinicMadhyamgram"));
+const RootCanalCostMadhyamgram = lazy(() => import("./pages/blog/RootCanalCostMadhyamgram"));
+const ToothPainDumDum = lazy(() => import("./pages/blog/ToothPainDumDum"));
 
 // Admin pages
 const AdminLogin = lazy(() => import("./pages/admin/Login"));
@@ -27,8 +41,8 @@ const AdminAnalytics = lazy(() => import("./pages/admin/Analytics"));
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 5 * 60 * 1000, // 5 minutes
-      refetchOnWindowFocus: false, // Prevent unnecessary refetches for public pages
+      staleTime: 5 * 60 * 1000,
+      refetchOnWindowFocus: false,
     },
   },
 });
@@ -55,6 +69,31 @@ const AnimatedRoutes = () => {
           <Route path="/gallery" element={<Gallery />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+
+          {/* SEO Landing Pages */}
+          <Route path="/dental-clinic-madhyamgram" element={<DentalClinicMadhyamgram />} />
+          <Route path="/dentist-dum-dum" element={<DentistDumDum />} />
+          <Route path="/root-canal-madhyamgram" element={<RootCanalMadhyamgram />} />
+          <Route path="/teeth-whitening-dum-dum" element={<TeethWhiteningDumDum />} />
+
+          {/* Programmatic Location × Service Pages */}
+          {programmaticPages.map((page) => (
+            <Route
+              key={page.slug}
+              path={`/${page.slug}`}
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <ProgrammaticPageComponent page={page} />
+                </Suspense>
+              }
+            />
+          ))}
+
+          {/* Blog */}
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/best-dental-clinic-madhyamgram" element={<BestDentalClinicMadhyamgram />} />
+          <Route path="/blog/root-canal-cost-madhyamgram" element={<RootCanalCostMadhyamgram />} />
+          <Route path="/blog/tooth-pain-treatment-dum-dum" element={<ToothPainDumDum />} />
 
           {/* Admin routes */}
           <Route path="/admin/login" element={<AdminLogin />} />

@@ -14,7 +14,7 @@ const FinalCTA = () => (
               <span className="text-primary">Healthier Smile?</span>
             </h2>
             <p className="text-body-lg text-muted-foreground mb-8 max-w-md">
-              Take the first step towards your perfect smile. Book your appointment today and experience the SmileCare difference.
+              Take the first step towards your perfect smile. Book your appointment today and experience the ToothZone difference.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link to="/contact">

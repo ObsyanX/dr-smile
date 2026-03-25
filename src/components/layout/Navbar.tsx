@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Home, Stethoscope, Camera, User, Phone, Calendar } from "lucide-react";
+import { Menu, X, Home, Stethoscope, Camera, User, Phone, Calendar, BookOpen } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const navItems = [
@@ -9,6 +9,7 @@ const navItems = [
   { label: "Services", path: "/services", icon: Stethoscope },
   { label: "Gallery", path: "/gallery", icon: Camera },
   { label: "About", path: "/about", icon: User },
+  { label: "Blog", path: "/blog", icon: BookOpen },
   { label: "Contact", path: "/contact", icon: Phone },
 ];
 
@@ -40,7 +41,7 @@ const Navbar = () => {
           }`}
         >
           <Link to="/" className="px-2.5 lg:px-4 font-heading font-bold text-primary text-base lg:text-lg tracking-tight shrink-0">
-            SmileCare
+            ToothZone
           </Link>
 
           {navItems.map((item) => {
@@ -84,7 +85,7 @@ const Navbar = () => {
       {/* Mobile top bar */}
       <header className="fixed top-0 left-0 right-0 z-50 md:hidden flex items-center justify-between px-4 py-3 bg-background/80 backdrop-blur-xl border-b border-border/30">
         <Link to="/" className="font-heading font-bold text-primary text-lg">
-          SmileCare
+          ToothZone
         </Link>
         <button onClick={() => setMobileOpen(!mobileOpen)} className="p-2">
           {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}

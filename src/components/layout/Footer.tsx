@@ -6,7 +6,17 @@ const quickLinks = [
   { label: "Services", path: "/services" },
   { label: "Smile Gallery", path: "/gallery" },
   { label: "About Us", path: "/about" },
+  { label: "Blog", path: "/blog" },
   { label: "Book Appointment", path: "/contact" },
+];
+
+const localPages = [
+  { label: "Dental Clinic Madhyamgram", path: "/dental-clinic-madhyamgram" },
+  { label: "Dentist Dum Dum", path: "/dentist-dum-dum" },
+  { label: "Root Canal Madhyamgram", path: "/root-canal-madhyamgram" },
+  { label: "Teeth Whitening Dum Dum", path: "/teeth-whitening-dum-dum" },
+  { label: "Emergency Dentist", path: "/emergency-dentist-madhyamgram" },
+  { label: "Dental Implants", path: "/dental-implants-madhyamgram" },
 ];
 
 const services = [
@@ -30,12 +40,13 @@ const Footer = () => (
         <div className="lg:col-span-4">
           <Link to="/" className="inline-block mb-5">
             <h3 className="font-heading font-bold text-2xl text-primary-foreground tracking-tight">
-              Smile<span className="text-primary">Care</span>
+              Tooth<span className="text-primary">Zone</span>
             </h3>
           </Link>
-          <p className="text-sm leading-relaxed mb-6 max-w-xs">
-            Advanced dental care with modern technology and compassionate treatment for your entire family.
+          <p className="text-sm leading-relaxed mb-3 max-w-xs">
+            Best dental clinic in Madhyamgram. Advanced dental care for Madhyamgram, Dum Dum &amp; all of North Kolkata.
           </p>
+          <p className="text-xs text-primary-foreground/40 mb-5">📍 Madhyamgram, West Bengal — 700129</p>
           <div className="flex items-center gap-4">
             <a
               href="tel:+919804214790"
@@ -74,8 +85,28 @@ const Footer = () => (
           </ul>
         </div>
 
-        {/* Services */}
-        <div className="lg:col-span-3">
+        {/* Local SEO Pages */}
+        <div className="lg:col-span-2">
+          <h4 className="font-heading font-semibold text-primary-foreground text-sm uppercase tracking-wider mb-5">
+            Local Clinics
+          </h4>
+          <ul className="space-y-3">
+            {localPages.map((item) => (
+              <li key={item.path}>
+                <Link
+                  to={item.path}
+                  className="text-sm hover:text-primary transition-colors duration-300 inline-flex items-center gap-1 group"
+                >
+                  {item.label}
+                  <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-0.5 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Treatments */}
+        <div className="lg:col-span-2">
           <h4 className="font-heading font-semibold text-primary-foreground text-sm uppercase tracking-wider mb-5">
             Treatments
           </h4>
@@ -101,7 +132,7 @@ const Footer = () => (
           <ul className="space-y-4 text-sm">
             <li className="flex items-start gap-3">
               <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-              <span>123 Dental Avenue,<br />Downtown, NY 10001</span>
+              <span>Madhyamgram, North 24 Parganas,<br />West Bengal — 700129</span>
             </li>
             <li className="flex items-center gap-3">
               <Phone className="w-4 h-4 text-primary shrink-0" />
@@ -139,7 +170,7 @@ const Footer = () => (
       {/* Bottom bar */}
       <div className="border-t border-primary-foreground/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
         <p className="text-xs text-primary-foreground/30">
-          © {new Date().getFullYear()} SmileCare Dental Clinic. All rights reserved.
+          © {new Date().getFullYear()} ToothZone Dental Clinic. All rights reserved.
         </p>
         <div className="flex items-center gap-6 text-xs text-primary-foreground/30">
           <span className="hover:text-primary-foreground/50 cursor-pointer transition-colors">Privacy Policy</span>

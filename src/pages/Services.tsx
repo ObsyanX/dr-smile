@@ -172,8 +172,10 @@ const Services = () => {
   return (
     <Layout>
       <SEOHead
-        title="Our Dental Treatments — SmileCare Dental Clinic"
-        description="Explore our comprehensive dental treatments including implants, teeth whitening, root canal, braces, smile design, and pediatric dentistry."
+        title="Dental Treatments in Madhyamgram & Dum Dum | ToothZone Services"
+        description="Comprehensive dental treatments in Madhyamgram & Dum Dum — root canal, teeth whitening, dental implants, braces, smile design & more at ToothZone Dental Clinic."
+        canonical="https://thetoothzone.vercel.app/services"
+        keywords="dental treatments madhyamgram, root canal dum dum, dental implants madhyamgram, teeth whitening near dum dum, braces madhyamgram, dental services north kolkata"
       />
       <PageTransition>
         {/* Hero */}

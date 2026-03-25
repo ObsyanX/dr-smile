@@ -92,7 +92,7 @@ const AdminLogin = () => {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="font-heading font-bold text-2xl text-foreground">
-            Smile<span className="text-primary">Care</span>
+            Tooth<span className="text-primary">Zone</span>
           </h1>
           <p className="text-sm text-muted-foreground mt-1">Admin Portal</p>
         </div>
