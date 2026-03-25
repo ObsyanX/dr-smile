@@ -901,25 +901,33 @@ const Contact = () => {
                       Clinic Timings
                     </h3>
                     <SidebarTabs active={timingTab} onChange={setTimingTab} />
-                    <div className="space-y-2 text-sm">
-                      <div className="flex items-center justify-between py-2.5 px-3 rounded-lg bg-primary/5 border border-primary/10">
-                        <span className="text-muted-foreground font-medium">
-                          {timingClinic.timingNote}
-                        </span>
-                        <span className="font-bold text-foreground font-heading">
-                          {timingClinic.timingLabel}
-                        </span>
-                      </div>
-                      <div className="flex items-center justify-between px-1 text-xs text-muted-foreground">
-                        <span>Mon – Sat</span>
-                        <span className="text-primary font-medium">
-                          Appointments available
-                        </span>
-                      </div>
-                      <div className="flex items-center justify-between px-1 text-xs">
-                        <span className="text-muted-foreground">Sunday</span>
-                        <span className="text-red-500 font-medium">Closed</span>
-                      </div>
+                    <div className="space-y-3 pt-4 text-sm font-heading">
+                      {timingClinic.shifts.map((shift, idx) => (
+                        <div 
+                          key={idx}
+                          className={cn(
+                            "flex items-center justify-between py-2.5 px-3 rounded-lg border",
+                            shift.openHour !== -1 
+                              ? "bg-primary/5 border-primary/10"
+                              : "bg-red-50/50 border-red-100 opacity-80"
+                          )}
+                        >
+                          <div className="flex flex-col">
+                            <span className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">
+                              {shift.days}
+                            </span>
+                            <span className="text-muted-foreground font-medium">
+                              {shift.note}
+                            </span>
+                          </div>
+                          <span className={cn(
+                            "font-bold font-heading",
+                            shift.openHour !== -1 ? "text-foreground" : "text-red-500"
+                          )}>
+                            {shift.hours}
+                          </span>
+                        </div>
+                      ))}
                     </div>
                   </div>
                 </ScrollReveal>
