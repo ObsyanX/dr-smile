@@ -26,9 +26,7 @@ const ProgrammaticPageComponent = lazy(() => import("./pages/ProgrammaticPage"))
 
 // Blog
 const Blog = lazy(() => import("./pages/Blog"));
-const BestDentalClinicMadhyamgram = lazy(() => import("./pages/blog/BestDentalClinicMadhyamgram"));
-const RootCanalCostMadhyamgram = lazy(() => import("./pages/blog/RootCanalCostMadhyamgram"));
-const ToothPainDumDum = lazy(() => import("./pages/blog/ToothPainDumDum"));
+const BlogDetail = lazy(() => import("./pages/BlogDetail"));
 
 // Admin pages
 const AdminLogin = lazy(() => import("./pages/admin/Login"));
@@ -36,8 +34,8 @@ const AdminDashboard = lazy(() => import("./pages/admin/Dashboard"));
 const AdminAppointments = lazy(() => import("./pages/admin/Appointments"));
 const AdminPatients = lazy(() => import("./pages/admin/Patients"));
 const AdminAnalytics = lazy(() => import("./pages/admin/Analytics"));
-
-
+const AdminBlogs = lazy(() => import("./pages/admin/AdminBlogs"));
+const AdminBlogEditor = lazy(() => import("./pages/admin/AdminBlogEditor"));
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -91,9 +89,7 @@ const AnimatedRoutes = () => {
 
           {/* Blog */}
           <Route path="/blog" element={<Blog />} />
-          <Route path="/blog/best-dental-clinic-madhyamgram" element={<BestDentalClinicMadhyamgram />} />
-          <Route path="/blog/root-canal-cost-madhyamgram" element={<RootCanalCostMadhyamgram />} />
-          <Route path="/blog/tooth-pain-treatment-dum-dum" element={<ToothPainDumDum />} />
+          <Route path="/blog/:slug" element={<BlogDetail />} />
 
           {/* Admin routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
@@ -101,6 +97,9 @@ const AnimatedRoutes = () => {
           <Route path="/admin/appointments" element={<AdminGuard><AdminAppointments /></AdminGuard>} />
           <Route path="/admin/patients" element={<AdminGuard><AdminPatients /></AdminGuard>} />
           <Route path="/admin/analytics" element={<AdminGuard><AdminAnalytics /></AdminGuard>} />
+          <Route path="/admin/blogs" element={<AdminGuard><AdminBlogs /></AdminGuard>} />
+          <Route path="/admin/blog-editor" element={<AdminGuard><AdminBlogEditor /></AdminGuard>} />
+          <Route path="/admin/blog-editor/:id" element={<AdminGuard><AdminBlogEditor /></AdminGuard>} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>

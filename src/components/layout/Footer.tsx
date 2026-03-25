@@ -148,19 +148,25 @@ const Footer = () => (
             </li>
           </ul>
           <div className="mt-5 pt-4 border-t border-primary-foreground/10">
-            <p className="text-xs text-primary-foreground/40 mb-2 font-heading font-medium uppercase tracking-wider">Hours</p>
-            <div className="space-y-1 text-sm">
-              <div className="flex justify-between">
-                <span>Mon – Fri</span>
-                <span className="text-primary-foreground/90">10 AM – 7 PM</span>
+            <p className="text-xs text-primary-foreground/40 mb-3 font-heading font-medium uppercase tracking-wider tracking-[0.1em]">Hours</p>
+            <div className="space-y-3 text-sm">
+              <div className="flex flex-col">
+                <span className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">Madhyamgram Clinic</span>
+                <div className="flex justify-between">
+                  <span>Mon – Sat</span>
+                  <span className="text-primary-foreground/90 font-medium">6:15 PM – 9:00 PM</span>
+                </div>
               </div>
-              <div className="flex justify-between">
-                <span>Saturday</span>
-                <span className="text-primary-foreground/90">10 AM – 5 PM</span>
+              <div className="flex flex-col">
+                <span className="text-[10px] text-primary font-bold uppercase tracking-wider mb-0.5">Dum Dum Clinic</span>
+                <div className="flex justify-between">
+                  <span>Mon – Sat</span>
+                  <span className="text-primary-foreground/90 font-medium">10:30 AM – 2:00 PM</span>
+                </div>
               </div>
-              <div className="flex justify-between">
+              <div className="flex justify-between text-xs pt-1 opacity-60">
                 <span>Sunday</span>
-                <span className="text-destructive/80">Closed</span>
+                <span className="text-destructive/80 font-medium">Closed</span>
               </div>
             </div>
           </div>

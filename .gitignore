@@ -11,6 +11,21 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
+.env.*
+
+# Temporary / Scratch scripts
+*.sql
+test-*.js
+test-*.ts
+test-*.mjs
+test_*.js
+test_output.txt
+ts_errors.log
+
+# Lockfiles (if using multiple package managers)
+bun.lock
+bun.lockb
 
 # Editor directories and files
 .vscode/*

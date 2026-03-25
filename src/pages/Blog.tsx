@@ -1,129 +1,192 @@
-import Layout from "@/components/layout/Layout";
-import PageTransition from "@/components/shared/PageTransition";
-import SEOHead from "@/components/shared/SEOHead";
-import ScrollReveal from "@/components/shared/ScrollReveal";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { BookOpen, Clock, Tag } from "lucide-react";
+import Navbar from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import Layout from "@/components/layout/Layout";
+import SEOHead from "@/components/shared/SEOHead";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Calendar, Clock, ChevronRight, Eye, RefreshCw, MessageCircle } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
+import { format } from "date-fns";
 
-const posts = [
-  {
-    slug: "best-dental-clinic-madhyamgram",
-    title: "Best Dental Clinic in Madhyamgram (2026 Guide)",
-    excerpt: "A comprehensive guide to finding the best dental clinic in Madhyamgram. What to look for, what to expect, and why ToothZone is the #1 choice for families across Madhyamgram and Dum Dum.",
-    tag: "Local Guide",
-    readTime: "6 min read",
-    date: "March 2026",
-    image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774282815/ChatGPT_Image_Mar_23_2026_09_47_21_PM_y4fcg9.png",
-    imageAlt: "Best dental clinic in Madhyamgram guide 2026",
-  },
-  {
-    slug: "root-canal-cost-madhyamgram",
-    title: "Root Canal Treatment Cost in Madhyamgram (2026)",
-    excerpt: "Everything you need to know about root canal treatment cost in Madhyamgram — broken down by tooth type, what's included, and how to get the best value without compromising on quality.",
-    tag: "Treatment Guide",
-    readTime: "7 min read",
-    date: "March 2026",
-    image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=600&q=80",
-    imageAlt: "Root canal cost in Madhyamgram 2026 complete guide",
-  },
-  {
-    slug: "tooth-pain-treatment-dum-dum",
-    title: "Tooth Pain Treatment Near Dum Dum — What To Do",
-    excerpt: "Experiencing tooth pain near Dum Dum? This guide covers why tooth pain happens, when it's an emergency, home remedies that work, and when to visit a dentist near Dum Dum immediately.",
-    tag: "Emergency Guide",
-    readTime: "8 min read",
-    date: "March 2026",
-    image: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=600&q=80",
-    imageAlt: "Tooth pain treatment near Dum Dum guide",
-  },
-];
+// Memory cache for blogs to prevent excessive Supabase queries
+let cachedBlogs: any[] | null = null;
+let lastFetch = 0;
+const CACHE_TTL = 1000 * 60 * 5; // 5 minutes
 
-const Blog = () => (
-  <Layout>
-    <SEOHead
-      title="Dental Health Blog | ToothZone — Madhyamgram & Dum Dum"
-      description="Expert dental health guides for Madhyamgram & Dum Dum residents. Find information on dental treatments, costs, tips, and how to choose the best dentist near you."
-      canonical="https://thetoothzone.vercel.app/blog"
-      keywords="dental blog madhyamgram, dental tips dum dum, dental health advice, root canal guide madhyamgram, dentist near me guide"
-    />
-    <PageTransition>
+export default function Blog() {
+  const [blogs, setBlogs] = useState<any[]>(cachedBlogs || []);
+  const [isLoading, setIsLoading] = useState(!cachedBlogs);
+  const [activeCategory, setActiveCategory] = useState("All");
 
-      {/* Hero */}
-      <section className="section-padding gradient-hero">
-        <div className="container-dental text-center">
-          <ScrollReveal>
-            <div className="flex items-center justify-center gap-2 text-primary font-heading font-semibold text-sm uppercase tracking-wider mb-3">
-              <BookOpen className="w-4 h-4" />
-              <span>ToothZone Blog</span>
-            </div>
-            <h1 className="text-h1 lg:text-display font-heading font-bold text-foreground mb-4">
-              Dental Health Guides
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      // Check cache validity
+      if (cachedBlogs && Date.now() - lastFetch < CACHE_TTL) {
+        setIsLoading(false);
+        return;
+      }
+
+      setIsLoading(true);
+      const { data, error } = await supabase
+        .from("blogs" as any)
+        .select("slug, title, excerpt, cover_image, category, tags, published_at, views, author")
+        .eq("status", "published")
+        .lte("published_at", new Date().toISOString())
+        .order("published_at", { ascending: false });
+
+      if (data && !error) {
+        cachedBlogs = data;
+        lastFetch = Date.now();
+        setBlogs(data);
+      }
+      setIsLoading(false);
+    };
+
+    fetchBlogs();
+  }, []);
+
+  const categories = ["All", ...Array.from(new Set(blogs.map(b => b.category).filter(Boolean)))];
+  const filteredBlogs = activeCategory === "All" 
+    ? blogs 
+    : blogs.filter(b => b.category === activeCategory);
+
+  return (
+    <Layout>
+      <SEOHead
+        title={activeCategory === "All" 
+          ? "Dental Health Blog & Treatment Guides — ToothZone" 
+          : `${activeCategory} Guides & Practical Tips — ToothZone`}
+        description="Read the latest articles on root canals, dental implants, braces, and oral hygiene from the experts at ToothZone Dental Clinic."
+      />
+
+      <div className="pb-20">
+        {/* Header Section */}
+        <section className="bg-gradient-to-tr from-primary/5 via-primary/10 to-transparent py-16 md:py-24 relative overflow-hidden">
+          <div className="absolute -top-40 -right-40 w-96 h-96 bg-primary/20 blur-[100px] rounded-full pointer-events-none" />
+          <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center max-w-3xl">
+            <Badge className="mb-4 bg-primary/10 text-primary hover:bg-primary/20 hover:text-primary transition-colors border-0 px-4 py-1.5 rounded-full font-medium">
+              ToothZone Academy
+            </Badge>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading font-bold text-foreground mb-6 leading-tight">
+              Expert Dental Insights & Guides
             </h1>
-            <p className="text-body-lg text-muted-foreground max-w-xl mx-auto">
-              Expert articles on dental treatments, costs, and oral health tips — especially for patients in Madhyamgram, Dum Dum, and North Kolkata.
+            <p className="text-xl text-muted-foreground leading-relaxed">
+              Discover the latest treatments, cost guides, and oral hygiene tips straight from our senior dental surgeons in Madhyamgram & Dum Dum.
             </p>
-          </ScrollReveal>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      {/* Blog Grid */}
-      <section className="section-padding bg-background">
-        <div className="container-dental">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {posts.map((post, i) => (
-              <ScrollReveal key={post.slug} delay={i * 0.1}>
-                <Link to={`/blog/${post.slug}`} className="block group">
-                  <article className="rounded-2xl overflow-hidden border border-border/50 bg-card hover:border-primary/30 hover:-translate-y-1 transition-all duration-300 shadow-sm hover:shadow-xl h-full flex flex-col">
-                    <div className="aspect-video overflow-hidden">
-                      <img
-                        src={post.image}
-                        alt={post.imageAlt}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                        loading="lazy"
-                        decoding="async"
-                      />
-                    </div>
-                    <div className="p-6 flex flex-col flex-1">
-                      <div className="flex items-center gap-3 mb-3 text-xs text-muted-foreground">
-                        <span className="bg-primary/10 text-primary px-2 py-1 rounded-full font-heading font-semibold flex items-center gap-1">
-                          <Tag className="w-3 h-3" /> {post.tag}
-                        </span>
-                        <span className="flex items-center gap-1"><Clock className="w-3 h-3" /> {post.readTime}</span>
-                        <span>{post.date}</span>
-                      </div>
-                      <h2 className="font-heading font-bold text-foreground mb-3 text-base group-hover:text-primary transition-colors leading-snug">
-                        {post.title}
-                      </h2>
-                      <p className="text-sm text-muted-foreground leading-relaxed flex-1">{post.excerpt}</p>
-                      <div className="mt-4 pt-4 border-t border-border/50">
-                        <span className="text-primary font-heading font-semibold text-sm group-hover:underline">Read Article →</span>
-                      </div>
-                    </div>
-                  </article>
-                </Link>
-              </ScrollReveal>
+        {/* Content Section */}
+        <section className="container mx-auto px-4 lg:px-8 -mt-8 relative z-20">
+          
+          {/* Category Filter */}
+          <div className="flex flex-wrap gap-2 justify-center mb-12">
+            {categories.map((c: any) => (
+              <Button
+                key={c}
+                variant={activeCategory === c ? "default" : "outline"}
+                className={activeCategory === c ? "rounded-full shadow-md shadow-primary/20" : "rounded-full bg-card"}
+                onClick={() => setActiveCategory(c)}
+              >
+                {c}
+              </Button>
             ))}
           </div>
 
-          {/* Coming Soon */}
-          <ScrollReveal>
-            <div className="mt-16 text-center p-10 rounded-3xl bg-secondary/40 border border-border/50">
-              <p className="text-primary font-heading font-semibold text-sm uppercase tracking-wider mb-3">More Coming Soon</p>
-              <h2 className="text-h2 font-heading font-bold text-foreground mb-4">50+ Articles Planned</h2>
-              <p className="text-muted-foreground max-w-lg mx-auto mb-6">
-                We are publishing new guides every week covering dental costs, treatments, oral hygiene tips, and local Madhyamgram &amp; Dum Dum dental guides.
-              </p>
-              <Link to="/contact">
-                <Button className="rounded-full font-heading px-8">Book an Appointment</Button>
-              </Link>
+          {isLoading ? (
+            <div className="py-24 text-center text-muted-foreground flex flex-col items-center justify-center">
+              <RefreshCw className="w-10 h-10 animate-spin mb-4 text-primary opacity-50" />
+              <p className="font-medium">Loading articles...</p>
             </div>
-          </ScrollReveal>
-        </div>
-      </section>
+          ) : filteredBlogs.length === 0 ? (
+            <div className="py-24 text-center bg-card border border-border/50 rounded-2xl shadow-sm">
+              <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">📝</div>
+              <h3 className="text-xl font-heading font-semibold mb-2">Check back soon!</h3>
+              <p className="text-muted-foreground">We are currently writing new helpful guides for our patients.</p>
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {filteredBlogs.map((blog) => (
+                <article key={blog.slug} className="group bg-card border border-border/50 rounded-2xl overflow-hidden hover:shadow-xl hover:border-primary/20 transition-all duration-300 flex flex-col h-full hover:-translate-y-1">
+                  <div className="relative h-56 overflow-hidden bg-muted">
+                    {blog.cover_image ? (
+                      <img 
+                        src={blog.cover_image} 
+                        alt={blog.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-primary/5 to-muted text-primary/40 font-heading font-medium text-lg">
+                        ToothZone Blog
+                      </div>
+                    )}
+                    <div className="absolute top-4 left-4 flex gap-2">
+                      <Badge className="bg-background/90 text-foreground backdrop-blur-md shadow-sm border-0 font-medium">
+                        {blog.category || "Guide"}
+                      </Badge>
+                    </div>
+                  </div>
+                  
+                  <div className="p-6 md:p-8 flex flex-col flex-1">
+                    <div className="flex items-center gap-4 text-xs font-medium text-muted-foreground mb-4">
+                      <span className="flex items-center gap-1.5">
+                        <Calendar className="w-3.5 h-3.5" /> {blog.published_at ? format(new Date(blog.published_at), "MMM d, yyyy") : ""}
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <Eye className="w-3.5 h-3.5" /> {blog.views?.toLocaleString() || 0}
+                      </span>
+                    </div>
+                    
+                    <h3 className="text-2xl font-bold font-heading text-foreground mb-3 leading-snug group-hover:text-primary transition-colors line-clamp-2">
+                      <Link to={`/blog/${blog.slug}`}>
+                        {blog.title}
+                        <span className="absolute inset-0 z-10" />
+                      </Link>
+                    </h3>
+                    
+                    <p className="text-muted-foreground leading-relaxed mb-6 line-clamp-3 flex-1 flex-grow">
+                      {blog.excerpt}
+                    </p>
+                    
+                    <div className="pt-4 border-t border-border/50 flex items-center justify-between font-medium mt-auto">
+                      <span className="text-sm text-foreground">{blog.author}</span>
+                      <span className="text-sm text-primary flex items-center gap-1 inline-flex group/link">
+                        Read Guide <ChevronRight className="w-4 h-4 transition-transform group-hover/link:translate-x-1" />
+                      </span>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          )}
+        </section>
 
-    </PageTransition>
-  </Layout>
-);
-
-export default Blog;
+        {/* Emergency CTA Section */}
+        <section className="bg-blue-900 text-white py-12 px-6 mt-16 rounded-2xl mx-4 mb-8 relative overflow-hidden shadow-xl">
+          <div className="container-dental max-w-4xl mx-auto text-center relative z-10">
+            <h2 className="text-3xl md:text-5xl font-heading font-bold mb-4 flex items-center justify-center gap-3">
+              <span className="text-4xl">🚨</span> Dental Emergency?
+            </h2>
+            <p className="text-lg md:text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+              Call now for immediate appointment. We're here when you need us most.
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link to="/contact" className="w-full sm:w-auto">
+                <Button size="lg" className="bg-white text-blue-900 hover:bg-white/90 rounded-full font-heading px-8 w-full h-14 text-base">
+                  <Calendar className="w-5 h-5 mr-3" /> Book Appointment
+                </Button>
+              </Link>
+              <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto tracking-wide">
+                <Button size="lg" className="bg-[#25D366] text-white hover:bg-[#20bd5a] rounded-full font-heading px-8 w-full border-none h-14 text-base">
+                  <MessageCircle className="w-5 h-5 mr-3" /> Chat on WhatsApp
+                </Button>
+              </a>
+            </div>
+          </div>
+        </section>
+      </div>
+    </Layout>
+  );
+}

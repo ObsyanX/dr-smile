@@ -1,4 +1,5 @@
 import Layout from "@/components/layout/Layout";
+import { generateProgrammaticPages } from "@/data/seoPages";
 import PageTransition from "@/components/shared/PageTransition";
 import SEOHead from "@/components/shared/SEOHead";
 import ScrollReveal from "@/components/shared/ScrollReveal";
@@ -54,7 +55,7 @@ const buildFaqs = (service: string, location: string): FAQItem[] => [
 
 // ─── All Programmatic Page Configs ──────────────────────────────────────────
 
-export const programmaticPages: ProgrammaticPageData[] = [
+const customProgrammaticPages: ProgrammaticPageData[] = [
   {
     slug: "dentist-near-madhyamgram",
     title: "Dentist Near Madhyamgram (Painless, Affordable) | ToothZone",
@@ -456,6 +457,14 @@ export const programmaticPages: ProgrammaticPageData[] = [
     heroImage: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=800&q=80",
     heroImageAlt: "Dental crown and bridge in Madhyamgram - zirconia crown at ToothZone",
   },
+];
+
+const generatedPages = generateProgrammaticPages();
+const customSlugs = new Set(customProgrammaticPages.map((p) => p.slug));
+
+export const programmaticPages: ProgrammaticPageData[] = [
+  ...customProgrammaticPages,
+  ...generatedPages.filter((p) => !customSlugs.has(p.slug)),
 ];
 
 // ─── Page Component ──────────────────────────────────────────────────────────

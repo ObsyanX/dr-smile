@@ -1,11 +1,12 @@
 import { Link, useLocation } from "react-router-dom";
-import { Home, Stethoscope, Camera, User, Phone } from "lucide-react";
+import { Home, Stethoscope, Camera, User, Phone, BookOpen } from "lucide-react";
 
 const items = [
   { label: "Home", path: "/", icon: Home },
   { label: "Services", path: "/services", icon: Stethoscope },
   { label: "Gallery", path: "/gallery", icon: Camera },
   { label: "About", path: "/about", icon: User },
+  { label: "Blog", path: "/blog", icon: BookOpen },
   { label: "Contact", path: "/contact", icon: Phone },
 ];
 

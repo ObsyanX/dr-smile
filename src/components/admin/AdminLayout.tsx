@@ -10,6 +10,7 @@ import {
   Menu,
   X,
   ChevronLeft,
+  FileText,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -17,6 +18,7 @@ const sidebarItems = [
   { label: "Dashboard", path: "/admin", icon: LayoutDashboard },
   { label: "Appointments", path: "/admin/appointments", icon: CalendarCheck },
   { label: "Patients", path: "/admin/patients", icon: Users },
+  { label: "SEO Blogs", path: "/admin/blogs", icon: FileText },
   { label: "Analytics", path: "/admin/analytics", icon: BarChart3 },
 ];
 

@@ -47,7 +47,7 @@ const treatments = [
   },
   {
     icon: "😁",
-    title: "Braces & Aligners",
+    title: "Traditional Braces",
     image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774283315/ChatGPT_Image_Mar_23_2026_09_58_17_PM_xh5isa.png",
     short: "Advanced solutions for perfectly aligned teeth.",
     description: "Braces and clear aligners are orthodontic treatments used to correct misaligned, crowded, or spaced teeth, improving both function and aesthetics over time.",
@@ -130,7 +130,7 @@ const treatments = [
   },
   {
     icon: "😁",
-    title: "Braces & Aligners",
+    title: "Clear Aligners",
     image: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=500&q=80",
     short: "Modern braces and invisible aligners for perfect alignment.",
     description: "We offer traditional metal braces, ceramic braces, and clear aligners like Invisalign. Each option is customized to gradually move your teeth into the ideal position.",
