@@ -20,7 +20,7 @@ const clinics = [
     address: "Jessore Rd, Basak Bagan, South Dumdum, Kolkata — 700048",
     days: "Mon-Sat: 10:30AM–2PM; Sun: 6:15–9PM",
     hours: "Multiple Shifts",
-    image: "https://images.unsplash.com/photo-1631549916768-4e9861c6af09?w=500&q=80",
+    image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774324091/AHVAweozSRmlxxbBYeIcTc0aW1oGMqnP2b41eJ1KdfSG6tRnNVZ5yqwvZFT5ea9Mifp3EP3AvTenRjQYGUBw7YgcaKGhbDmbT4CFXPtkzPJnRKqXBt6QrdF5EItNC3u2YpXXrn6LRWIj_s483-k-no_scmuil.jpg",
     mapUrl: "https://maps.app.goo.gl/7ZHCytdYZHkiDpKP8",
     coords: { lat: 22.608571, lng: 88.395793 },
   },

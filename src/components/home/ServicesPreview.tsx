@@ -26,7 +26,7 @@ const services = [
     icon: "😁",
     title: "Braces & Aligners",
     description: "Invisible aligners and modern braces for perfectly aligned teeth at any age.",
-    image: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=400&q=80",
+    image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774283315/ChatGPT_Image_Mar_23_2026_09_58_17_PM_xh5isa.png",
   },
 ];
 

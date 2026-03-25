@@ -72,7 +72,7 @@ const treatments = [
   {
     icon: "✨",
     title: "Tooth Color Filling",
-    image: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=500&q=80",
+    image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774443554/composite-fillings-the-gold-standard-for-filling_qlqbyl.png",
     short: "Natural-looking fillings that blend with your teeth.",
     description: "Tooth-colored fillings (composite restorations) are used to repair decayed or damaged teeth while matching the natural shade of your teeth for a seamless appearance.",
     duration: "30–45 minutes per tooth",
@@ -84,7 +84,7 @@ const treatments = [
   {
     icon: "🛡️",
     title: "Tooth Capping",
-    image: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=500&q=80",
+    image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774443668/tooth-supportsd-bridges_v4otpi.jpg",
     short: "Protective caps to restore damaged teeth.",
     description: "Tooth capping (dental crowns) involves placing a custom-made cap over a damaged or weakened tooth to restore its shape, strength, and appearance.",
     duration: "2 visits over 1–2 weeks",
@@ -95,7 +95,7 @@ const treatments = [
   },
   {
     title: "Dental Implants",
-    image: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=500&q=80",
+    image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774444125/45991c19-590a-4e4a-8ff9-f0f9a8b987d0_lhbsf1.png",
     short: "Permanent tooth replacement with natural-looking results.",
     description: "Dental implants are titanium posts surgically placed into the jawbone to serve as artificial tooth roots. They provide a strong foundation for permanent or removable replacement teeth.",
     duration: "2–3 visits over 3–6 months",
@@ -107,7 +107,7 @@ const treatments = [
   {
     icon: "🔧",
     title: "Root Canal Treatment",
-    image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=500&q=80",
+    image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774444304/Before_and_after_root_canal_treatment_oyqcxh.png",
     short: "Pain-free root canal procedures with modern techniques.",
     description: "Root canal treatment removes infected tissue from inside a tooth, cleans and shapes the root canals, and seals them to prevent reinfection. Modern techniques make this virtually painless.",
     duration: "1–2 visits",
@@ -119,7 +119,7 @@ const treatments = [
   {
     icon: "✨",
     title: "Teeth Whitening",
-    image: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=500&q=80",
+    image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774444510/ChatGPT_Image_Mar_25_2026_06_44_23_PM_if0gpv.png",
     short: "Professional whitening for a brighter, confident smile.",
     description: "Professional in-office teeth whitening uses concentrated bleaching agents to remove deep stains and discoloration, delivering dramatic results in a single visit.",
     duration: "45–60 minutes",
@@ -131,7 +131,7 @@ const treatments = [
   {
     icon: "😁",
     title: "Clear Aligners",
-    image: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=500&q=80",
+    image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774444854/ChatGPT_Image_Mar_25_2026_06_50_28_PM_fzivhx.png",
     short: "Modern braces and invisible aligners for perfect alignment.",
     description: "We offer traditional metal braces, ceramic braces, and clear aligners like Invisalign. Each option is customized to gradually move your teeth into the ideal position.",
     duration: "12–24 months",
@@ -143,7 +143,7 @@ const treatments = [
   {
     icon: "💎",
     title: "Smile Design",
-    image: "https://images.unsplash.com/photo-1581585837449-0bfc2b21b03c?w=500&q=80",
+    image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774445225/ChatGPT_Image_Mar_25_2026_06_56_37_PM_aitkt0.png",
     short: "Complete smile makeover with veneers and cosmetic treatments.",
     description: "Smile design combines multiple cosmetic procedures — veneers, bonding, whitening, and gum contouring — to create your ideal smile based on digital planning.",
     duration: "2–4 visits over 2–4 weeks",
@@ -155,7 +155,7 @@ const treatments = [
   {
     icon: "👶",
     title: "Pediatric Dentistry",
-    image: "https://images.unsplash.com/photo-1629909615184-74f495363b67?w=500&q=80",
+    image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774445606/ChatGPT_Image_Mar_25_2026_07_03_03_PM_u6xy4h.png",
     short: "Gentle, fun dental care for children of all ages.",
     description: "Our pediatric dental team creates a fun, comfortable environment for children. We focus on prevention, education, and gentle treatment to build positive dental habits early.",
     duration: "30–45 minutes per visit",
