@@ -14,7 +14,7 @@ serve(async (req) => {
 
   try {
     const GROQ_API_KEY = Deno.env.get('GROQ_API_KEY');
-    
+
     if (!GROQ_API_KEY) {
       throw new Error("GROQ_API_KEY is not configured in Supabase Edge Function Secrets.");
     }
@@ -26,7 +26,7 @@ serve(async (req) => {
     }
 
     const systemPrompt = `
-You are an expert dental SEO copywriter for ToothZone Dental Clinic.
+You are an expert dental SEO copywriter for Dr. Tamal Roy from ToothZone Dental Clinic.
 Your goal is to write a highly engaging, medically accurate, and SEO-optimized blog post.
 The tone should be ${tone || 'professional, empathetic, and authoritative'}.
 

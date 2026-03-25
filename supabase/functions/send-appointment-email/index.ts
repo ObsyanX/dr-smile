@@ -28,7 +28,7 @@ serve(async (req) => {
     let html: string;
 
     if (type === 'confirmed') {
-      subject = '✅ Appointment Confirmed – Dr. Smile Dental';
+      subject = '✅ Appointment Confirmed – ToothZone Dental Clinic';
       html = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
           <h2 style="color: #2FB4C7;">Appointment Confirmed</h2>
@@ -41,11 +41,11 @@ serve(async (req) => {
             <tr><td style="padding: 8px; border-bottom: 1px solid #eee; color: #666;">Clinic</td><td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">${patient.clinic_location || 'TBD'}</td></tr>
           </table>
           <p>If you need to reschedule, please contact us at <strong>+91 9804214790</strong>.</p>
-          <p style="color: #666; font-size: 12px;">– Dr. Smile Dental Clinic</p>
+          <p style="color: #666; font-size: 12px;">– Dr. Tamal Roy </br> From ToothZone Dental Clinic</p>
         </div>
       `;
     } else if (type === 'reminder') {
-      subject = '⏰ Appointment Reminder – Dr. Smile Dental';
+      subject = '⏰ Appointment Reminder – ToothZone Dental Clinic';
       html = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
           <h2 style="color: #2FB4C7;">Appointment Reminder</h2>
@@ -58,11 +58,11 @@ serve(async (req) => {
             <tr><td style="padding: 8px; border-bottom: 1px solid #eee; color: #666;">Clinic</td><td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">${patient.clinic_location || 'TBD'}</td></tr>
           </table>
           <p>If you need to reschedule, please contact us at <strong>+91 9804214790</strong>.</p>
-          <p style="color: #666; font-size: 12px;">– Dr. Smile Dental Clinic</p>
+          <p style="color: #666; font-size: 12px;">– Dr. Tamal Roy </br> From ToothZone Dental Clinic</p>
         </div>
       `;
     } else {
-      subject = '❌ Appointment Update – Dr. Smile Dental';
+      subject = '❌ Appointment Update – ToothZone Dental Clinic';
       html = `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
           <h2 style="color: #e74c3c;">Appointment Update</h2>
@@ -70,7 +70,7 @@ serve(async (req) => {
           <p>Unfortunately, your appointment for <strong>${patient.treatment}</strong> on <strong>${patient.preferred_date || 'the requested date'}</strong> could not be scheduled at this time.</p>
           <p>Please rebook at your convenience by visiting our website or calling us at <strong>+91 9804214790</strong>.</p>
           <p>We apologize for any inconvenience.</p>
-          <p style="color: #666; font-size: 12px;">– Dr. Smile Dental Clinic</p>
+          <p style="color: #666; font-size: 12px;">– Dr. Tamal Roy </br> From ToothZone Dental Clinic</p>
         </div>
       `;
     }

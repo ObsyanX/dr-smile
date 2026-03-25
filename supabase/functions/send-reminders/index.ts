@@ -61,7 +61,7 @@ serve(async (req) => {
           body: JSON.stringify({
             from: 'Dr. Smile Dental <onboarding@resend.dev>',
             to: [apt.email],
-            subject: '⏰ Appointment Reminder – Dr. Smile Dental',
+            subject: '⏰ Appointment Reminder – ToothZone Dental Clinic',
             html: `
               <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
                 <h2 style="color: #2FB4C7;">Appointment Reminder</h2>
@@ -74,7 +74,7 @@ serve(async (req) => {
                   <tr><td style="padding: 8px; border-bottom: 1px solid #eee; color: #666;">Clinic</td><td style="padding: 8px; border-bottom: 1px solid #eee; font-weight: bold;">${apt.clinic_location || 'TBD'}</td></tr>
                 </table>
                 <p>Need to reschedule? Call us at <strong>+91 9804214790</strong>.</p>
-                <p style="color: #666; font-size: 12px;">– Dr. Smile Dental Clinic</p>
+                <p style="color: #666; font-size: 12px;">– Dr. Tamal Roy </br> From ToothZone Dental Clinic</p>
               </div>
             `,
           }),
