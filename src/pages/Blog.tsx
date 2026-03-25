@@ -178,7 +178,7 @@ export default function Blog() {
                   <Calendar className="w-5 h-5 mr-3" /> Book Appointment
                 </Button>
               </Link>
-              <a href="https://wa.me/919999999999" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto tracking-wide">
+              <a href="https://wa.me/919804214790" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto tracking-wide">
                 <Button size="lg" className="bg-[#25D366] text-white hover:bg-[#20bd5a] rounded-full font-heading px-8 w-full border-none h-14 text-base">
                   <MessageCircle className="w-5 h-5 mr-3" /> Chat on WhatsApp
                 </Button>

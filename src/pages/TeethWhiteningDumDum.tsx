@@ -67,7 +67,7 @@ const TeethWhiteningDumDum = () => (
                 <Link to="/contact">
                   <Button size="lg" className="rounded-full font-heading px-8">Book Whitening</Button>
                 </Link>
-                <a href="tel:+919999999999">
+                <a href="tel:+919804214790">
                   <Button size="lg" variant="outline" className="rounded-full font-heading px-8 gap-2">
                     <Phone className="w-4 h-4" /> Call Us
                   </Button>

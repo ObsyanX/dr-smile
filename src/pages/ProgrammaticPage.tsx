@@ -513,7 +513,7 @@ const ProgrammaticPage = ({ page }: ProgrammaticPageProps) => {
                 <p className="text-body-lg text-muted-foreground mb-8 leading-relaxed">{page.heroDesc}</p>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <Link to="/contact"><Button size="lg" className="rounded-full font-heading px-8">Book Appointment</Button></Link>
-                  <a href="tel:+919999999999">
+                  <a href="tel:+919804214790">
                     <Button size="lg" variant="outline" className="rounded-full font-heading px-8 gap-2">
                       <Phone className="w-4 h-4" /> Call Now
                     </Button>

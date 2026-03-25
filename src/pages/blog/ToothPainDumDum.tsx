@@ -180,7 +180,7 @@ const ToothPainDumDum = () => (
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact"><Button size="lg" variant="secondary" className="rounded-full font-heading px-10">Book Emergency Slot</Button></Link>
-              <a href="tel:+919999999999"><Button size="lg" variant="outline" className="rounded-full font-heading px-10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">Call Now</Button></a>
+              <a href="tel:+919804214790"><Button size="lg" variant="outline" className="rounded-full font-heading px-10 border-primary-foreground/30 text-primary-foreground hover:bg-primary-foreground/10">Call Now</Button></a>
             </div>
           </ScrollReveal>
         </div>
