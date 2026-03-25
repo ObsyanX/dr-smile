@@ -35,9 +35,9 @@ const Footer = () => (
 
     <div className="container-dental pt-20 pb-10">
       {/* Top section — brand + columns */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-4 mb-1">
         {/* Brand */}
-        <div className="lg:col-span-4">
+        <div className="lg:col-span-3">
           <Link to="/" className="inline-block mb-5">
             <h3 className="font-heading font-bold text-2xl text-primary-foreground tracking-tight">
               Tooth<span className="text-primary">Zone</span>
