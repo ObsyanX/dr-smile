@@ -129,22 +129,50 @@ const Footer = () => (
           <h4 className="font-heading font-semibold text-primary-foreground text-sm uppercase tracking-wider mb-5">
             Visit Us
           </h4>
-          <ul className="space-y-4 text-sm">
+          <ul className="space-y-6 text-sm">
             <li className="flex items-start gap-3">
               <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
-              <span>9 No Railgate, Madhyamgram,<br />West Bengal — 700130</span>
+              <div className="flex flex-col gap-1">
+                <span className="font-medium text-primary-foreground">Madhyamgram Branch</span>
+                <span>9 No Railgate, Madhyamgram,<br />West Bengal — 700130</span>
+                <a 
+                  href="https://maps.app.goo.gl/caB9HBPh61tJKgX36" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[11px] text-primary hover:underline flex items-center gap-1 mt-0.5 transition-all"
+                >
+                  Get Directions <ArrowUpRight className="w-2.5 h-2.5" />
+                </a>
+              </div>
             </li>
-            <li className="flex items-center gap-3">
-              <Phone className="w-4 h-4 text-primary shrink-0" />
-              <a href="tel:+919804214790" className="hover:text-primary transition-colors">
-                +91 9804214790
-              </a>
+            <li className="flex items-start gap-3">
+              <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+              <div className="flex flex-col gap-1">
+                <span className="font-medium text-primary-foreground">Dum Dum Branch</span>
+                <span>Jessore Rd, Basak Bagan, South Dumdum, Kolkata — 700048</span>
+                <a 
+                  href="https://maps.app.goo.gl/7ZHCytdYZHkiDpKP8" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-[11px] text-primary hover:underline flex items-center gap-1 mt-0.5 transition-all"
+                >
+                  Get Directions <ArrowUpRight className="w-2.5 h-2.5" />
+                </a>
+              </div>
             </li>
-            <li className="flex items-center gap-3">
-              <Mail className="w-4 h-4 text-primary shrink-0" />
-              <a href="mailto:roy.tamaall@gmail.com" className="hover:text-primary transition-colors">
-                roy.tamaall@gmail.com
-              </a>
+            <li className="space-y-3 pt-2 border-t border-primary-foreground/10">
+              <div className="flex items-center gap-3">
+                <Phone className="w-4 h-4 text-primary shrink-0" />
+                <a href="tel:+919804214790" className="hover:text-primary transition-colors">
+                  +91 98042 14790
+                </a>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail className="w-4 h-4 text-primary shrink-0" />
+                <a href="mailto:roy.tamaall@gmail.com" className="hover:text-primary transition-colors">
+                  roy.tamaall@gmail.com
+                </a>
+              </div>
             </li>
           </ul>
           <div className="mt-5 pt-4 border-t border-primary-foreground/10">
