@@ -5,10 +5,37 @@
   "outputDirectory": "dist",
   "routes": [
     {
+      "src": "/sitemap.xml",
+      "headers": {
+        "Content-Type": "text/xml; charset=utf-8",
+        "Cache-Control": "public, max-age=3600"
+      },
+      "dest": "/sitemap.xml"
+    },
+    {
+      "src": "/robots.txt",
+      "headers": {
+        "Content-Type": "text/plain; charset=utf-8"
+      },
+      "dest": "/robots.txt"
+    },
+    {
+      "src": "/assets/(.*)",
+      "headers": {
+        "Cache-Control": "public, max-age=31536000, immutable"
+      },
+      "dest": "/assets/$1"
+    },
+    {
       "handle": "filesystem"
     },
     {
       "src": "/(.*)",
+      "headers": {
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY",
+        "X-XSS-Protection": "1; mode=block"
+      },
       "dest": "/index.html"
     }
   ],
