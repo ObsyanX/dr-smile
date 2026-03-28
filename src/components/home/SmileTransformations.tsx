@@ -6,15 +6,15 @@ import { ArrowRight } from "lucide-react";
 
 const cases = [
   {
-    before: "https://images.unsplash.com/photo-1595005659592-09e78a1825dc?w=600&q=80",
-    after: "https://images.unsplash.com/photo-1581585837449-0bfc2b21b03c?w=600&q=80",
+    before: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774680918/WhatsApp_Image_2026-03-27_at_7.31.16_PM_nxbfhu.jpg",
+    after: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774680918/WhatsApp_Image_2026-03-27_at_7.31.42_PM_a7l4no.jpg",
     type: "Teeth Whitening",
     duration: "45 minutes",
     result: "3 shades brighter smile",
   },
   {
-    before: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80",
-    after: "https://images.unsplash.com/photo-1581585837449-0bfc2b21b03c?w=600&q=80",
+    before: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774681127/WhatsApp_Image_2026-03-27_at_7.26.04_PM_jjuk2m.jpg",
+    after: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774681231/WhatsApp_Image_2026-03-27_at_7.26.31_PM_gba5ff.jpg",
     type: "Dental Veneers",
     duration: "2 visits over 2 weeks",
     result: "Complete smile makeover",

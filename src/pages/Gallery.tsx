@@ -6,22 +6,29 @@ import ScrollReveal from "@/components/shared/ScrollReveal";
 import BeforeAfterSlider from "@/components/shared/BeforeAfterSlider";
 
 const transformations = [
-  { before: "https://images.unsplash.com/photo-1595005659592-09e78a1825dc?w=600&q=80", after: "https://images.unsplash.com/photo-1581585837449-0bfc2b21b03c?w=600&q=80", type: "Teeth Whitening", duration: "45 minutes", result: "3 shades brighter smile" },
-  { before: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=600&q=80", after: "https://images.unsplash.com/photo-1581585837449-0bfc2b21b03c?w=600&q=80", type: "Dental Veneers", duration: "2 visits over 2 weeks", result: "Complete smile makeover" },
-  { before: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=600&q=80", after: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=600&q=80", type: "Braces Treatment", duration: "18 months", result: "Perfectly aligned teeth" },
+  {
+    before: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774680918/WhatsApp_Image_2026-03-27_at_7.31.16_PM_nxbfhu.jpg",
+    after: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774680918/WhatsApp_Image_2026-03-27_at_7.31.42_PM_a7l4no.jpg", type: "Teeth Whitening", duration: "45 minutes", result: "3 shades brighter smile"
+  },
+  {
+    before: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774681127/WhatsApp_Image_2026-03-27_at_7.26.04_PM_jjuk2m.jpg",
+    after: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774681231/WhatsApp_Image_2026-03-27_at_7.26.31_PM_gba5ff.jpg", type: "Dental Veneers", duration: "2 visits over 2 weeks", result: "Complete smile makeover"
+  },
+  { before: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774681476/WhatsApp_Image_2026-03-27_at_7.23.52_PM_wbnlou.jpg", after: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774681127/WhatsApp_Image_2026-03-27_at_7.25.16_PM_dy4tgz.jpg", type: "Braces Treatment", duration: "18 months", result: "Perfectly aligned teeth" },
 ];
 
-const categories = ["All", "Whitening", "Braces", "Veneers", "Implants"] as const;
+const categories = ["All", "Whitening", "Braces", "Veneers", "Implants", "Smile Makeover"] as const;
 
 const galleryImages = [
-  { src: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?w=400&q=80", category: "Whitening", title: "Professional Whitening" },
-  { src: "https://images.unsplash.com/photo-1598256989800-fe5f95da9787?w=400&q=80", category: "Braces", title: "Clear Aligners" },
-  { src: "https://images.unsplash.com/photo-1581585837449-0bfc2b21b03c?w=400&q=80", category: "Veneers", title: "Porcelain Veneers" },
-  { src: "https://images.unsplash.com/photo-1609840114035-3c981b782dfe?w=400&q=80", category: "Implants", title: "Dental Implant" },
-  { src: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?w=400&q=80", category: "Whitening", title: "Laser Whitening" },
-  { src: "https://images.unsplash.com/photo-1606811841689-23dfddce3e95?w=400&q=80", category: "Braces", title: "Metal Braces" },
-  { src: "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80", category: "Veneers", title: "Smile Design" },
-  { src: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=400&q=80", category: "Implants", title: "Full Arch Implants" },
+  { src: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774682048/576ebcfede208f85a419e35e064a2cfd-2_f8pue9.jpg", category: "Whitening", title: "Professional Whitening" },
+  { src: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774682158/jcdr-10-ZJ09-g003_zbzvzm.jpg", category: "Braces", title: "Clear Aligners" },
+  { src: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774682255/emax-before-after.jpg_codkfb.webp", category: "Veneers", title: "Porcelain Veneers" },
+  { src: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774682501/all-on-4-before-after-1-768x768_ge5rq2.jpg", category: "Implants", title: "Dental Implant" },
+  { src: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774682048/576ebcfede208f85a419e35e064a2cfd-2_f8pue9.jpg", category: "Whitening", title: "Laser Whitening" },
+  { src: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774682158/jcdr-10-ZJ09-g003_zbzvzm.jpg", category: "Braces", title: "Metal Braces" },
+  { src: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774682255/emax-before-after.jpg_codkfb.webp", category: "Veneers", title: "Smile Design" },
+  { src: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774682608/all-on-4-implants-before-after-results-case-04_n8u6a3.jpg", category: "Implants", title: "Full Arch Implants" },
+  { src: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774681688/smile_makeover_rqpglg.jpg", category: "Smile Makeover", title: "Smile" }
 ];
 
 const Gallery = () => {
@@ -72,11 +79,10 @@ const Gallery = () => {
                   <button
                     key={cat}
                     onClick={() => setActiveCategory(cat)}
-                    className={`px-5 py-2 rounded-full text-sm font-heading font-medium transition-all ${
-                      activeCategory === cat
-                        ? "bg-primary text-primary-foreground"
-                        : "bg-card border border-border text-muted-foreground hover:border-primary/30"
-                    }`}
+                    className={`px-5 py-2 rounded-full text-sm font-heading font-medium transition-all ${activeCategory === cat
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-card border border-border text-muted-foreground hover:border-primary/30"
+                      }`}
                   >
                     {cat}
                   </button>
