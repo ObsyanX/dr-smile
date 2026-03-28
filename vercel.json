@@ -7,8 +7,8 @@
     {
       "src": "/sitemap.xml",
       "headers": {
-        "Content-Type": "text/xml; charset=utf-8",
-        "Cache-Control": "public, max-age=3600"
+        "Content-Type": "application/xml",
+        "Cache-Control": "no-cache, no-store, must-revalidate"
       },
       "dest": "/sitemap.xml"
     },
