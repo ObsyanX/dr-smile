@@ -9,6 +9,7 @@ import { format } from "date-fns";
 import { Calendar, User, Eye, ArrowLeft, Tag, Loader2, Share2, Facebook, Twitter, Linkedin, MessageCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { SkeletonLoader } from "@/components/shared/SkeletonLoader";
 
 export default function BlogDetail() {
   const { slug } = useParams();
@@ -49,14 +50,7 @@ export default function BlogDetail() {
   }, [slug]);
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen bg-background flex flex-col pt-20">
-        <Navbar />
-        <div className="flex-1 flex items-center justify-center">
-          <div className="flex items-center gap-3 text-muted-foreground"><Loader2 className="w-6 h-6 animate-spin" /> Loading article...</div>
-        </div>
-      </div>
-    );
+    return <SkeletonLoader />;
   }
 
   if (error || !blog) return <Navigate to="/blog" replace />;

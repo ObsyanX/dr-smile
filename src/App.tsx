@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState, useEffect } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -9,6 +9,8 @@ import { AuthProvider } from "@/hooks/useAuth";
 import AdminGuard from "@/components/admin/AdminGuard";
 import ErrorBoundary from "@/components/shared/ErrorBoundary";
 import { programmaticPages } from "./pages/ProgrammaticPage";
+import { SkeletonLoader } from "@/components/shared/SkeletonLoader";
+
 
 const Index = lazy(() => import("./pages/Index"));
 const Services = lazy(() => import("./pages/Services"));
@@ -46,14 +48,27 @@ const queryClient = new QueryClient({
 });
 
 
-const PageLoader = () => (
-  <div className="min-h-screen flex items-center justify-center bg-background">
-    <div className="flex flex-col items-center gap-4">
-      <div className="w-10 h-10 border-3 border-primary/30 border-t-primary rounded-full animate-spin" />
-      <p className="text-sm text-muted-foreground font-heading">Loading...</p>
-    </div>
-  </div>
-);
+const PageLoader = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
+
+  if (isHomePage) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background animate-in fade-in duration-700">
+        <div className="flex flex-col items-center gap-6">
+          <img 
+            src="https://res.cloudinary.com/dpmtulfdy/image/upload/v1774715299/output-onlinegiftools11-ezgif.com-optimize_r35xwl.gif" 
+            alt="ToothZone Loading..." 
+            className="w-48 h-48 object-contain drop-shadow-xl"
+          />
+        </div>
+      </div>
+    );
+  }
+
+  return <SkeletonLoader />;
+};
+
 
 const AnimatedRoutes = () => {
   const location = useLocation();
@@ -108,20 +123,45 @@ const AnimatedRoutes = () => {
   );
 };
 
-const App = () => (
-  <ErrorBoundary>
-    <QueryClientProvider client={queryClient}>
-      <AuthProvider>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
-            <AnimatedRoutes />
-          </BrowserRouter>
-        </TooltipProvider>
-      </AuthProvider>
-    </QueryClientProvider>
-  </ErrorBoundary>
-);
+const App = () => {
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsInitialLoading(false);
+    }, 4500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isInitialLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-background">
+        <div className="flex flex-col items-center gap-6 animate-in fade-in duration-1000">
+          <img 
+            src="https://res.cloudinary.com/dpmtulfdy/image/upload/v1774715299/output-onlinegiftools11-ezgif.com-optimize_r35xwl.gif" 
+            alt="ToothZone Loading..." 
+            className="w-48 h-48 object-contain drop-shadow-xl"
+          />
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <AuthProvider>
+          <TooltipProvider>
+            <Toaster />
+            <Sonner />
+            <BrowserRouter>
+              <AnimatedRoutes />
+            </BrowserRouter>
+          </TooltipProvider>
+        </AuthProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
+  );
+};
 
 export default App;

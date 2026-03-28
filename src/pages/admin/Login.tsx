@@ -150,7 +150,7 @@ const AdminLogin = () => {
                 className="w-full rounded-xl font-heading"
                 disabled={isPending}
               >
-                {isPending ? "Signing in…" : authLoading ? "Loading..." : "Sign In"}
+                {isPending ? "Signing in…" : authLoading ? "Please wait..." : "Sign In"}
               </Button>
             </form>
           </CardContent>

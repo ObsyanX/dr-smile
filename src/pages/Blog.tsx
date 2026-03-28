@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Clock, ChevronRight, Eye, RefreshCw, MessageCircle } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { format } from "date-fns";
+import { SkeletonLoader } from "@/components/shared/SkeletonLoader";
 
 // Memory cache for blogs to prevent excessive Supabase queries
 let cachedBlogs: any[] | null = null;
@@ -96,10 +97,7 @@ export default function Blog() {
           </div>
 
           {isLoading ? (
-            <div className="py-24 text-center text-muted-foreground flex flex-col items-center justify-center">
-              <RefreshCw className="w-10 h-10 animate-spin mb-4 text-primary opacity-50" />
-              <p className="font-medium">Loading articles...</p>
-            </div>
+            <SkeletonLoader />
           ) : filteredBlogs.length === 0 ? (
             <div className="py-24 text-center bg-card border border-border/50 rounded-2xl shadow-sm">
               <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">📝</div>
