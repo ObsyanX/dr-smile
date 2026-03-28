@@ -5,7 +5,7 @@
   "outputDirectory": "dist",
   "routes": [
     {
-      "src": "/sitemap.xml",
+      "src": "^/sitemap\\.xml$",
       "headers": {
         "Content-Type": "application/xml",
         "Cache-Control": "no-cache, no-store, must-revalidate"
@@ -13,7 +13,7 @@
       "dest": "/sitemap.xml"
     },
     {
-      "src": "/robots.txt",
+      "src": "^/robots\\.txt$",
       "headers": {
         "Content-Type": "text/plain; charset=utf-8"
       },
