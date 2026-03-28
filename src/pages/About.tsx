@@ -8,7 +8,7 @@ import TechnologyGrid from "@/components/home/TechnologyGrid";
 const interiorImages = [
   { src: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774683039/AHVAweqmqFy6VXw1Pn-6D4Z7ZjVGkZhZ8PlNqWaPYCbWi45ARE-6W4rNKBI5YX9Li8c2b_tscYKHIpDdHh5pCYQePGO1M2Uv3yRNwVXSJRtfXB97X6ysuu9KLtj5d7ihXUXD3M_M6K5D_s1360-w1360-h1020-rw_llz2rn.webp", label: "Reception" },
   { src: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774324091/AHVAweozSRmlxxbBYeIcTc0aW1oGMqnP2b41eJ1KdfSG6tRnNVZ5yqwvZFT5ea9Mifp3EP3AvTenRjQYGUBw7YgcaKGhbDmbT4CFXPtkzPJnRKqXBt6QrdF5EItNC3u2YpXXrn6LRWIj_s483-k-no_scmuil.jpg", label: "Treatment Room" },
-  { src: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?w=500&q=80", label: "Equipment" },
+  { src: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774689710/WhatsApp_Image_2026-03-28_at_2.45.22_PM_fx3bx5.jpg", label: "Equipment" },
   { src: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774683146/AF1QipO66iD2JT-zAe1OWvtJvffTVRZThRGZmiZeEDrz_s1360-w1360-h1020-rw_expc5d.webp", label: "Shop Exterior" },
 ];
 
@@ -35,7 +35,7 @@ const About = () => (
                 <div className="relative rounded-[2rem] p-3 bg-white/40 dark:bg-black/40 backdrop-blur-xl border border-white/40 dark:border-white/10 shadow-2xl">
                   <div className="relative rounded-[1.5rem] overflow-hidden aspect-[4/5] bg-muted">
                     <img
-                      src="https://res.cloudinary.com/dpmtulfdy/image/upload/v1774447246/WhatsApp_Image_2026-03-24_at_11.24.27_AM_seaivg.jpg"
+                      src="https://res.cloudinary.com/dpmtulfdy/image/upload/v1774690314/ChatGPT_Image_Mar_28_2026_03_01_08_PM_ims4su.png"
                       alt="Dr. Tamal Roy, Lead Dentist"
                       className="w-full h-full object-cover scale-105 hover:scale-100 transition-transform duration-700"
                       loading="eager"

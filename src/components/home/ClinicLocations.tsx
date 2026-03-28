@@ -11,7 +11,7 @@ const clinics = [
     address: "9 No Railgate, Madhyamgram, Station Road, Kora, Madhyamgram, Kolkata — 700130",
     days: "Mon – Sat (Sun Closed)",
     hours: "6:15 PM – 9:00 PM",
-    image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=500&q=80",
+    image: "https://res.cloudinary.com/dpmtulfdy/image/upload/v1774691289/Screenshot_2026-03-28_151744_hvt6zj.png",
     mapUrl: "https://maps.app.goo.gl/caB9HBPh61tJKgX36",
     coords: { lat: 22.702722, lng: 88.460868 },
   },
