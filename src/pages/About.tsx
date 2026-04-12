@@ -49,17 +49,6 @@ const About = () => (
                       <h3 className="font-heading font-bold text-2xl">Dr. Tamal Roy</h3>
                     </div>
                   </div>
-
-                  {/* Floating Badge */}
-                  <div className="absolute -right-6 top-12 glass-card rounded-2xl p-4 shadow-xl border border-white/40 dark:border-white/10 flex items-center gap-4 animate-float">
-                    <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                      <Award className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-heading font-bold text-foreground leading-tight">10+ Years</p>
-                      <p className="text-xs text-muted-foreground">Excellence</p>
-                    </div>
-                  </div>
                 </div>
               </ScrollReveal>
             </div>
